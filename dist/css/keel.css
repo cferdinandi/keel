@@ -1,0 +1,76 @@
+/**
+ * keel v4.0.0
+ * A lightweight boilerplate for WordPress developers, by Chris Ferdinandi.
+ * http://github.com/cferdinandi/keel
+ * 
+ * Free to use under the MIT License.
+ * http://gomakethings.com/mit/
+ */
+
+/**
+ * @section WordPress Image Classes
+ * Styling for the classes WordPress automatically applies to images.
+ */
+/**
+ * Comment Avatar Styling
+ * Class automatically applied to comment avatars.
+ */
+.avatar {
+  float: left;
+  margin-right: 0.5em;
+  /*  Set $size to 2x desired size in comments.php
+   *  for crisp images on retina screens. */
+  height: 3.75em;
+  width: 3.75em;
+}
+
+/**
+ * Display all images as centered block elements.
+ * Mobile-first default styling.
+ */
+.alignleft,
+.alignright,
+.aligncenter,
+.alignnone {
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/**
+ * Image Caption Styling
+ */
+.wp-caption-text {
+  font-size: 0.9375em;
+  font-style: italic;
+  color: gray;
+  padding-top: 0.5em;
+  text-align: center;
+}
+
+@media (min-width: 30em) {
+  /**
+   * On bigger screens, float .alignleft images to the left with a slight margin-right.
+   */
+  .alignleft {
+    float: left;
+    margin-right: 0.5em;
+  }
+
+  /**
+   * On bigger screens, float .alignright images to the right with a slight margin-left.
+   */
+  .alignright {
+    float: right;
+    margin-left: 0.5em;
+  }
+
+  /**
+   * On bigger screens, remove left and right margins from .alignnone
+   */
+  .alignnone {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
