@@ -23,7 +23,6 @@ A lightweight boilerplate for WordPress theme developers. Keel includes just the
 7. [How to Contribute](#how-to-contribute)
 8. [License](#license)
 9. [Changelog](#changelog)
-10. [Older Docs](#older-docs)
 
 
 
@@ -266,9 +265,3 @@ Keel uses [semantic versioning](http://semver.org/).
 	* Removed `media="screen"` from `header.php` to allow for print styles in main CSS file.
 * v1.0 - February 10, 2013
 	* Initial release.
-
-
-
-## Older Docs
-
-* [Version 3](https://github.com/cferdinandi/keel/tree/archive-v3)
