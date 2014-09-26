@@ -191,6 +191,7 @@
 	function keel_comment_form() {
 
 		$commenter = wp_get_current_commenter();
+		global $user_identity;
 
 		$must_log_in =
 			'<p>' .
