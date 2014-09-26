@@ -142,6 +142,7 @@ Keel includes a handful of utility methods in the `functions.php` file that make
 * `keel_comment_layout()` - A custom comment callback for `wp_list_comments()` used in `comments.php`.
 * `keel_comment_form()` - A custom implementation of `comment_form()`.
 * `wp_enqueue_script( 'comment-reply' )` - Adds script for threaded comments if enabled.
+* `keel_dequeue_devicepx` - Deregisters Jetpack's devicepx.js script.
 * `keel_just_comments_count()` - Gets the number of comments for a post (without trackbacks or pings).
 * `keel_trackbacks_count()` - Gets the number of trackbacks for a post.
 * `keel_pings_count()` - Gets the number of pings for a post.

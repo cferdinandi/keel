@@ -274,10 +274,10 @@
 	/**
 	 * Deregister JetPack's devicepx.js script
 	 */
-	function dequeue_devicepx() {
+	function keel_dequeue_devicepx() {
 	    wp_dequeue_script( 'devicepx' );
 	}
-	add_action( 'wp_enqueue_scripts', 'dequeue_devicepx', 20 );
+	add_action( 'wp_enqueue_scripts', 'keel_dequeue_devicepx', 20 );
 
 
 
