@@ -272,6 +272,16 @@
 
 
 	/**
+	 * Deregister JetPack's devicepx.js script
+	 */
+	function dequeue_devicepx() {
+	    wp_dequeue_script( 'devicepx' );
+	}
+	add_action( 'wp_enqueue_scripts', 'dequeue_devicepx', 20 );
+
+
+
+	/**
 	 * Get number of comments (without trackbacks or pings)
 	 * @return integer Number of comments
 	 */

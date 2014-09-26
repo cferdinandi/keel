@@ -213,6 +213,8 @@ Keel is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 Keel uses [semantic versioning](http://semver.org/).
 
+* v4.1.0 - September 26, 2014
+	* Degregister Jetpack's devicepx.js script.
 * v4.0.0 - August 29, 2014
 	* Renamed project from `Kraken for WordPress` to `Keel`.
 	* Added semantic versioning.
