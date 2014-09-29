@@ -1,5 +1,5 @@
 /**
- * keel v4.1.0
+ * keel v4.1.1
  * A lightweight boilerplate for WordPress developers, by Chris Ferdinandi.
  * http://github.com/cferdinandi/keel
  * 
@@ -44,7 +44,7 @@
 .wp-caption-text {
   font-size: 0.9375em;
   font-style: italic;
-  color: gray;
+  color: #808080;
   padding-top: 0.5em;
   text-align: center;
 }
