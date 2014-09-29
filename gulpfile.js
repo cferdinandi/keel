@@ -2,6 +2,7 @@
 var gulp = require('gulp');
 var plumber = require('gulp-plumber');
 var clean = require('gulp-clean');
+var lazypipe = require('lazypipe');
 var rename = require('gulp-rename');
 var flatten = require('gulp-flatten');
 var tap = require('gulp-tap');
@@ -19,7 +20,6 @@ var package = require('./package.json');
 // Paths to project folders
 var paths = {
 	output : 'dist/',
-	temp: 'src/temp/',
 	scripts : {
 		input : [ 'src/js/*' ],
 		output : 'dist/js/'
@@ -66,11 +66,21 @@ var banner = {
 		' * Author: <%= package.author.name %>\n' +
 		' * Author URI: <%= package.author.url %>\n' +
 		' * License: <%= package.license %>\n' +
+		' * License URI: <%= package.author.url %>/mit/\n' +
 		' */'
 };
 
-// Concatenate scripts in subfolders
-gulp.task('concatenate', function() {
+// Lint, minify, and concatenate scripts
+gulp.task('scripts', ['clean'], function() {
+
+	var jsTasks = lazypipe()
+		.pipe(header, banner.full, { package : package })
+		.pipe(gulp.dest, paths.scripts.output)
+		.pipe(rename, { suffix: '.min' })
+		.pipe(uglify)
+		.pipe(header, banner.min, { package : package })
+		.pipe(gulp.dest, paths.scripts.output);
+
 	return gulp.src(paths.scripts.input)
 		.pipe(plumber())
 		.pipe(flatten())
@@ -79,25 +89,10 @@ gulp.task('concatenate', function() {
 				var name = file.relative + '.js';
 				return gulp.src(file.path + '/*.js')
 					.pipe(concat(name))
-					.pipe(gulp.dest(paths.temp));
+					.pipe(jsTasks());
 			}
-		}));
-});
-
-// Lint and minify scripts
-gulp.task('scripts', ['clean', 'concatenate'], function() {
-	return gulp.src([
-			paths.scripts.input + '/../*.js',
-			paths.temp + '/*.js'
-		])
-		.pipe(plumber())
-		.pipe(flatten())
-		.pipe(header(banner.full, { package : package }))
-		.pipe(gulp.dest(paths.scripts.output))
-		.pipe(rename({ suffix: '.min' }))
-		.pipe(uglify())
-		.pipe(header(banner.min, { package : package }))
-		.pipe(gulp.dest(paths.scripts.output));
+		}))
+		.pipe(jsTasks());
 });
 
 // Process, lint, and minify Sass files
@@ -122,19 +117,20 @@ gulp.task('static', ['clean'], function() {
 		.pipe(gulp.dest(paths.output));
 });
 
+// Create style.css with theme header
+gulp.task('theme', function () {
+	return gulp.src(paths.theme.input)
+		.pipe(plumber())
+		.pipe(header(banner.theme, { package : package }))
+		.pipe(gulp.dest(paths.theme.output));
+});
+
 // Lint scripts
 gulp.task('lint', function () {
 	return gulp.src(paths.scripts.input)
 		.pipe(plumber())
 		.pipe(jshint())
 		.pipe(jshint.reporter('jshint-stylish'));
-});
-
-gulp.task('theme', function () {
-	return gulp.src(paths.theme.input)
-		.pipe(plumber())
-		.pipe(header(banner.theme, { package : package }))
-		.pipe(gulp.dest(paths.theme.output));
 });
 
 // Remove prexisting content from output and test folders
@@ -169,9 +165,7 @@ gulp.task('default', [
 	'clean',
 	'static',
 	'theme',
-	'concatenate',
 	'scripts',
 	'styles',
-	'cleanTemp',
 	'test'
 ]);

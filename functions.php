@@ -35,14 +35,12 @@
 	 * @return string Markup for search form
 	 */
 	function keel_wpsearch() {
-		$form = get_search_form();
-		return $form;
+		return get_search_form();
 	}
 	add_shortcode( 'searchform', 'keel_wpsearch' );
 
 
 
-	// Replace default password-protected post messaging with custom language
 	/**
 	 * Replace the default password-protected post messaging with custom language
 	 * @return string Custom language
@@ -287,6 +285,7 @@
 	 * @return integer Number of comments
 	 */
 	function keel_just_comments_count() {
+		global $post;
 		return count( get_comments( array( 'type' => 'comment', 'post_id' => $post->ID ) ) );
 	}
 
@@ -297,6 +296,7 @@
 	 * @return integer Number of trackbacks
 	 */
 	function keel_trackbacks_count() {
+		global $post;
 		return count( get_comments( array( 'type' => 'trackback', 'post_id' => $post->ID ) ) );
 	}
 
@@ -307,6 +307,7 @@
 	 * @return integer Number of pings
 	 */
 	function keel_pings_count() {
+		global $post;
 		return count( get_comments( array( 'type' => 'pingback', 'post_id' => $post->ID ) ) );
 	}
 
