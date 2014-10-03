@@ -17,7 +17,7 @@ A lightweight boilerplate for WordPress theme developers. Keel includes just the
 1. [Getting Started](#getting-started)
 2. [File Structure](#file-structure)
 3. [Utility Methods](#utility-methods)
-4. [Working with Source Files](#working-with-source-files)
+4. [Working with the Source Files](#working-with-the-source-files)
 5. [What's new in version 4?](#whats-new-in-version-4)
 6. [WordPress Theme Development Resources](#wordpress-theme-development-resources)
 7. [How to Contribute](#how-to-contribute)
@@ -155,22 +155,21 @@ Keel includes a handful of utility methods in the `functions.php` file that make
 
 
 
-## Working with Source Files
+## Working with the Source Files
 
-Keel comes with a build-in Gulp workflow based on [Gulp Boilerplate](https://github.com/cferdinandi/gulp-boilerplate) to speed up site development.
+If you would prefer, you can work with the development code in the `src` directory using the included [Gulp build system](http://gulpjs.com/). This compiles, lints, and minifies code, and runs unit tests.
 
 ### Dependencies
-
 Make sure these are installed first.
 
-* [Node.js](http://nodejs.org/)
+* [Node.js](http://nodejs.org)
 * [Ruby Sass](http://sass-lang.com/install)
-* [Gulp](http://gulpjs.com/) `sudo npm install -g gulp`
-* [PhantomJS](http://phantomjs.org/)
+* [Gulp](http://gulpjs.com) `sudo npm install -g gulp`
+* [PhantomJS](http://phantomjs.org)
 
 ### Quick Start
 
-1. In bash/terminal/command line, cd into your project directory.
+1. In bash/terminal/command line, `cd` into your project directory.
 2. Run `npm install` to install required files.
 3. When it's done installing, run `gulp` to get going.
 
