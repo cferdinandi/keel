@@ -6,9 +6,7 @@
  */
 
 ?><!DOCTYPE html>
-<!-- Conditional class for older versions of IE -->
-<!--[if lt IE 9 & !IEMobile]><html class="ie" <?php language_attributes(); ?>><![endif]-->
-<!--[if gt IE 8 | IEMobile]><!--><html <?php language_attributes(); ?>><!--<![endif]-->
+<html <?php language_attributes(); ?>>
 
 	<head>
 		<meta charset="<?php bloginfo('charset'); ?>">
@@ -26,13 +24,11 @@
 		<link rel="alternate" type="application/rss+xml" title="<?php printf( __( '%s RSS Feed', 'keel' ), get_bloginfo( 'name' ) ); ?>" href="<?php bloginfo( 'rss2_url' ); ?>">
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 
-		<!-- HTML5 Shim for IE 6-8 -->
-		<!--[if lt IE 9]>
-			<script src="<?php echo get_stylesheet_directory_uri(); ?>/dist/js/html5.js"></script>
-		<![endif]-->
+		<!-- Feature dection -->
+		<script src="<?php echo get_stylesheet_directory_uri(); ?>/dist/js/detects.js"></script>
 
 		<!-- Stylesheet -->
-		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/dist/css/keel-for-wp.css">
+		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/dist/css/main.css">
 
 		<?php wp_head(); ?>
 
