@@ -5,7 +5,6 @@ A lightweight boilerplate for WordPress theme developers. Keel includes just the
 * Common template files with HTML5 semantic markup.
 * An (almost) empty stylesheet with just a few WordPress-specific classes.
 * A small set of custom utility methods that make development easier.
-* HTML5 Shim, friendly "old browser" messaging, and an IE-conditional styling class.
 * Fully internationalized and translation-ready.
 * A pre-configured (optional) Gulp workflow.
 
@@ -18,12 +17,13 @@ A lightweight boilerplate for WordPress theme developers. Keel includes just the
 2. [File Structure](#file-structure)
 3. [Utility Methods](#utility-methods)
 4. [Working with the Source Files](#working-with-the-source-files)
-5. [What's new in version 4?](#whats-new-in-version-4)
-6. [WordPress Theme Development Resources](#wordpress-theme-development-resources)
-7. [How to Contribute](#how-to-contribute)
-8. [License](#license)
-9. [Changelog](#changelog)
-10. [Older Docs](#older-docs)
+5. [Generating Documentation](#generating-documentation)
+6. [What's new in version 5?](#whats-new-in-version-5)
+7. [WordPress Theme Development Resources](#wordpress-theme-development-resources)
+8. [How to Contribute](#how-to-contribute)
+9. [License](#license)
+10. [Changelog](#changelog)
+11. [Older Docs](#older-docs)
 
 
 
@@ -45,28 +45,43 @@ Compiled and production-ready code can be found in the `dist` directory. The `sr
 keel/
 |—— dist/
 |   |—— css/
-|   |   |—— keel.css
-|   |   |—— keel.min.css
-|   |—— fonts/
-|   |—— img/
+|   |   |—— main.css
+|   |   |—— main.min.css
 |   |—— js/
-|   |   |—— html5.js
-|   |   |—— html5.min.js
+|   |   |—— classList.js
+|   |   |—— classList.min.js
+|   |   |—— main.js
+|   |   |—— main.min.js
+|   |—— svg/
+|   |   |—— icons.svg
+|   |—— # static assets
+|—— docs/
+|   |—— assets/
+|   |—— dist/
+|   |—— index.html
+|   |—— # other docs
 |—— src/
+|   |—— docs/
+|   |   |—— _templates/
+|   |   |   |—— _header.html
+|   |   |   |—— _footer.html
+|   |   |—— assets/
+|   |   |   |—— # doc-specific assets
+|   |   |—— index.html
+|   |   |—— # other docs
 |   |—— js/
 |   |   |—— main/
 |   |   |   |—— scripts.js
-|   |   |—— html5.js
 |   |—— sass/
 |   |   |—— components/
 |   |   |   |—— _wordpress-images.scss
 |   |   |—— _config.scss
 |   |   |—— _mixins.scss
-|   |   |—— keel.scss
+|   |   |—— main.scss
+|   |—— svg/
+|   |   |—— # svgs
 |   |—— static/
-|   |   |—— fonts/
-|   |   |—— img/
-|   |—— style.css
+|   |   |—— # static assets
 |—— test/
 |   |—— coverage/
 |   |   |—— various files
@@ -100,6 +115,7 @@ keel/
 ### Template Files and Folders Explained
 
 * `dist` - All of the CSS, JavaScript, and other non-PHP files used by the theme.
+* `docs` - Theme documentation (useful for client or team projects).
 * `src` - The pre-processed JavaScript, Sass files, etc.
 * `test` - A placeholder for JS unit tests.
 * `.travis.yml` - Continuous integration configuration file for use with Travis CI.
@@ -159,33 +175,71 @@ Keel includes a handful of utility methods in the `functions.php` file that make
 
 If you would prefer, you can work with the development code in the `src` directory using the included [Gulp build system](http://gulpjs.com/). This compiles, lints, and minifies code, and runs unit tests.
 
+It's the same build system that's used by [Kraken](http://cferdinandi.github.io/kraken/), but includes an extra task for generating your theme's `style.css` file with theme headers. **If you're using Keel with Kraken, use Keel's `gulpfile.js`.**
+
 ### Dependencies
 Make sure these are installed first.
 
 * [Node.js](http://nodejs.org)
 * [Ruby Sass](http://sass-lang.com/install)
 * [Gulp](http://gulpjs.com) `sudo npm install -g gulp`
-* [PhantomJS](http://phantomjs.org)
 
 ### Quick Start
 
 1. In bash/terminal/command line, `cd` into your project directory.
 2. Run `npm install` to install required files.
-3. When it's done installing, run `gulp` to get going.
+3. When it's done installing, run one of the task runners to get going:
+	* `gulp` manually compiles files.
+	* `gulp watch` automatically compiles files when changes are made.
+	* `gulp reload` automatically compiles files and applies changes using [LiveReload](http://livereload.com/).
 
-Every time you want to run your tasks, run `gulp`.
+### Sass
 
-### Making Changes
+Sass files are located in `src` > `sass`. Gulp generates minified and unminified CSS files. It also includes [autoprefixer](https://github.com/postcss/autoprefixer), which adds vendor prefixes for you if required by the last two versions of a browser.
 
-Add your files to the appropriate `src` subdirectories. Gulp will process and and compile them into `dist`. Content in subdirectories under the `js` folder will be concatenated. (For example, files in `dist/js/detects` will compile into `src/js/detects.js`.) Files directly under `js` will compile individually.
+### JavaScript
 
-The `src/style.css` file is intentionally blank. Gulp will generate a `style.css` file in the root directory based on the details of your `package.json` file.
+JavaScript files are located in the `src` > `js` directory.
+
+Files placed directly in the js folder will compile directly to `dist` > `js` as both minified and unminified files. Files placed in subdirectories will also be concatenated into a single file. For example, files in `js/detects` will compile into `detects.js`. Files directly under `js` will compile individually.
+
+#### Unit Testing
+
+Gulp Boilerplate is set up for unit testing with [Jasmine](http://jasmine.github.io/2.0/introduction.html). Add your tests to `test/spec/spec-myplugin.js`. Adjust filenames and references as needed.
+
+Unit test results are printed in terminal, but you can also view them in a browser under `test/results/unit-tests.html`. Get a report of how much of your scripts is covered by testing under `test/coverage`.
+
+### SVGs
+
+SVG files placed in the `src` > `svg` directory will be compiled into a single SVG sprite called `icons.svg` in the `dist` > `svg` directory.
 
 
 
-## What's new in version 4?
+## Generating Documentation
 
-Keel is now powered by [GulpJS](http://gulpjs.com/). It's finally been converted over to customized implementationsn of the new WordPress commenting functions (`wp_list_comments()` and `comment_form()`). And it includes a handful of new utility methods to make development faster and easier.
+Keel ships with a simple documentation generator powered by [Gulp.js](http://gulpjs.com/). This feature requires you to work with the source files.
+
+Documentation files can be found under `src` > `docs`, and compile to `docs`.
+
+### How to Create Docs
+
+Add HTML or markdown (`.md` or `.markdown`) files to your `docs` folder in `src`.
+
+The `_templates` directory in `src` contains the `_header.html` and `_footer.html` templates. These are automatically added to the beginning and end of each documentation page. You can also add your own templates to the `_templates` directory. Include template files in your docs by writing `@@include('path-to-file')` on its own line in your markup (or markdown).
+
+Files placed in the `assets` directory will be moved over as-is to the `docs` directory. Keel will also add a copy of your `dist` files so you can use them in your documentation.
+
+When you're ready, run one of the task runners to get going:
+
+* `gulp docs` manually compiles files and generates docs.
+* `gulp watch:docs` automatically compiles files and generates docs when changes are made.
+* `gulp reload:docs` automatically compiles files, generates docs, and applies changes using [LiveReload](http://livereload.com/).
+
+
+
+## What's new in version 5?
+
+Keel is now powered by [GulpJS](http://gulpjs.com/), and now includes a documentation generator for client and team projects. It's finally been converted over to customized implementations of the new WordPress commenting functions (`wp_list_comments()` and `comment_form()`). And it includes a handful of new utility methods to make development faster and easier.
 
 Prior to version 4, Keel was known as Kraken for WordPress. A lot of people expected it to be a full port of the [Kraken boilerplate](http://cferdinandi.github.io/kraken/), which it wasn't, so the project was renamed to make things a bit more clear.
 
@@ -213,6 +267,11 @@ Keel is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 Keel uses [semantic versioning](http://semver.org/).
 
+* v5.0.0 - October 20, 2014
+	* Updated Gulp workflow.
+	* Renamed JS and CSS files to `main`.
+	* Removed HTML5 shim and IE-specific classes.
+	* Added feature detected for SVG and icon font support.
 * v4.1.1 - September 29, 2014
 	* Fixed JS concatenation bug.
 * v4.1.0 - September 26, 2014
