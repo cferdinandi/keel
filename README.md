@@ -147,18 +147,24 @@ keel/
 
 Keel includes a handful of utility methods in the `functions.php` file that make WordPress development easier.
 
-* `keel_load_theme_js()` - Registers your theme JavaScript files and loads them in the footer.
-* `keel_initialize_theme_js()` - Includes any script `init` methods in the footer (after the files).
+* `keel_load_theme_files()` - Registers your theme styles and scripts and loads them in the markup.
+* `keel_initialize_theme_detects()` - Includes your feature detections scripts inline in the `<head>`.
+* `keel_initialize_theme_scripts()` - Includes your script `init` methods inline in the footer.
 * `keel_wpsearch()` - Creates a shortcode for the searchform.
 * `keel_post_password_form()` - Replaces the default password-protected post messaging with custom language.
 * `keel_pretty_wp_title()` - Makes the `wp_title()` function more useful.
+* `keel_excerpt_length()` - Adjust default length of `the_excerpt()` content.
+* `keel_excerpt_more()` - Adjust default "read more" text for `the_excerpt()`.
 * `$content_width` - Sets a large maximum content width to avoid weird pixelation.
 * `keel_register_menus()` - Registers navigation menus for use with `wp_nav_menu()` function.
 * `add_theme_support( 'post-thumbnails' )` - Adds support for featured post images.
+* `keel_remove_wpautop()` - Optionally disables automatic addition of paragraphs and break tags to your content. Off by default.
+* `keel_get_all_posts()` - Optionally remove pagination from The Loop and get all matching posts. Off by default.
 * `keel_comment_layout()` - A custom comment callback for `wp_list_comments()` used in `comments.php`.
 * `keel_comment_form()` - A custom implementation of `comment_form()`.
 * `wp_enqueue_script( 'comment-reply' )` - Adds script for threaded comments if enabled.
-* `keel_dequeue_devicepx` - Deregisters Jetpack's devicepx.js script.
+* `keel_dequeue_devicepx()` - Deregisters Jetpack's devicepx.js script.
+* `add_filter( 'jetpack_implode_frontend_css', '__return_false' )` - Patch fix to prevent overzealous Jetpack CSS injection (temporary).
 * `keel_just_comments_count()` - Gets the number of comments for a post (without trackbacks or pings).
 * `keel_trackbacks_count()` - Gets the number of trackbacks for a post.
 * `keel_pings_count()` - Gets the number of pings for a post.
@@ -267,6 +273,21 @@ Keel is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 Keel uses [semantic versioning](http://semver.org/).
 
+* v5.1.0 - Novembe 12, 2014
+	* Moved all script and style loading to `functions.php`.
+	* Added option to inline feature detection in the `<head>`.
+	* Added comment type to `wp_list_comments()` function in `comments.php`.
+	* Updated Sass structure for WP image styling.
+	* Added option to disable `wpautop`.
+	* Added option to remove loop pagination.
+	* Switched from `echo` to `?> content <?php` for echoing in `functions.php`.
+	* Updated `_config.scss` to match the version that ships with Kraken.
+	* Added helper methods to customize `the_excerpt()`.
+	* Added temporary fix for overzealous CSS injection by Jetpack.
+	* Removed some unused/unneeded classes from custom comment walker method.
+	* Added `.screen-reader-focusable` class to skip nav link.
+	* Renamed `keel.scss` to `main.scss`.
+	* Changed `#main` from `<section>` to `<main>`.
 * v5.0.0 - October 20, 2014
 	* Updated Gulp workflow.
 	* Renamed JS and CSS files to `main`.

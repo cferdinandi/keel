@@ -22,6 +22,7 @@
 		wp_list_comments( array(
 			'style' => 'div',
 			'avatar_size' => 120,
+			'type' => 'all',
 			'callback' => 'keel_comment_layout' // Custom comment structure (in `functions.php`)
 		) );
 	?>
