@@ -7,26 +7,43 @@
 
 
 	/**
-	 * Load theme scripts in the footer
+	 * Load theme files.
 	 */
-	function keel_load_theme_js() {
-		wp_register_script('keel-theme-js', get_template_directory_uri() . '/dist/js/main.js', false, null, true);
-		wp_enqueue_script('keel-theme-js');
+	function keel_load_theme_files() {
+		// Feature detection injected inline into <head> for better performance
+		// wp_enqueue_script( 'keel-theme-detects', get_template_directory_uri() . '/dist/js/detects.js', null, null, false );
+		wp_enqueue_style( 'keel-theme-styles', get_template_directory_uri() . '/dist/css/main.css', null, null, 'all' );
+		wp_enqueue_script( 'keel-theme-scripts', get_template_directory_uri() . '/dist/js/main.js', null, null, true );
 	}
 	add_action('wp_enqueue_scripts', 'keel_load_theme_js');
 
 
 
 	/**
-	 * Include script inits in the footer
+	 * Include feature detection scripts inline in the header
 	 */
-	function keel_initialize_theme_js() {
-		echo
-			'<script>' .
-				// Scripts initializations here
-			'</script>';
+	function keel_initialize_theme_detects() {
+		?>
+			<script>
+				<?php echo file_get_contents( get_template_directory_uri() . '/dist/js/detects.js' ); ?>
+			</script>
+		<?php
 	}
-	add_action('wp_footer', 'keel_initialize_theme_js', 30);
+	add_action('wp_head', 'keel_initialize_theme_detects', 30);
+
+
+
+	/**
+	 * Include script inits inline in the footer
+	 */
+	function keel_initialize_theme_scripts() {
+		?>
+			<script>
+				// Scripts initializations here
+			</script>
+		<?php
+	}
+	add_action('wp_footer', 'keel_initialize_theme_scripts', 30);
 
 
 
@@ -83,6 +100,30 @@
 
 
 	/**
+	 * Override default the_excerpt length
+	 * @param  number $length Default length
+	 * @return number         New length
+	 */
+	function keel_excerpt_length( $length ) {
+		return 35;
+	}
+	add_filter( 'excerpt_length', 'keel_excerpt_length', 999 );
+
+
+
+	/**
+	 * Override default the_excerpt read more string
+	 * @param  string $more Default read more string
+	 * @return string       New read more string
+	 */
+	function keel_excerpt_more( $more ) {
+		return '... <a href="'. get_permalink( get_the_ID() ) . '">' . __('Read More', 'keel') . '</a>';
+	}
+	add_filter( 'excerpt_more', 'keel_excerpt_more' );
+
+
+
+	/**
 	 * Sets max allowed content width
 	 * Deliberately large to prevent pixelation from content stretching
 	 * @link http://codex.wordpress.org/Content_Width
@@ -118,6 +159,28 @@
 
 
 	/**
+	 * Disable WordPress auto-formatting
+	 * Disabled by default. Uncomment add_action to enable
+	 */
+	function keel_remove_wpautop() {
+		remove_filter('the_content', 'wpautop');
+	}
+	// add_action( 'pre_get_posts', 'keel_remove_wpautop' );
+
+
+
+	/**
+	 * Display all posts instead of a limited number
+	 * @param  array $query The WordPress post query
+	 */
+	function keel_get_all_posts( $query ) {
+		$query->set( 'posts_per_page', '-1' );
+	}
+	// add_action( 'pre_get_posts', 'keel_get_all_posts' );
+
+
+
+	/**
 	 * Custom comment callback for wp_list_comments used in comments.php
 	 * @param  object $comment The comment
 	 * @param  object $args Comment settings
@@ -144,11 +207,11 @@
 					<p><em><?php _e( 'Your comment is being held for moderation.', 'keel' ) ?></em></p>
 				<?php endif; ?>
 
-				<header class="space-bottom-small group">
+				<header>
 					<figure>
 						<?php if ( $args['avatar_size'] !== 0 ) echo get_avatar( $comment, $args['avatar_size'] ); ?>
 					</figure>
-					<h3 class="no-space">
+					<h3>
 						<?php comment_author_link() ?>
 					</h3>
 					<aside>
@@ -277,6 +340,14 @@
 	    wp_dequeue_script( 'devicepx' );
 	}
 	add_action( 'wp_enqueue_scripts', 'keel_dequeue_devicepx', 20 );
+
+
+
+	/**
+	 * Remove Jetpack front-end styles
+	 * @todo Remove once Jetpack glitch fixed
+	 */
+	add_filter( 'jetpack_implode_frontend_css', '__return_false' );
 
 
 

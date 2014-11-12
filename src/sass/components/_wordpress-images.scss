@@ -17,17 +17,41 @@
 }
 
 /**
- * Display all images as centered block elements.
- * Mobile-first default styling.
+ * Image alignment
  */
-.alignleft,
-.alignright,
-.aligncenter,
+
+.aligncenter {
+    display: block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.alignleft {
+    @extend .aligncenter;
+
+    @media (min-width: $bp-small) {
+        float: left;
+        margin-right: calc-em(8px);
+    }
+}
+
+.alignright {
+    @extend .aligncenter;
+
+    @media (min-width: $bp-small) {
+        float: right;
+        margin-left: calc-em(8px);
+    }
+}
+
 .alignnone {
-	display: block;
-	text-align: center;
-	margin-left: auto;
-	margin-right: auto;
+    @extend .aligncenter;
+
+    @media (min-width: $bp-small) {
+        margin-left: 0;
+        margin-right: 0;
+    }
 }
 
 /**
@@ -39,31 +63,4 @@
 	color: $color-gray-dark;
 	padding-top: calc-em(8px);
 	text-align: center;
-}
-
-@media (min-width: $bp-small) {
-
-	/**
-	 * On bigger screens, float .alignleft images to the left with a slight margin-right.
-	 */
-	.alignleft {
-		float: left;
-		margin-right: calc-em(8px);
-	}
-
-	/**
-	 * On bigger screens, float .alignright images to the right with a slight margin-left.
-	 */
-	.alignright {
-		float: right;
-		margin-left: calc-em(8px);
-	}
-
-	/**
-	 * On bigger screens, remove left and right margins from .alignnone
-	 */
-	.alignnone {
-		margin-left: 0;
-		margin-right: 0;
-	}
 }

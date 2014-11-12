@@ -7,7 +7,7 @@
 
 ?>
 
-		</section><!-- /#main -->
+		</main><!-- /#main -->
 
 		<footer>
 
