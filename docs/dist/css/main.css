@@ -1,5 +1,5 @@
 /**
- * keel v5.0.0
+ * keel v5.1.1
  * A lightweight boilerplate for WordPress developers, by Chris Ferdinandi.
  * http://github.com/cferdinandi/keel
  * 
@@ -25,17 +25,34 @@
 }
 
 /**
- * Display all images as centered block elements.
- * Mobile-first default styling.
+ * Image alignment
  */
-.alignleft,
-.alignright,
-.aligncenter,
-.alignnone {
+.aligncenter, .alignleft, .alignright, .alignnone {
   display: block;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+}
+
+@media (min-width: 30em) {
+  .alignleft {
+    float: left;
+    margin-right: 0.5em;
+  }
+}
+
+@media (min-width: 30em) {
+  .alignright {
+    float: right;
+    margin-left: 0.5em;
+  }
+}
+
+@media (min-width: 30em) {
+  .alignnone {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
 /**
@@ -47,30 +64,4 @@
   color: #808080;
   padding-top: 0.5em;
   text-align: center;
-}
-
-@media (min-width: 30em) {
-  /**
-   * On bigger screens, float .alignleft images to the left with a slight margin-right.
-   */
-  .alignleft {
-    float: left;
-    margin-right: 0.5em;
-  }
-
-  /**
-   * On bigger screens, float .alignright images to the right with a slight margin-left.
-   */
-  .alignright {
-    float: right;
-    margin-left: 0.5em;
-  }
-
-  /**
-   * On bigger screens, remove left and right margins from .alignnone
-   */
-  .alignnone {
-    margin-left: 0;
-    margin-right: 0;
-  }
 }

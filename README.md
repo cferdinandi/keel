@@ -196,8 +196,7 @@ Make sure these are installed first.
 2. Run `npm install` to install required files.
 3. When it's done installing, run one of the task runners to get going:
 	* `gulp` manually compiles files.
-	* `gulp watch` automatically compiles files when changes are made.
-	* `gulp reload` automatically compiles files and applies changes using [LiveReload](http://livereload.com/).
+	* `gulp watch` automatically compiles files and applies changes using [LiveReload](http://livereload.com/).
 
 ### Sass
 
@@ -273,7 +272,9 @@ Keel is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 Keel uses [semantic versioning](http://semver.org/).
 
-* v5.1.0 - Novembe 12, 2014
+* v5.1.1 - November 20, 2014
+	* Fixed `gulp watch` bug.
+* v5.1.0 - November 12, 2014
 	* Moved all script and style loading to `functions.php`.
 	* Added option to inline feature detection in the `<head>`.
 	* Added comment type to `wp_list_comments()` function in `comments.php`.
