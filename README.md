@@ -272,6 +272,8 @@ Keel is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 Keel uses [semantic versioning](http://semver.org/).
 
+* v5.2.0 - November 21, 2014
+	* Updated SVG build task to create multiple files if desired.
 * v5.1.1 - November 20, 2014
 	* Fixed `gulp watch` bug.
 * v5.1.0 - November 12, 2014
