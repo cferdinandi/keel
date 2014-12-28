@@ -15,7 +15,7 @@
 		wp_enqueue_style( 'keel-theme-styles', get_template_directory_uri() . '/dist/css/main.css', null, null, 'all' );
 		wp_enqueue_script( 'keel-theme-scripts', get_template_directory_uri() . '/dist/js/main.js', null, null, true );
 	}
-	add_action('wp_enqueue_scripts', 'keel_load_theme_js');
+	add_action('wp_enqueue_scripts', 'keel_load_theme_files');
 
 
 
