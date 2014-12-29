@@ -272,6 +272,8 @@ Keel is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 Keel uses [semantic versioning](http://semver.org/).
 
+* v5.2.1 - December 28, 2014
+	* Fixed `keel_load_theme_files()` action hook.
 * v5.2.0 - November 21, 2014
 	* Updated SVG build task to create multiple files if desired.
 * v5.1.1 - November 20, 2014
