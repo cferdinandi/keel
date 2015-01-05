@@ -1,5 +1,5 @@
 /**
- * keel v5.2.1
+ * keel v5.3.0
  * A lightweight boilerplate for WordPress developers, by Chris Ferdinandi.
  * http://github.com/cferdinandi/keel
  * 

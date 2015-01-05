@@ -165,6 +165,7 @@ Keel includes a handful of utility methods in the `functions.php` file that make
 * `wp_enqueue_script( 'comment-reply' )` - Adds script for threaded comments if enabled.
 * `keel_dequeue_devicepx()` - Deregisters Jetpack's devicepx.js script.
 * `add_filter( 'jetpack_implode_frontend_css', '__return_false' )` - Patch fix to prevent overzealous Jetpack CSS injection (temporary).
+* `keel_remove_empty_p` - Remove empty `<p>` tags added by `wpautop()`.
 * `keel_just_comments_count()` - Gets the number of comments for a post (without trackbacks or pings).
 * `keel_trackbacks_count()` - Gets the number of trackbacks for a post.
 * `keel_pings_count()` - Gets the number of pings for a post.
@@ -272,6 +273,8 @@ Keel is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 Keel uses [semantic versioning](http://semver.org/).
 
+* v5.3.0 - January 4, 2015
+	* Added method to remove empty `<p>` tags added by `wpautop()`.
 * v5.2.1 - December 28, 2014
 	* Fixed `keel_load_theme_files()` action hook.
 * v5.2.0 - November 21, 2014
