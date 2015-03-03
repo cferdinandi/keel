@@ -273,6 +273,9 @@ Keel is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 Keel uses [semantic versioning](http://semver.org/).
 
+* v5.3.1 - March 2, 2015
+	* Improved SVG detection to catch Opera Mini false positive.
+	* Fixed `searchform.php` value bug.
 * v5.3.0 - January 4, 2015
 	* Added method to remove empty `<p>` tags added by `wpautop()`.
 * v5.2.1 - December 28, 2014
