@@ -1,5 +1,5 @@
 /**
- * keel v5.3.0
+ * keel v5.3.1
  * A lightweight boilerplate for WordPress developers, by Chris Ferdinandi.
  * http://github.com/cferdinandi/keel
  * 
@@ -103,15 +103,17 @@
 })(window, document);
 ;(function (window, document, undefined) {
 
-	'use strict';
+    'use strict';
 
-	// SVG feature detection
-	var supports = !!document.createElementNS && !!document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect;
+    // SVG feature detection
+    var supports = !!document.createElementNS && !!document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect;
 
-	// If SVG is supported, add `.svg` class to <html> element
-	if ( supports ) {
-		document.documentElement.className += (document.documentElement.className ? ' ' : '') + 'svg';
-	}
+    // Check against Opera Mini (throws a false positive)
+    var whitelist = navigator.userAgent.indexOf('Opera Mini') === -1;
 
+    // If SVG is supported, add `.svg` class to <html> element
+    if ( supports && whitelist ) {
+        document.documentElement.className += (document.documentElement.className ? ' ' : '') + 'svg';
+    }
 
 })(window, document);
