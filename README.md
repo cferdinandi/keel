@@ -22,8 +22,7 @@ A lightweight boilerplate for WordPress theme developers. Keel includes just the
 7. [WordPress Theme Development Resources](#wordpress-theme-development-resources)
 8. [How to Contribute](#how-to-contribute)
 9. [License](#license)
-10. [Changelog](#changelog)
-11. [Older Docs](#older-docs)
+10. [Older Docs](#older-docs)
 
 
 
@@ -266,101 +265,6 @@ In lieu of a formal style guide, take care to maintain the existing coding style
 ## License
 
 Keel is licensed under the [MIT License](http://gomakethings.com/mit/).
-
-
-
-## Changelog
-
-Keel uses [semantic versioning](http://semver.org/).
-
-* v5.3.1 - March 2, 2015
-	* Improved SVG detection to catch Opera Mini false positive.
-	* Fixed `searchform.php` value bug.
-* v5.3.0 - January 4, 2015
-	* Added method to remove empty `<p>` tags added by `wpautop()`.
-* v5.2.1 - December 28, 2014
-	* Fixed `keel_load_theme_files()` action hook.
-* v5.2.0 - November 21, 2014
-	* Updated SVG build task to create multiple files if desired.
-* v5.1.1 - November 20, 2014
-	* Fixed `gulp watch` bug.
-* v5.1.0 - November 12, 2014
-	* Moved all script and style loading to `functions.php`.
-	* Added option to inline feature detection in the `<head>`.
-	* Added comment type to `wp_list_comments()` function in `comments.php`.
-	* Updated Sass structure for WP image styling.
-	* Added option to disable `wpautop`.
-	* Added option to remove loop pagination.
-	* Switched from `echo` to `?> content <?php` for echoing in `functions.php`.
-	* Updated `_config.scss` to match the version that ships with Kraken.
-	* Added helper methods to customize `the_excerpt()`.
-	* Added temporary fix for overzealous CSS injection by Jetpack.
-	* Removed some unused/unneeded classes from custom comment walker method.
-	* Added `.screen-reader-focusable` class to skip nav link.
-	* Renamed `keel.scss` to `main.scss`.
-	* Changed `#main` from `<section>` to `<main>`.
-* v5.0.0 - October 20, 2014
-	* Updated Gulp workflow.
-	* Renamed JS and CSS files to `main`.
-	* Removed HTML5 shim and IE-specific classes.
-	* Added feature detected for SVG and icon font support.
-* v4.1.1 - September 29, 2014
-	* Fixed JS concatenation bug.
-* v4.1.0 - September 26, 2014
-	* Degregister Jetpack's devicepx.js script.
-* v4.0.0 - August 29, 2014
-	* Renamed project from `Kraken for WordPress` to `Keel`.
-	* Added semantic versioning.
-	* Converted to Gulp.js workflow.
-	* Added PHPDoc documentation.
-	* Added `print_a` and `get_page_id_from_path` functions from [Starkers](https://github.com/viewportindustries/starkers/).
-	* Added custom WP comments callbacks and functions.
-	* Added `$content_width` variable.
-	* Added featured image support.
-	* Added named navigation menus.
-	* Added `author.php` template.
-	* Added `keel_` prefix to all utility methods.
-	* Added inline documentation throughout template files.
-* v3.3 - March 15, 2014
-	* Added `is_paginated()` and `is_last_post()` to `functions.php`.
-	* Added `content.php` file to make content pages more DRY.
-	* Added skiplink to `header.php`.
-	* Fixed rendering issues with `search.php`.
-* v3.2 - December 6, 2013
-	* Added Sass support.
-	* Removed all styles from `style.css` file.
-	* Moved front-end styles to `css` folder.
-* v3.1 - October 18, 2013
-	* Replaced `echo sprintf()` with `printf()`.
-* v3.0 - October 17, 2013
-	* Add i18n everywhere.
-	* Updated several functions to be more aligned with WordPress best practices.
-	* Moved various functions to [standalone plugins](http://cferdinandi.github.io/kraken/addons.html).
-	* Converted from spaces to tabs.
-	* Added customized "password protected post" messaging.
-* v2.0 - September 1, 2013
-	* Added templates for:
-		* Main navigation
-		* Next/previous page navigation
-		* "No posts found" message
-		* Search form
-	* Removed search form function (replaced with WordPress standard `searchform.php` template).
-	* Cleaned up  code and removed some unused snippets.
-	* Added `get_template_directory()` to `require_once` in `functions.php`.
-* v1.4 - July 29, 2013
-	* Removed the canonical link from `header.php` (served no purpose).
-	* Split theme JS and jQuery into two separate functions.
-	* Function now calls CDN-hosted jQuery with local fallback.
-* v1.3 - June 7, 2013
-	* Switched to MIT license.
-* v1.3 - June 7, 2013
-	* Added more flexible way to link stylesheet in header.
-* v1.2 - February 19, 2013
-	* Added `no-self-pings.php` to the `functions.php` file.
-* v1.1 - February 15, 2013
-	* Removed `media="screen"` from `header.php` to allow for print styles in main CSS file.
-* v1.0 - February 10, 2013
-	* Initial release.
 
 
 
