@@ -22,7 +22,6 @@ A lightweight boilerplate for WordPress theme developers. Keel includes just the
 7. [WordPress Theme Development Resources](#wordpress-theme-development-resources)
 8. [How to Contribute](#how-to-contribute)
 9. [License](#license)
-10. [Older Docs](#older-docs)
 
 
 
@@ -264,10 +263,4 @@ In lieu of a formal style guide, take care to maintain the existing coding style
 
 ## License
 
-Keel is licensed under the [MIT License](http://gomakethings.com/mit/).
-
-
-
-## Older Docs
-
-* [Version 3](https://github.com/cferdinandi/kraken-for-wordpress/tree/archive-v3)
+The code is available under the [MIT License](LICENSE.md).
