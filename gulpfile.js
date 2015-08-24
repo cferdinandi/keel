@@ -58,10 +58,6 @@ var paths = {
 		output: 'dist/svg/'
 	},
 	static: 'src/static/**',
-	theme : {
-		input: 'src/style.css',
-		output: ''
-	},
 	test: {
 		input: 'src/js/**/*.js',
 		karma: 'test/karma.conf.js',
@@ -97,18 +93,7 @@ var banner = {
 		' <%= package.name %> v<%= package.version %>, by Chris Ferdinandi' +
 		' | <%= package.repository.url %>' +
 		' | Licensed under MIT: http://gomakethings.com/mit/' +
-		' */\n',
-	theme :
-		'/**\n' +
-		' * Theme Name: <%= package.name %> v<%= package.version %>\n' +
-		' * Theme URI: <%= package.repository.url %>\n' +
-		' * Description: <%= package.description %>\n' +
-		' * Version: <%= package.version %>\n' +
-		' * Author: <%= package.author.name %>\n' +
-		' * Author URI: <%= package.author.url %>\n' +
-		' * License: <%= package.license %>\n' +
-		' * License URI: <%= package.author.url %>/mit/\n' +
-		' */'
+		' */\n'
 };
 
 
@@ -185,14 +170,6 @@ gulp.task('build:svgs', ['clean:dist'], function () {
 			inlineSvg: true
 		}))
 		.pipe(gulp.dest(paths.svgs.output));
-});
-
-// Create style.css with theme header
-gulp.task('build:theme', function () {
-	return gulp.src(paths.theme.input)
-		.pipe(plumber())
-		.pipe(header(banner.theme, { package : package }))
-		.pipe(gulp.dest(paths.theme.output));
 });
 
 // Copy static files into output folder
@@ -290,8 +267,7 @@ gulp.task('compile', [
 	'copy:static',
 	'build:scripts',
 	'build:svgs',
-	'build:styles',
-	'build:theme',
+	'build:styles'
 ]);
 
 // Generate documentation
