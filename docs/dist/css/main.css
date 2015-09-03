@@ -1,10 +1,8 @@
-/**
- * keel v5.3.1
- * A lightweight boilerplate for WordPress developers, by Chris Ferdinandi.
+/*!
+ * keel v5.4.0: A lightweight boilerplate for WordPress developers
+ * (c) 2015 Chris Ferdinandi
+ * MIT License
  * http://github.com/cferdinandi/keel
- * 
- * Free to use under the MIT License.
- * http://gomakethings.com/mit/
  */
 
 /**
@@ -15,11 +13,12 @@
  * Comment Avatar Styling
  * Class automatically applied to comment avatars.
  */
+/* line 10, /Users/cferdinandi/Sites/keel/src/sass/components/_wordpress-images.scss */
 .avatar {
   float: left;
   margin-right: 0.5em;
   /*  Set $size to 2x desired size in comments.php
-   *  for crisp images on retina screens. */
+	 *  for crisp images on retina screens. */
   height: 3.75em;
   width: 3.75em;
 }
@@ -27,6 +26,7 @@
 /**
  * Image alignment
  */
+/* line 23, /Users/cferdinandi/Sites/keel/src/sass/components/_wordpress-images.scss */
 .aligncenter, .alignleft, .alignright, .alignnone {
   display: block;
   text-align: center;
@@ -35,6 +35,7 @@
 }
 
 @media (min-width: 30em) {
+  /* line 30, /Users/cferdinandi/Sites/keel/src/sass/components/_wordpress-images.scss */
   .alignleft {
     float: left;
     margin-right: 0.5em;
@@ -42,6 +43,7 @@
 }
 
 @media (min-width: 30em) {
+  /* line 39, /Users/cferdinandi/Sites/keel/src/sass/components/_wordpress-images.scss */
   .alignright {
     float: right;
     margin-left: 0.5em;
@@ -49,6 +51,7 @@
 }
 
 @media (min-width: 30em) {
+  /* line 48, /Users/cferdinandi/Sites/keel/src/sass/components/_wordpress-images.scss */
   .alignnone {
     margin-left: 0;
     margin-right: 0;
@@ -58,6 +61,7 @@
 /**
  * Image Caption Styling
  */
+/* line 60, /Users/cferdinandi/Sites/keel/src/sass/components/_wordpress-images.scss */
 .wp-caption-text {
   font-size: 0.9375em;
   font-style: italic;

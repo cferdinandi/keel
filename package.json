@@ -1,7 +1,8 @@
 {
 	"name": "keel",
-	"version": "5.3.1",
+	"version": "5.4.0",
 	"description": "A lightweight boilerplate for WordPress developers",
+	"main": "./",
 	"author": {
 		"name": "Chris Ferdinandi",
 		"url": "http://gomakethings.com"

@@ -45,6 +45,8 @@ keel/
 |   |—— css/
 |   |   |—— main.css
 |   |   |—— main.min.css
+|   |—— img/
+|   |   |—— # your image files
 |   |—— js/
 |   |   |—— classList.js
 |   |   |—— classList.min.js
@@ -67,6 +69,8 @@ keel/
 |   |   |   |—— # doc-specific assets
 |   |   |—— index.html
 |   |   |—— # other docs
+|   |—— img/
+|   |   |—— # your image files
 |   |—— js/
 |   |   |—— main/
 |   |   |   |—— scripts.js
@@ -78,8 +82,7 @@ keel/
 |   |   |—— main.scss
 |   |—— svg/
 |   |   |—— # svgs
-|   |—— static/
-|   |   |—— # static assets
+|   |—— style.css
 |—— test/
 |   |—— coverage/
 |   |   |—— various files
@@ -186,7 +189,6 @@ It's the same build system that's used by [Kraken](http://cferdinandi.github.io/
 Make sure these are installed first.
 
 * [Node.js](http://nodejs.org)
-* [Ruby Sass](http://sass-lang.com/install)
 * [Gulp](http://gulpjs.com) `sudo npm install -g gulp`
 
 ### Quick Start
@@ -196,6 +198,7 @@ Make sure these are installed first.
 3. When it's done installing, run one of the task runners to get going:
 	* `gulp` manually compiles files.
 	* `gulp watch` automatically compiles files and applies changes using [LiveReload](http://livereload.com/).
+	* `gulp test` compiles files and runs unit tests.
 
 ### Sass
 
@@ -235,9 +238,8 @@ Files placed in the `assets` directory will be moved over as-is to the `docs` di
 
 When you're ready, run one of the task runners to get going:
 
-* `gulp docs` manually compiles files and generates docs.
-* `gulp watch:docs` automatically compiles files and generates docs when changes are made.
-* `gulp reload:docs` automatically compiles files, generates docs, and applies changes using [LiveReload](http://livereload.com/).
+* `gulp` manually compiles files and generates docs.
+* `gulp watch` automatically compiles files and generates docs when changes are made.
 
 
 
