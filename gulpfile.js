@@ -57,7 +57,14 @@ var paths = {
 		input: 'src/svg/*',
 		output: 'dist/svg/'
 	},
-	static: 'src/static/**',
+	images: {
+		input: 'src/img/*',
+		output: 'dist/img/'
+	},
+	theme : {
+		input: 'src/style.css',
+		output: ''
+	},
 	test: {
 		input: 'src/js/**/*.js',
 		karma: 'test/karma.conf.js',
@@ -80,19 +87,18 @@ var paths = {
 
 var banner = {
 	full :
-		'/**\n' +
-		' * <%= package.name %> v<%= package.version %>\n' +
-		' * <%= package.description %>, by <%= package.author.name %>.\n' +
+		'/*!\n' +
+		' * <%= package.name %> v<%= package.version %>: <%= package.description %>\n' +
+		' * (c) ' + new Date().getFullYear() + ' <%= package.author.name %>\n' +
+		' * MIT License\n' +
 		' * <%= package.repository.url %>\n' +
-		' * \n' +
-		' * Free to use under the MIT License.\n' +
-		' * http://gomakethings.com/mit/\n' +
 		' */\n\n',
 	min :
-		'/**' +
-		' <%= package.name %> v<%= package.version %>, by Chris Ferdinandi' +
+		'/*!' +
+		' <%= package.name %> v<%= package.version %>' +
+		' | (c) ' + new Date().getFullYear() + ' <%= package.author.name %>' +
+		' | MIT License' +
 		' | <%= package.repository.url %>' +
-		' | Licensed under MIT: http://gomakethings.com/mit/' +
 		' */\n'
 };
 
@@ -164,19 +170,22 @@ gulp.task('build:svgs', ['clean:dist'], function () {
 			}
 		}))
 		.pipe(svgmin())
-		.pipe(svgstore({
-			fileName: 'icons.svg',
-			prefix: 'icon-',
-			inlineSvg: true
-		}))
 		.pipe(gulp.dest(paths.svgs.output));
 });
 
-// Copy static files into output folder
-gulp.task('copy:static', ['clean:dist'], function() {
-	return gulp.src(paths.static)
+// Copy image files into output folder
+gulp.task('build:images', ['clean:dist'], function() {
+	return gulp.src(paths.images.input)
 		.pipe(plumber())
-		.pipe(gulp.dest(paths.output));
+		.pipe(gulp.dest(paths.images.output));
+});
+
+// Create style.css with theme header
+gulp.task('build:theme', function () {
+	return gulp.src(paths.theme.input)
+		.pipe(plumber())
+		.pipe(header(banner.theme, { package : package }))
+		.pipe(gulp.dest(paths.theme.output));
 });
 
 // Lint scripts
@@ -187,10 +196,16 @@ gulp.task('lint:scripts', function () {
 		.pipe(jshint.reporter('jshint-stylish'));
 });
 
-// Remove prexisting content from output and test folders
+// Remove pre-existing content from output and test folders
 gulp.task('clean:dist', function () {
 	del.sync([
-		paths.output,
+		paths.output
+	]);
+});
+
+// Remove pre-existing content from text folders
+gulp.task('clean:test', function () {
+	del.sync([
 		paths.test.coverage,
 		paths.test.results
 	]);
@@ -264,10 +279,11 @@ gulp.task('refresh', ['compile', 'docs'], function () {
 gulp.task('compile', [
 	'lint:scripts',
 	'clean:dist',
-	'copy:static',
 	'build:scripts',
+	'build:styles',
+	'build:images',
 	'build:svgs',
-	'build:styles'
+	'build:theme'
 ]);
 
 // Generate documentation
@@ -278,20 +294,20 @@ gulp.task('docs', [
 	'copy:assets'
 ]);
 
-// Generate documentation
-gulp.task('tests', [
-	'test:scripts'
-]);
-
-// Compile files, generate docs, and run unit tests (default)
+// Compile files and generate docs (default)
 gulp.task('default', [
 	'compile',
-	'docs',
-	'tests'
+	'docs'
 ]);
 
-// Compile files, generate docs, and run unit tests when something changes
+// Compile files and generate docs when something changes
 gulp.task('watch', [
 	'listen',
 	'default'
+]);
+
+// Run unit tests
+gulp.task('test', [
+	'default',
+	'test:scripts'
 ]);
