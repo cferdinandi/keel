@@ -1,0 +1,220 @@
+/**
+ * @section Forms
+ * Styling for form elements.
+ */
+
+form,
+fieldset {
+	margin-bottom: $spacing;
+}
+
+fieldset {
+	border: 0;
+	padding: 0;
+}
+
+legend,
+label {
+	display: block;
+	font-weight: normal;
+	margin: 0 0 calc-em(5px);
+	padding: 0;
+}
+
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+	color: lighten( $color-black, 18% ); /* 1 */
+	font: inherit; /* 2 */
+	margin: 0; /* 3 */
+	padding: calc-em(5px);
+}
+
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+button {
+	overflow: visible;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+button,
+select {
+	text-transform: none;
+}
+
+input,
+textarea,
+select {
+	border: calc-em(1px) solid lighten( $color-gray-dark, 22% );
+	border-radius: calc-em(1px);
+	display: block;
+	line-height: 1.5;
+	margin-bottom: calc-em(19px);
+	width: 100%;
+
+	@media (min-width: $bp-medium) {
+		line-height: 1.5625;
+	}
+}
+
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+optgroup {
+	font-weight: bold;
+}
+
+form button,
+form .button {
+	margin-bottom: calc-em(19px);
+}
+
+textarea {
+	height: 12em;
+	overflow: auto;
+}
+
+input[type="image"],
+input[type="checkbox"],
+input[type="radio"] {
+	cursor: pointer;
+	display: inline-block;
+	height: auto;
+	margin-bottom: calc-em(5px);
+	padding: 0;
+	width: auto;
+}
+
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	height: auto;
+}
+
+input:focus,
+textarea:focus {
+	border-color: rgba(82, 168, 236, 0.8);
+	box-shadow: inset 0 calc-em(1px) calc-em(1px) rgba(0, 0, 0, 0.075), 0 0 calc-em(8px) rgba(82, 168, 236, 0.6);
+	outline: 0;
+	outline: thin dotted \9;
+}
+
+input[type="file"]:focus,
+input[type="checkbox"]:focus,
+select:focus {
+	outline: thin dotted;
+	outline: calc-em(5px) auto -webkit-focus-ring-color;
+	outline-offset: calc-em(-2px);
+}
+
+
+/**
+ * Inline inputs
+ */
+.input-inline {
+	display: inline-block;
+	vertical-align: middle;
+	width: auto;
+}
+
+
+/**
+ * Condensed inputs
+ */
+.input-condensed {
+	padding: calc-em(1px) calc-em(5px);
+	font-size: calc-em(15px);
+}
+
+
+/**
+ * Underlined inputs
+ */
+.input-underline {
+	border-top: 0;
+	border-left: 0;
+	border-right: 0;
+}
+
+
+/**
+ * Search
+ */
+
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+
+
+/**
+ * Create rounded search bar
+ */
+.input-search {
+	width: 85%;
+	padding-left: calc-em(15px);
+	padding-right: calc-em(70px);
+	border-radius: calc-em(21px);
+	transition: width 300ms ease-in;
+
+	.svg & {
+		padding-right: calc-em(40px);
+	}
+
+	@media (min-width: $bp-medium) {
+		width: 65%;
+	}
+}
+
+
+/**
+ * Special styling for search icon as button
+ */
+.btn-search {
+	display: inline;
+	color: $color-gray-dark;
+	border: none;
+	background: none;
+	margin-left: calc-em(-70px);
+	margin-bottom: 0;
+
+	.svg & {
+		margin-left: calc-em(-40px);
+	}
+
+	.icon {
+		fill: $color-gray-dark;
+	}
+
+	&:hover {
+		color: darken( $color-gray-dark, 15% );
+
+		.icon {
+			fill: darken( $color-gray-dark, 15% );
+		}
+	}
+}

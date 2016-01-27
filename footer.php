@@ -7,16 +7,29 @@
 
 ?>
 
-		</main><!-- /#main -->
+				</div><!-- /.container -->
+			</main><!-- /#main -->
+		</div><!-- /[data-sticky-wrap] -->
 
-		<footer>
+		<hr>
 
-			<p>
+		<footer data-sticky-footer>
+
+			<div class="container text-center" >
+
 				<?php
-					// Insert copyright info
-					printf( __( 'Copyright &copy; %1$s %2$s. All rights reserved.', 'keel' ), date( 'Y' ), get_bloginfo( 'name' ) );
+					// Secondary nav
+					get_template_part( 'nav', 'secondary' );
 				?>
-			</p>
+
+				<?php
+					// Search form
+					get_search_form();
+				?>
+
+				<p>Copyright <?php echo date( 'Y' ); ?> <?php echo bloginfo( 'name' ); ?></p>
+
+			</div>
 
 		</footer>
 

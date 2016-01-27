@@ -1,0 +1,283 @@
+/**
+ * @section Typography
+ * Sets font styles for entire site
+ */
+
+body {
+	background: $color-white;
+	color: $color-black;
+	font-family: $font-primary;
+	font-size: $font-size;
+	line-height: 1.5;
+
+	@media (min-width: $bp-medium) {
+		line-height: 1.5625;
+	}
+}
+
+p {
+	margin: 0 0 $spacing;
+}
+
+
+/**
+ * Hyperlink styling
+ */
+
+a {
+	background-color: transparent;
+	color: $color-primary;
+	text-decoration: none;
+	word-wrap: break-word;
+
+	/**
+	 * Improve readability when focused and also mouse hovered in all browsers.
+	 */
+	&:active,
+	&:hover {
+		outline: 0;
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+		color: darken( $color-primary, 15% );
+		text-decoration: underline;
+	}
+
+	img {
+		border: none;
+		background: none;
+	}
+}
+
+
+/**
+ * Creates block-level links
+ */
+
+a.link-block {
+	color: $color-black;
+	display: block;
+	text-decoration: none;
+}
+
+.link-block-styled {
+	@extend a;
+
+	.link-block:hover & {
+		@extend a:hover;
+	}
+}
+
+
+/**
+ * List styling
+ */
+
+ul,
+ol {
+	margin: 0 0 $spacing calc-em(32px);
+	padding: 0;
+}
+
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+	margin-bottom: 0;
+}
+
+dl,
+dd {
+	margin: 0;
+	padding: 0;
+}
+
+dd {
+	margin-bottom: $spacing;
+}
+
+dt {
+	font-weight: bold;
+}
+
+/**
+ * Removes list styling.
+ * For semantic reasons, should only be used on unordered lists.
+ */
+.list-unstyled {
+	margin-left: 0;
+	list-style: none;
+}
+
+/**
+ * Display lists on a single line.
+ */
+
+.list-inline {
+	list-style: none;
+	margin-left: calc-em(-8px);
+	margin-right: calc-em(-8px);
+	padding: 0;
+
+	& > li {
+		display: inline;
+		margin-left: calc-em(8px);
+		margin-right: calc-em(8px);
+	}
+}
+
+.list-inline-responsive > li {
+	display: block;
+	margin-bottom: calc-em(4px);
+
+	@media (min-width: $bp-medium) {
+		display: inline;
+		margin-bottom: 0;
+	}
+}
+
+
+/**
+ * Heading styling for h1 through h6 elements.
+ * Heading class lets you use one heading type for semantics, but style it as another heading type.
+ */
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
+	line-height: 1.2;
+	margin: 0 0 1em;
+	padding: 1em 0 0;
+	word-wrap: break-word;
+}
+
+h1,
+.h1 {
+	font-size: calc-em(24px);
+	padding-top: .5em;
+
+	@media (min-width: $bp-medium) {
+		font-size: calc-em(28px);
+	}
+}
+
+h2,
+.h2 {
+	font-size: calc-em(21px);
+}
+
+h3,
+.h3 {
+	font-size: calc-em(19px);
+}
+
+h4, h5, h6,
+.h4, .h5, .h6 {
+	font-size: calc-em(16px);
+}
+
+h4,
+.h4 {
+	text-transform: uppercase;
+}
+
+
+/**
+ * Lines, Quotes and Emphasis
+ */
+
+hr {
+	margin: calc-em(32px) auto;
+	border: 0;
+	border-top: calc-em(1px) solid $color-gray-light;
+	border-bottom: 0 solid $color-white;
+}
+
+b,
+strong {
+	font-weight: bold;
+}
+
+i,
+em {
+	font-style: italic;
+}
+
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+abbr[title] {
+	border-bottom: calc-em(1px) dotted;
+}
+
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+dfn {
+	font-style: italic;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+mark {
+	background: #ff0;
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+small {
+	font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sup {
+	top: -0.5em;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+
+/**
+ * Blockquotes
+ */
+
+blockquote {
+	font-size: calc-em(19px);
+	font-style: italic;
+	margin: 0 0 $spacing;
+	padding-left: calc-em(16px, 19px);
+	padding-right: calc-em(16px, 19px);
+
+	cite {
+		color: $color-gray-dark;
+		font-size: calc-em(16px, 19px);
+		padding-top: calc-em(16px);
+	}
+}
+
+blockquote,
+q {
+	quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+	content: '';
+}

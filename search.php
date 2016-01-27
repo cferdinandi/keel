@@ -13,19 +13,20 @@ get_header(); ?>
 		<h1><?php _e( 'Search results for', 'keel' ); ?> "<?php the_search_query() ?>"</h1>
 	</header>
 
+
 	<?php
 		// Start the loop
 		while (have_posts()) : the_post();
 	?>
 		<?php
 			// Insert the post content
-			get_template_part( 'content', 'Post Content' );
+			get_template_part( 'content', 'search' );
 		?>
 	<?php endwhile; ?>
 
 
 	<!-- Previous/Next page navigation -->
-	<?php get_template_part( 'nav-page', 'Page Navigation' ); ?>
+	<?php get_template_part( 'nav', 'page' ); ?>
 
 
 <?php

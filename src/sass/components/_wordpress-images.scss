@@ -8,6 +8,8 @@
  * Class automatically applied to comment avatars.
  */
 .avatar {
+    @extend .img-border;
+    @extend .img-circle;
 	float: left;
 	margin-right: calc-em(8px);
 	/*  Set $size to 2x desired size in comments.php

@@ -28,22 +28,25 @@
 
 	</head>
 
-	<body>
+	<body <?php body_class(); ?>>
 
-		<!-- Old Browser Warning -->
-		<!--[if lt IE 9]>
-			<section>
-				<p>Did you know that your web browser is a bit old? Some of the content on this site might not work right as a result. <a href="http://whatbrowser.org">Upgrade your browser</a> for a faster, safer, and better web experience.</p>
-			</section>
-		<![endif]-->
+		<div data-sticky-wrap>
 
-		<!-- Skip link for better accessibility -->
-		<!-- http://cferdinandi.github.io/kraken/overrides.html#visibility -->
-		<a class="screen-reader screen-reader-focusable" href="#main">Skip to main content</a>
+			<!-- Old Browser Warning -->
+			<!--[if lt IE 9]>
+				<section>
+					<p>Did you know that your web browser is a bit old? Some of the content on this site might not work right as a result. <a href="http://whatbrowser.org">Upgrade your browser</a> for a faster, safer, and better web experience.</p>
+				</section>
+			<![endif]-->
 
-		<?php
-			// Get site navigation
-			get_template_part( 'nav-main', 'Site Navigation' );
-		?>
+			<!-- Skip link for better accessibility -->
+			<a class="screen-reader screen-reader-focusable" href="#main">Skip to main content</a>
 
-		<main id="main">
+			<?php
+				// Get site navigation
+				get_template_part( 'nav', 'main' );
+			?>
+
+			<main id="main">
+
+				<div class="<?php if ( !is_singular() || is_404() ) { echo 'container'; } ?>">

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Keel Docs</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Keel: A lightweight boilerplate for WordPress theme developers">
+
+		<!-- Icons -->
+		<!-- <link rel="shortcut icon" type="image/ico" href="assets/img/icons/favicon.ico"> -->
+
+		<!-- Feature dection -->
+		<script src="dist/js/detects.js"></script>
+
+		<!-- stylesheets -->
+		<link rel="stylesheet" href="dist/css/main.css" type="text/css">
+		<link rel="stylesheet" href="assets/css/custom.css" type="text/css">
+	</head>
+
+	<body>
+
+		<!-- Old Browser Warning -->
+		<!--[if lt IE 9]>
+		    <section class="container">
+		        Did you know that your web browser is a bit old? Some of the content on this site might not work right as a result. <a href="http://whatbrowser.org">Upgrade your browser</a> for a faster, better, and safer web experience.
+		    </section>
+		<![endif]-->
+
+		<!-- Skip Nav Link -->
+		<nav>
+			<a class="screen-reader screen-reader-focusable" href="#main">Skip to content</a>
+		</nav>
+
+		<div class="container container-large">
+			<div class="row">
+
+					<header class="grid-fourth sticky-header padding-top ">
+						<p>
+							<strong>
+								<a href="index.html">
+									<span class="text-large">Harbor Docs</span>
+								</a>
+							</strong>
+						</p>
+						<nav class="nav">
+							<ul class="list-unstyled nav-primary" data-nav-highlight>
+								<li><a href="https://github.com/cferdinandi/keel/archive/master.zip">Download</a></li>
+								<li><a href="setup.html">Setup</a></li>
+								<li><a href="components.html">Components</a></li>
+								<li><a href="wp-features.html">WP-Specific Features</a></li>
+								<li><a href="odds-and-ends.html">Odds &amp; Ends</a></li>
+								<li><a href="support.html">Support</a></li>
+								<li><a href="https://github.com/cferdinandi/keel">GitHub</a></li>
+							</ul>
+
+							<div class="nav-section" data-toc></div>
+						</nav>
+					</header>
+
+				<main class="grid-three-fourths padding-top sticky-body" data-toc-content><h1 id="odds-ends">Odds &amp; Ends</h1>
+<h2 id="generating-documentation">Generating Documentation</h2>
+<p>Kraken ships with a simple documentation generator powered by <a href="http://gulpjs.com">Gulp.js</a>. This feature requires you to <a href="working-with-the-source-files.html">work with the source files</a>.</p>
+<p>Documentation files can be found under <code>src</code> &gt; <code>docs</code>, and compile to <code>docs</code>.</p>
+<h3 id="how-to-create-docs">How to Create Docs</h3>
+<p>Add HTML or markdown (<code>.md</code> or <code>.markdown</code>) files to your <code>docs</code> folder in <code>src</code>.</p>
+<p>The <code>_templates</code> directory in <code>src</code> contains the <code>_header.html</code> and <code>_footer.html</code> templates. These are automatically added to the beginning and end of each documentation page. You can also add your own templates to the <code>_templates</code> directory. Include template files in your docs by writing <code>&commat;&commat;include(&#39;path-to-file&#39;)</code> on its own line in your markup (or markdown).</p>
+<p>Files placed in the <code>assets</code> directory will be moved over as-is to the <code>docs</code> directory. Kraken will also add a copy of your <code>dist</code> files so you can use them in your documentation.</p>
+<p>Documentation is automatically created when you <a href="setup.html#working-with-the-source-files">run of the Gulp tasks</a>.</p>
+<h3 id="creating-a-table-of-contents">Creating a table of contents</h3>
+<p>The build system includes <code>toc.js</code>, a custom script for dynamically generating tables of contents based on page headers. It&#39;s already configured for use in the <code>_footer.html</code> template.</p>
+<ol>
+<li>Add an empty <code>div</code> with the <code>.js-toc</code> class wherever you want your table of contents to get generated.</li>
+<li>Add the <code>.js-toc-content</code> class to the section you want to generate a table of contents from. By default, the script grabs any <code>h2</code> with an <code>id</code> and creates a link to it.</li>
+<li>Initialize the script to create your table of contents, and to pass in your own options.</li>
+</ol>
+<p><strong>Markup</strong></p>
+<pre><code class="lang-markup">&lt;div data-toc&gt;&lt;/div&gt;
+&lt;div data-toc-content&gt;
+    &lt;h1&gt;Page Title&lt;/h1&gt;
+    &lt;h2&gt;Section&lt;/h2&gt;
+    ...
+    &lt;h2&gt;Another Section&lt;/h2&gt;
+    ...
+&lt;/div&gt;
+</code></pre>
+<p><strong>JavaScript</strong></p>
+<pre><code class="lang-javascript">tableOfContents.init({
+    container: &#39;[data-toc]&#39;, // The selector for the table of contents (uses document.querySelector)
+    selectors: &#39;[data-toc-content] h2&#39;,  // The selector for the section headers (uses document.querySelectorAll)
+    heading: &#39;Contents&#39;, // The heading for the table of contents
+    headingType: &#39;h2&#39;, // The heading type for the table of contents
+    headingClass: &#39;&#39;, // The class(es) to add to the table of contents heading
+    navClass: &#39;&#39;, // The class(es) to add to the navigation &lt;ul&gt; element
+    linkClass: &#39;&#39;, // The class(es) to add to the navigation &lt;a&gt; elements
+    initClass: &#39;js-table-of-contents&#39;, // The class(es) to add to the &lt;html&gt; element on init
+    callback: function () {} // A callback to run after the table of contents is rendered
+});
+</code></pre>
+<h3 id="automatically-highlighting-the-active-navigation-link">Automatically highlighting the active navigation link</h3>
+<p>The build system includes <code>highlight-active-nav.js</code>, a custom script for dynamically highlighting the active link in the navigation. It&#39;s already configured for use in the <code>_footer.html</code> template.</p>
+<p>Simply add the <code>.js-nav-highlight</code> class to the navigation list, and initialize the script. You can pass in your own options and settings.</p>
+<p><strong>Markup</strong></p>
+<pre><code class="lang-markup">&lt;ul data-nav-highlight&gt;
+    &lt;li&gt;&lt;a href=&quot;link1.html&quot;&gt;Link 1&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;link2.html&quot;&gt;Link 2&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;link3.html&quot;&gt;Link 3&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<p><strong>JavaScript</strong></p>
+<pre><code class="lang-javascript">highlightActiveNav.init({
+    selector: &#39;[data-nav-highlight]&#39;, // The selector for the nav (uses document.querySelector)
+    activeClass: &#39;nav-active&#39;, // Class(es) to add to the active navigation link
+    urlPrefix: null, // If the base domain isn&#39;t root, add the prefix
+    callback: function () {} // Callback to run after the nav is highlighted
+});
+</code></pre>
+<h3 id="why-not-use-an-existing-documentation-tool-">Why not use an existing documentation tool?</h3>
+<p>There are a ton of great CSS and JS documentation tools available. I explored using <a href="http://warpspire.com/kss/">KSS</a>, <a href="http://trulia.github.io/hologram/">Hologram</a>, and a few others.</p>
+<p>I found myself frustrated by the lack of control over the layout, the clutter added to the stylesheet, and the complexity in getting setup.</p>
+<p>I decided creating my own documentation tool was a better fit for my needs. Obviously, feel free to use the documentation tool that best fits your needs.</p>
+<hr>
+
+
+<h2 id="built-with-keel">Built with Keel</h2>
+<p>Build a site with Keel? <a href="mailto:&#104;&#101;llo&#64;&#103;om&#97;ke&#116;h&#105;&#110;&#103;s.&#99;o&#109;">Let me know!</a></p>
+<ul>
+<li><a href="https://digital.hbs.edu/">Harvard Business School Digital Initiative</a></li>
+<li><a href="http://gomakethings.com/">Go Make Things</a></li>
+<li><a href="http://www.pawsnewengland.com/">PAWS New England</a></li>
+<li><a href="http://harbor.gomakethings.com/">Harbor</a></li>
+<li><a href="http://forteaccounting.com/">Forte Accounting</a></li>
+</ul>
+					</section><!-- /.container -->
+
+					<footer class="padding-top padding-bottom">
+
+							<hr>
+
+							<p class="text-small text-muted margin-bottom-small">Keel by <a href="http://gomakethings.com">Go Make Things</a>. The code is available under the <a href="https://github.com/cferdinandi/kraken/blob/master/LICENSE.md">MIT License</a>.</p>
+
+					</footer>
+				</main>
+			</div><!-- /.row -->
+		</div><!-- /.container -->
+
+		<!-- Javascript -->
+		<script src="assets/js/toc.js"></script>
+		<script src="assets/js/highlight-active-nav.js"></script>
+		<script src="assets/js/smooth-scroll.js"></script>
+		<script src="assets/js/prism.js"></script>
+		<script>
+			tableOfContents.init({
+				heading: 'In This Section',
+				headingClass: 'h3',
+				navClass: 'list-unstyled',
+				linkClass: 'js-smooth-scroll',
+				callback: function () {
+					var links = document.querySelectorAll( '.js-smooth-scroll' );
+					for (var i = 0, len = links.length; i < len; i++) {
+						links[i].setAttribute( 'data-scroll', true );
+					}
+					smoothScroll.init();
+				}
+			});
+			// highlightActiveNav.init({
+			// 	urlPrefix: '/kraken/'
+			// });
+		</script>
+
+	</body>
+</html>

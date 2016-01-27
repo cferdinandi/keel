@@ -1,0 +1,161 @@
+/**
+ * @section Navigation
+ * Styling for the primary navigation.
+ */
+
+/**
+ * Text alignment
+ */
+.nav-wrap-navbar {
+	border-bottom: calc-em(1px) solid $color-gray-light;
+	padding-top: calc-em(4px);
+	padding-bottom: calc-em(4px);
+	text-align: center;
+
+	@media (max-width: $bp-large) {
+		.js-astro &.nav-collapse  {
+			text-align: left;
+		}
+	}
+
+	@media (min-width: $bp-large) {
+		text-align: left;
+	}
+}
+
+
+/**
+ * Logo
+ */
+.logo-navbar {
+	display: inline-block;
+	font-size: 1.2em;
+	line-height: 1.2;
+	text-decoration: none;
+
+	@media (max-width: $bp-large) {
+		.js-astro .nav-collapse & {
+			float: left;
+		}
+	}
+
+	@media (min-width: $bp-large) {
+		float: left;
+	}
+
+	svg {
+		display: inline-block;
+		fill: currentColor;
+		height: 0;
+		width: 0;
+
+		.svg & {
+			height: auto;
+			width: auto;
+		}
+	}
+}
+
+
+/**
+ * Navigation Menu Container
+ */
+.nav-menu-navbar {
+	@media (max-width: $bp-large) {
+		clear: left;
+		padding-top: calc-em(8px);
+
+		.js-astro .nav-collapse & {
+			box-sizing: border-box;
+			display: none;
+			width: 100%;
+
+			&.active {
+				display: block;
+			}
+
+			li {
+				display: block;
+				width: 100%;
+				padding-top: calc-em(4px);
+				padding-bottom: calc-em(4px);
+				box-sizing: border-box;
+			}
+		}
+
+		a {
+			display: block;
+		}
+	}
+
+	ul {
+		list-style: none;
+	}
+}
+
+
+/**
+ * Navigation Menu
+ */
+.nav-navbar {
+	list-style: none;
+	margin: 0 calc-em(-8px);
+	padding: 0;
+
+	& > li {
+		display: inline-block;
+		float: none;
+		margin-left: calc-em(8px);
+		margin-right: calc-em(8px);
+
+		// Active Link Styling
+		// &.current-menu-item > a,
+		// .single-post &.current_page_parent > a,
+		// &.current-menu-ancestor > a,
+		// &.current-page-ancestor > a {
+		// 	text-decoration: underline;
+		// }
+	}
+
+	@media (max-width: $bp-large) {
+		.js-astro .nav-collapse & {
+			text-align: left;
+		}
+	}
+
+	@media (min-width: $bp-large) {
+		text-align: right;
+	}
+}
+
+
+/**
+ * Navigation Toggle
+ */
+.nav-toggle-navbar {
+	display: none;
+	visibility: hidden;
+
+	@media (max-width: $bp-large) {
+		.js-astro .nav-collapse & {
+			display: block;
+			float: right;
+			visibility: visible;
+		}
+	}
+}
+
+
+/**
+ * Clearfix
+ */
+
+.nav-wrap-navbar:before,
+.nav-wrap-navbar:after {
+	display: table;
+	content: "";
+}
+
+.nav-wrap-navbar:after {
+	clear: both;
+}

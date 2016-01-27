@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Keel Docs</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Keel: A lightweight boilerplate for WordPress theme developers">
+
+		<!-- Icons -->
+		<!-- <link rel="shortcut icon" type="image/ico" href="assets/img/icons/favicon.ico"> -->
+
+		<!-- Feature dection -->
+		<script src="dist/js/detects.js"></script>
+
+		<!-- stylesheets -->
+		<link rel="stylesheet" href="dist/css/main.css" type="text/css">
+		<link rel="stylesheet" href="assets/css/custom.css" type="text/css">
+	</head>
+
+	<body>
+
+		<!-- Old Browser Warning -->
+		<!--[if lt IE 9]>
+		    <section class="container">
+		        Did you know that your web browser is a bit old? Some of the content on this site might not work right as a result. <a href="http://whatbrowser.org">Upgrade your browser</a> for a faster, better, and safer web experience.
+		    </section>
+		<![endif]-->
+
+		<!-- Skip Nav Link -->
+		<nav>
+			<a class="screen-reader screen-reader-focusable" href="#main">Skip to content</a>
+		</nav>
+
+		<div class="container container-large">
+			<div class="row">
+
+					<header class="grid-fourth sticky-header padding-top ">
+						<p>
+							<strong>
+								<a href="index.html">
+									<span class="text-large">Harbor Docs</span>
+								</a>
+							</strong>
+						</p>
+						<nav class="nav">
+							<ul class="list-unstyled nav-primary" data-nav-highlight>
+								<li><a href="https://github.com/cferdinandi/keel/archive/master.zip">Download</a></li>
+								<li><a href="setup.html">Setup</a></li>
+								<li><a href="components.html">Components</a></li>
+								<li><a href="wp-features.html">WP-Specific Features</a></li>
+								<li><a href="odds-and-ends.html">Odds &amp; Ends</a></li>
+								<li><a href="support.html">Support</a></li>
+								<li><a href="https://github.com/cferdinandi/keel">GitHub</a></li>
+							</ul>
+
+							<div class="nav-section" data-toc></div>
+						</nav>
+					</header>
+
+				<main class="grid-three-fourths padding-top sticky-body" data-toc-content><h1 id="wordpress-specific-features">WordPress-Specific Features</h1>
+<p>All of these features can be toggled on or off in the <code>keel_developer_options()</code> function in <code>functions.php</code>. Most are off by default.</p>
+<hr>
+
+
+<h2 id="image-galleries">Image Galleries</h2>
+<p>Create beautiful, mosaic image galleries using the <code>[[gallery]]</code> shortcode, or the built-in gallery feature in the WordPress editor. Theme users can disable this capability under <code>Media</code> &gt; <code>Photo Galleries</code> in the Dashboard.</p>
+<hr>
+
+
+<h2 id="heros">Heros</h2>
+<p>Underneath the content section is a <code>Page Hero</code> section. Add your hero content there. In addition to text, you can also add an image or video.</p>
+<p>To apply a background image to the hero, use the <code>Featured Image</code> section in the sidebar. If text is hard to read on the background image, check the box to add a <code>Background Image Overlay</code>.</p>
+<hr>
+
+
+<h2 id="custom-logos">Custom Logos</h2>
+<p>From the WordPress Dashboard, visit <code>Appearance</code> &gt; <code>Customize</code>, and select <code>Logo</code>. Click <code>Select Image</code>, and upload your preferred logo image. Click <code>Save &amp; Publish</code> at the top of the page when you’re done.</p>
+<hr>
+
+
+<h2 id="button-links">Button Links</h2>
+<p>Add bold calls to action in your content with the <code>[button]</code> shortcode:</p>
+<pre><code class="lang-markup">[[button link=&quot;#create-a-button-link&quot; label=&quot;Click Me&quot;]]
+</code></pre>
+<p>To make a button extra large, also include the <code>size</code> attribute with the value <code>large</code>:</p>
+<pre><code class="lang-markup">[[button link=&quot;#create-a-button-link&quot; label=&quot;Large Click Me&quot; size=&quot;large&quot;]]
+</code></pre>
+<hr>
+
+
+<h2 id="inline-svgs">Inline SVGs</h2>
+<p>Keel adds Media Library support for SVGs. While SVGs can be used as the <code>src</code> of an <code>&lt;img&gt;</code> tag, Keel also includes the <code>[[svg]]</code> shortcode if you&#39;d prefer to inline your SVGs.</p>
+<p>An <code>id</code> or <code>url</code> attribute must be passed in. You can also add classes to the SVG with the <code>class</code> attribute.</p>
+<pre><code class="lang-php">[[svg url=&quot;http://harbor.gomakethings.com/some-image.svg&quot; class=&quot;icon icon-large&quot;]]
+</code></pre>
+<hr>
+
+
+<h2 id="custom-layouts">Custom Layouts</h2>
+<p>A special meta box on pages lets you customize the width of the page.</p>
+<p><code>default</code> is the narrow, content-focused page width (<code>40em</code>). <code>wide</code> sets the page content to the same width as the header and footer (<code>80em</code>).</p>
+<p><code>diy</code> removes all padding from the body content and gives you complete control. This is useful when you want to include full-bleed content sections.</p>
+<p>You can also hide the page <code>h1</code> header by checking the <code>Hide Page Header</code> checkbox.</p>
+<hr>
+
+
+<h2 id="disable-comments">Disable Comments</h2>
+<p>From the Dashboard, visit <code>Posts</code> &gt; <code>Post Options</code>, and click <code>Disable comments on all blog posts</code>. Click <code>Save</code> at the bottom of the page when you’re done.</p>
+<hr>
+
+
+<h2 id="blog-post-calls-to-action">Blog Post Calls-to-Action</h2>
+<p>From the Dashboard, visit <code>Posts</code> &gt; <code>Post Options</code>, and add your content. Click <code>Save</code> at the bottom of the page when you’re done.</p>
+<hr>
+
+
+<h2 id="theme-support">Theme Support</h2>
+<p>Provide your theme users with in-theme support information. This adds a page under <code>Appearance</code> &gt; <code>Theme Support</code> in the Dashboard. Add your content in the <code>keel-theme-support.php</code> template under <code>Includes</code> &gt; <code>keel-options.php</code>.</p>
+					</section><!-- /.container -->
+
+					<footer class="padding-top padding-bottom">
+
+							<hr>
+
+							<p class="text-small text-muted margin-bottom-small">Keel by <a href="http://gomakethings.com">Go Make Things</a>. The code is available under the <a href="https://github.com/cferdinandi/kraken/blob/master/LICENSE.md">MIT License</a>.</p>
+
+					</footer>
+				</main>
+			</div><!-- /.row -->
+		</div><!-- /.container -->
+
+		<!-- Javascript -->
+		<script src="assets/js/toc.js"></script>
+		<script src="assets/js/highlight-active-nav.js"></script>
+		<script src="assets/js/smooth-scroll.js"></script>
+		<script src="assets/js/prism.js"></script>
+		<script>
+			tableOfContents.init({
+				heading: 'In This Section',
+				headingClass: 'h3',
+				navClass: 'list-unstyled',
+				linkClass: 'js-smooth-scroll',
+				callback: function () {
+					var links = document.querySelectorAll( '.js-smooth-scroll' );
+					for (var i = 0, len = links.length; i < len; i++) {
+						links[i].setAttribute( 'data-scroll', true );
+					}
+					smoothScroll.init();
+				}
+			});
+			// highlightActiveNav.init({
+			// 	urlPrefix: '/kraken/'
+			// });
+		</script>
+
+	</body>
+</html>
