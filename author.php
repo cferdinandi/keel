@@ -20,7 +20,7 @@ get_header(); ?>
 				 * with a call to rewind_posts().
 				 */
 				the_post();
-				printf( __( 'All posts by %s', 'twentyfourteen' ), get_the_author() );
+				printf( __( 'All posts by %s', 'keel' ), get_the_author() );
 			?>
 		</h1>
 		<?php if ( get_the_author_meta( 'description' ) ) : ?>
@@ -39,21 +39,21 @@ get_header(); ?>
 	?>
 		<?php
 			// Insert the post content
-			get_template_part( 'content', 'Post Content' );
+			get_template_part( 'content', get_post_type() );
 		?>
 	<?php endwhile; ?>
 
 
 	<?php
 		// Previous/next page navigation
-		get_template_part( 'nav-page', 'Page Navigation' );
+		get_template_part( 'nav', 'page' );
 	?>
 
 
 <?php else : ?>
 	<?php
 		// If no content, include the "No post found" template
-		get_template_part( 'no-posts', 'No Posts Template' );
+		get_template_part( 'content', 'none' );
 	?>
 <?php endif; ?>
 

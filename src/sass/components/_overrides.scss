@@ -1,0 +1,284 @@
+/**
+ * @section Overrides
+ * Nudge and tweak alignment, spacing, and visibility.
+ */
+
+
+/**
+ * Backgrounds
+ */
+
+.bg-muted {
+	background-color: lighten( $color-gray-light, 5% );
+}
+
+.bg-dark {
+	background-color: $color-black;
+	color: $color-white;
+
+	a {
+		color: $color-gray-light;
+		text-decoration: underline;
+
+		&.link-block {
+			text-decoration: none;
+		}
+
+		&.link-block-styled {
+			text-decoration: underline;
+		}
+
+		&:active,
+		&:focus,
+		&:hover {
+			color: $color-white;
+		}
+	}
+
+	.btn {
+		@extend .btn-ghost;
+		color: $color-white;
+		text-decoration: none;
+	}
+}
+
+.bg-hero {
+	background-position: center;
+	background-size: cover;
+	width: 100%;
+}
+
+
+/**
+ * Borders
+ */
+
+.border {
+	border: calc-em(1px) solid $color-gray-light;
+}
+
+
+/**
+ * Text shadow
+ */
+.text-shadow {
+	text-shadow: 1px 1px 1px $color-black;
+}
+
+
+/**
+ * Text sizes
+ */
+
+.text-small {
+	font-size: calc-em(15px);
+}
+
+.text-large {
+	font-size: calc-em(19px);
+	line-height: 1.4;
+
+	@media (min-width: $bp-medium) {
+		font-size: calc-em(21px);
+	}
+}
+
+
+/**
+ * Text colors
+ */
+
+.text-muted {
+	color: $color-gray-dark;
+}
+
+
+/**
+ * Text alignment
+ */
+
+.text-center {
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.text-left {
+	text-align: left;
+}
+
+@media (min-width: $bp-large) {
+	.text-center-large {
+		text-align: center;
+	}
+
+	.text-right-large {
+		text-align: right;
+	}
+
+	.text-left-large {
+		text-align: left;
+	}
+}
+
+
+/**
+ * Floats
+ */
+
+.float-left {
+	float: left;
+}
+
+.float-center {
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.float-right {
+	float: right;
+}
+
+
+/**
+ * Margins
+ */
+
+.no-margin-top {
+	margin-top: 0;
+}
+
+.no-margin-bottom {
+	margin-bottom: 0;
+}
+
+.margin-top {
+	margin-top: $spacing;
+}
+
+.margin-bottom {
+	margin-bottom: $spacing;
+}
+
+.margin-bottom-small {
+	margin-bottom: calc-em(8px);
+}
+
+.margin-bottom-large {
+	margin-bottom: calc-em(32px);
+}
+
+
+/**
+ * Padding
+ */
+
+.no-padding-top {
+	padding-top: 0;
+}
+
+.no-padding-bottom {
+	padding-bottom: 0;
+}
+
+.padding {
+	padding: $spacing;
+}
+
+.padding-top {
+	padding-top: $spacing;
+}
+
+.padding-top-small {
+	padding-top: calc-em(8px);
+}
+
+.padding-top-large {
+	padding-top: calc-em(32px);
+}
+
+.padding-top-xlarge {
+	padding-top: 4em;
+}
+
+.padding-bottom {
+	padding-bottom: $spacing;
+}
+
+.padding-bottom-small {
+	padding-bottom: calc-em(8px);
+}
+
+.padding-bottom-large {
+	padding-bottom: calc-em(32px);
+}
+
+.padding-bottom-xlarge {
+	padding-bottom: 4em;
+}
+
+
+/**
+ * Visibility
+ */
+
+/**
+ * Visually hide an element, but leave it available for screen readers
+ * @link https://github.com/h5bp/html5-boilerplate/blob/master/dist/css/main.css
+ * @link http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ */
+.screen-reader {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+
+/**
+ * Extends the .screen-reader class to allow the element to be focusable when navigated to via the keyboard
+ * @link https://github.com/h5bp/html5-boilerplate/blob/master/dist/css/main.css
+ * @link https://www.drupal.org/node/897638
+ */
+.screen-reader-focusable:active,
+.screen-reader-focusable:focus {
+	clip: auto;
+	height: auto;
+	margin: 0;
+	overflow: visible;
+	position: static;
+	width: auto;
+}
+
+/**
+ * @workaround
+ * @affected IE 8/9/10
+ * @link http://juicystudio.com/article/screen-readers-display-none.php
+ */
+[hidden] {
+	display: none;
+	visibility: hidden;
+}
+
+
+/**
+ * Contain floats
+ * The space content is one way to avoid an Opera bug when the `contenteditable` attribute is included anywhere else in the document.
+ * @link https://github.com/h5bp/html5-boilerplate/blob/master/dist/css/main.css
+ */
+
+.clearfix:before,
+.clearfix:after {
+	display: table;
+	content: " ";
+}
+
+.clearfix:after {
+	clear: both;
+}

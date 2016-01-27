@@ -1,6 +1,19 @@
-// Import the table styles for compiling
-@import
-	"config",
-	"mixins",
-	// Add your other styles here...
-	"components/wordpress-images";
+@import "config";
+@import "mixins";
+@import "components/normalize";
+@import "components/grid";
+@import "components/typography";
+@import "components/code";
+@import "components/buttons";
+@import "components/forms";
+@import "components/wordpress-forms";
+@import "components/svg";
+@import "components/snapshot";
+@import "components/wordpress-images";
+@import "components/tables";
+@import "components/astro-navbar";
+@import "components/drop";
+@import "components/photoswipe-default-skin";
+@import "components/photoswipe";
+@import "components/overrides";
+@import "components/print";

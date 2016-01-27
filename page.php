@@ -16,7 +16,7 @@ get_header(); ?>
 	?>
 		<?php
 			// Insert the post content
-			get_template_part( 'content', 'Post Content' );
+			get_template_part( 'content', get_post_type() );
 		?>
 	<?php endwhile; ?>
 

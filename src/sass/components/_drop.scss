@@ -1,0 +1,145 @@
+/**
+ * Dropdown links
+ */
+// .dropdown-basic,
+.nav-navbar .menu-item-has-children {
+	position: relative;
+
+	& > a:after {
+		content: "+";
+		display: inline-block;
+		margin-left: calc-em(4px);
+		width: calc-em(8px);
+
+		.js-astro & {
+			@media (max-width: $bp-medium) {
+				content: "";
+			}
+		}
+	}
+
+	@media (max-width: $bp-medium) {
+		.js-astro & > a {
+			cursor: not-allowed;
+			pointer-events: none;
+		}
+	}
+
+	&:focus > a:after,
+	&:hover > a:after,
+	&.active > a:after {
+		content: "\2013";
+
+		@media (max-width: $bp-medium) {
+			.js-astro & {
+				content: "";
+			}
+		}
+	}
+}
+
+
+/**
+ * Dropdown content
+ */
+// .dropdown-menu-basic,
+.sub-menu {
+	background-color: $color-white;
+	border: 0;
+	border-radius: calc-em(1px);
+	box-shadow: 0 calc-em(4px) calc-em(8px) rgba(0, 0, 0, 0.2);
+	box-sizing: border-box;
+	clip: rect(0 0 0 0);
+	float: left;
+	height: 1px;
+	margin: -1px;
+	min-width: 10em;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	right: 0;
+	text-align: left;
+	top: 100%;
+	width: 1px;
+	z-index: 1000;
+
+	ul,
+	ol {
+		list-style: none;
+		margin-left: 0;
+	}
+
+	a {
+		color: $color-primary;
+		display: block;
+		padding-left: calc-em(8px);
+		padding-right: calc-em(8px);
+
+		&:focus,
+		&:hover {
+			background-color: $color-primary;
+			color: $color-white;
+			text-decoration: none;
+		}
+
+
+		@media (max-width: $bp-large) {
+			.js-astro.js-drop &:hover {
+				background-color: transparent;
+				color: darken( $color-primary, 15% );
+				text-decoration: underline;
+			}
+
+			// .js-astro.js-drop & {
+			// 	color: $color-white;
+			// }
+		}
+	}
+
+	// .dropdown-basic:focus &,
+	// .dropdown-basic:hover &,
+	// .dropdown-basic.active &,
+	.menu-item-has-children:focus &,
+	.menu-item-has-children:hover &,
+	.menu-item-has-children.active & {
+		border: calc-em(1px) solid lighten( $color-gray-dark, 22% );
+		clip: auto;
+		height: auto;
+		margin: 0;
+		overflow: visible;
+		padding-top: calc-em(8px);
+		padding-bottom: calc-em(8px);
+		width: auto;
+
+		.js-drop & {
+			margin-top: calc-em(8px);
+		}
+
+		.js-astro.js-drop & {
+			@media (max-width: $bp-medium) {
+				margin-top: 0;
+			}
+		}
+	}
+
+	/**
+	 * Switch up styling on JS-supported small viewports
+	 */
+	@media (max-width: $bp-medium) {
+		.js-astro &,
+		// .js-astro .dropdown-basic.active &,
+		.js-astro .menu-item-has-children.active & {
+			background-color: transparent;
+			border: 0;
+			box-shadow: none;
+			clip: auto;
+			float: none;
+			height: auto;
+			margin: 0 0 0 calc-em(24px);
+			overflow: visible;
+			padding: 0;
+			position: static;
+			width: auto;
+		}
+	}
+}

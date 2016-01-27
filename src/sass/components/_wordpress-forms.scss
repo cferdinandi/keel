@@ -1,0 +1,25 @@
+/**
+ * @section WordPress Forms
+ * WordPress-specific form style overrides.
+ */
+
+
+/**
+ * Styling for for WP subscribe to comment checkbox label
+ */
+#subscribe-label {
+	display: inline;
+}
+
+
+// Hack for WP form button
+#submit {
+	@extend .btn;
+	@extend .input-inline;
+}
+
+
+// Spam blocker
+.tarpit {
+	@extend [hidden];
+}

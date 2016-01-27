@@ -7,43 +7,76 @@
 
 
 	/**
-	 * Load theme files.
+	 * Developer Features
+	 * Set to false to deactive a feature.
+	 */
+	function keel_developer_options() {
+		return array(
+			'gallery' => true,
+			'hero' => false,
+			'page_width' => false,
+			'custom_logo' => true,
+			'button_shortcode' => true,
+			'svg_shortcode' => true,
+			'disable_comments' => true,
+			'post_cta' => true,
+			'theme_support' => false,
+		);
+	}
+
+
+
+	/**
+	 * Load theme files
 	 */
 	function keel_load_theme_files() {
-		// Feature detection injected inline into <head> for better performance
-		// wp_enqueue_script( 'keel-theme-detects', get_template_directory_uri() . '/dist/js/detects.js', null, null, false );
-		wp_enqueue_style( 'keel-theme-styles', get_template_directory_uri() . '/dist/css/main.css', null, null, 'all' );
-		wp_enqueue_script( 'keel-theme-scripts', get_template_directory_uri() . '/dist/js/main.js', null, null, true );
+		$keel_theme = wp_get_theme();
+		// wp_enqueue_style( 'keel-theme-styles', get_template_directory_uri() . '/dist/css/main.css', null, null, 'all' );
+		wp_enqueue_style( 'keel-theme-styles', get_template_directory_uri() . '/dist/css/main.min.' . $keel_theme->get( 'Version' ) . '.css', null, null, 'all' );
 	}
 	add_action('wp_enqueue_scripts', 'keel_load_theme_files');
 
 
 
 	/**
-	 * Include feature detection scripts inline in the header
+	 * Load inline header content
 	 */
-	function keel_initialize_theme_detects() {
+	function keel_load_inline_header() {
+		$keel_theme = wp_get_theme();
 		?>
 			<script>
-				<?php echo file_get_contents( get_template_directory_uri() . '/dist/js/detects.js' ); ?>
+				<?php // echo file_get_contents( get_template_directory_uri() . '/dist/js/detects.js' ); ?>
+				<?php echo file_get_contents( get_template_directory_uri() . '/dist/js/detects.min.' . $keel_theme->get( 'Version' ) . '.js' ); ?>
 			</script>
 		<?php
 	}
-	add_action('wp_head', 'keel_initialize_theme_detects', 30);
+	add_action('wp_head', 'keel_load_inline_header', 30);
 
 
 
 	/**
-	 * Include script inits inline in the footer
+	 * Load inline footer content
 	 */
-	function keel_initialize_theme_scripts() {
+	function keel_load_inline_footer() {
+		$keel_theme = wp_get_theme();
 		?>
 			<script>
-				// Scripts initializations here
+				<?php echo file_get_contents( get_template_directory_uri() . '/dist/js/loadJS.min.' . $keel_theme->get( 'Version' ) . '.js' ); ?>
+				if ( 'querySelector' in document && 'addEventListener' in window ) {
+					// loadJS('<?php echo get_template_directory_uri() . "/dist/js/main.js"; ?>');
+					loadJS('<?php echo get_template_directory_uri() . "/dist/js/main.min." . $keel_theme->get( "Version" ) . ".js"; ?>');
+
+					// Load PhotoSwipe scripts
+					if ( document.querySelector( '[data-photoswipe]' ) ) {
+						loadJS('<?php echo get_template_directory_uri() . "/dist/js/photoswipe.min." . $keel_theme->get( "Version" ) . ".js"; ?>');
+						// loadJS('<?php echo get_template_directory_uri() . "/dist/js/photoswipe.js"; ?>');
+					}
+
+				}
 			</script>
 		<?php
 	}
-	add_action('wp_footer', 'keel_initialize_theme_scripts', 30);
+	add_action('wp_footer', 'keel_load_inline_footer', 30);
 
 
 
@@ -141,8 +174,8 @@
 	function keel_register_menus() {
 		register_nav_menus(
 			array(
-				'header-menu' => __( 'Header Menu' ),
-				'footer-menu' => __( 'Footer Menu' )
+				'primary' => __( 'Primary Menu' ),
+				'secondary' => __( 'Secondary Menu' )
 			)
 		);
 	}
@@ -201,20 +234,22 @@
 
 		<<?php echo $tag ?> <?php if ( $depth > 1 ) { echo 'class="comment-nested"'; } ?> id="comment-<?php comment_ID() ?>">
 
+			<hr>
+
 			<article>
 
 				<?php if ($comment->comment_approved == '0') : // If the comment is held for moderation ?>
 					<p><em><?php _e( 'Your comment is being held for moderation.', 'keel' ) ?></em></p>
 				<?php endif; ?>
 
-				<header>
+				<header class="clearfix margin-bottom-small">
 					<figure>
 						<?php if ( $args['avatar_size'] !== 0 ) echo get_avatar( $comment, $args['avatar_size'] ); ?>
 					</figure>
-					<h3>
+					<h3 class="no-padding-top no-margin-bottom">
 						<?php comment_author_link() ?>
 					</h3>
-					<aside>
+					<aside class="text-muted">
 						<time datetime="<?php comment_date( 'Y-m-d' ); ?>" pubdate><?php comment_date('F jS, Y') ?></time>
 						<?php edit_comment_link('Edit', ' / ', ''); ?>
 					</aside>
@@ -277,24 +312,25 @@
 
 		$field_author =
 			'<div>' .
-				'<label for="author">' . __( 'Name' ) . '</label>' .
+				'<label for="author"><strong>' . __( 'Name' ) . '</strong></label>' .
 				'<input type="text" name="author" id="author" value="' . esc_attr( $commenter['comment_author'] ) . '" required>' .
 			'</div>';
 
 		$field_email =
 			'<div>' .
-				'<label for="email">' . __( 'Email' ) . '</label>' .
+				'<label for="email"><strong>' . __( 'Email' ) . '</strong></label>' .
 				'<input type="email" name="email" id="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" required>' .
 			'</div>';
 
 		$field_url =
 			'<div>' .
-				'<label for="url">' . __( 'Website (optional)' ) . '</label>' .
+				'<label for="url"><strong>' . __( 'Website (optional)' ) . '</strong></label>' .
 				'<input type="url" name="url" id="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '">' .
 			'</div>';
 
 		$field_comment =
 			'<div>' .
+				'<label for="comment"><strong>' . __( 'Comment' ) . '</strong></label>' .
 				'<textarea name="comment" id="comment" required></textarea>' .
 			'</div>';
 
@@ -313,7 +349,8 @@
 				array(
 					'author' => $field_author,
 					'email' => $field_email,
-					'url' => $field_url
+					'url' => $field_url,
+					'comment' => $field_comment,
 				)
 			),
 		);
@@ -337,7 +374,7 @@
 	 * Deregister JetPack's devicepx.js script
 	 */
 	function keel_dequeue_devicepx() {
-	    wp_dequeue_script( 'devicepx' );
+		wp_dequeue_script( 'devicepx' );
 	}
 	add_action( 'wp_enqueue_scripts', 'keel_dequeue_devicepx', 20 );
 
@@ -345,6 +382,7 @@
 
 	/**
 	 * Remove Jetpack front-end styles
+	 * @workaround
 	 * @todo Remove once Jetpack glitch fixed
 	 */
 	add_filter( 'jetpack_implode_frontend_css', '__return_false' );
@@ -363,6 +401,38 @@
 		return $content;
 	}
 	add_filter('the_content', 'keel_remove_empty_p', 20, 1);
+
+
+
+	/**
+	 * Allow new content types in posts
+	 */
+	$allowedposttags['svg']['xmlns'] = true;
+	$allowedposttags['svg']['class'] = true;
+	$allowedposttags['svg']['id'] = true;
+	$allowedposttags['svg']['viewbox'] = true;
+	$allowedposttags['path']['d'] = true;
+
+
+
+	/**
+	 * Allow SVGs in the Media Uploader
+	 */
+	function keel_allow_svg_mime_type( $mimes ) {
+		$mimes['svg'] = 'image/svg+xml';
+		return $mimes;
+	}
+	add_filter( 'upload_mimes', 'keel_allow_svg_mime_type' );
+
+
+
+	/**
+	 * Unlink images by default
+	 */
+	function keel_update_image_default_link_type() {
+		update_option( 'image_default_link_type', 'none' );
+	}
+	add_action( 'admin_init', 'keel_update_image_default_link_type' );
 
 
 
@@ -461,3 +531,16 @@
 			return null;
 		};
 	}
+
+
+	/**
+	 * Load includes
+	 */
+	require_once( dirname( __FILE__) . '/includes/keel-options/keel-post-options.php' ); // Post options
+	require_once( dirname( __FILE__) . '/includes/keel-custom-logo.php' ); // Custom logo
+	require_once( dirname( __FILE__) . '/includes/keel-page-hero/keel-page-hero.php' ); // Page hero settings
+	require_once( dirname( __FILE__) . '/includes/keel-photoswipe/keel-photoswipe.php' ); // PhotoSwipe.js image galleries
+	require_once( dirname( __FILE__) . '/includes/keel-shortcodes/keel-button-shortcode.php' ); // Button links shortcode
+	require_once( dirname( __FILE__) . '/includes/keel-shortcodes/keel-svg-shortcode.php' ); // Inline SVG shortcode
+	require_once( dirname( __FILE__) . '/includes/keel-set-page-width.php' ); // Custom page widths
+	require_once( dirname( __FILE__) . '/includes/keel-options/keel-theme-support.php' ); // Theme support

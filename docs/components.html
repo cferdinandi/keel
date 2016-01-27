@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Keel Docs</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Keel: A lightweight boilerplate for WordPress theme developers">
+
+		<!-- Icons -->
+		<!-- <link rel="shortcut icon" type="image/ico" href="assets/img/icons/favicon.ico"> -->
+
+		<!-- Feature dection -->
+		<script src="dist/js/detects.js"></script>
+
+		<!-- stylesheets -->
+		<link rel="stylesheet" href="dist/css/main.css" type="text/css">
+		<link rel="stylesheet" href="assets/css/custom.css" type="text/css">
+	</head>
+
+	<body>
+
+		<!-- Old Browser Warning -->
+		<!--[if lt IE 9]>
+		    <section class="container">
+		        Did you know that your web browser is a bit old? Some of the content on this site might not work right as a result. <a href="http://whatbrowser.org">Upgrade your browser</a> for a faster, better, and safer web experience.
+		    </section>
+		<![endif]-->
+
+		<!-- Skip Nav Link -->
+		<nav>
+			<a class="screen-reader screen-reader-focusable" href="#main">Skip to content</a>
+		</nav>
+
+		<div class="container container-large">
+			<div class="row">
+
+					<header class="grid-fourth sticky-header padding-top ">
+						<p>
+							<strong>
+								<a href="index.html">
+									<span class="text-large">Harbor Docs</span>
+								</a>
+							</strong>
+						</p>
+						<nav class="nav">
+							<ul class="list-unstyled nav-primary" data-nav-highlight>
+								<li><a href="https://github.com/cferdinandi/keel/archive/master.zip">Download</a></li>
+								<li><a href="setup.html">Setup</a></li>
+								<li><a href="components.html">Components</a></li>
+								<li><a href="wp-features.html">WP-Specific Features</a></li>
+								<li><a href="odds-and-ends.html">Odds &amp; Ends</a></li>
+								<li><a href="support.html">Support</a></li>
+								<li><a href="https://github.com/cferdinandi/keel">GitHub</a></li>
+							</ul>
+
+							<div class="nav-section" data-toc></div>
+						</nav>
+					</header>
+
+				<main class="grid-three-fourths padding-top sticky-body" data-toc-content><h1 id="components">Components</h1>
+<p>Keel is built with <a href="https://cferdinandi.github.io/kraken">Kraken</a>.</p>
+<h2 id="branding-elements">Branding Elements</h2>
+<p>These are the default colors and typefaces in Keel. Update them to suite your project.</p>
+<h3 id="colors">Colors</h3>
+<div class="clearfix">
+    <div class="float-left branding-color-box" style="background-color: #0088cc; color: white;">
+        #0088cc
+    </div>
+    <div class="float-left branding-color-box" style="background-color: #808080; color: white;">
+        #808080
+    </div>
+    <div class="float-left branding-color-box" style="background-color: #e5e5e5;">
+        #e5e5e5
+    </div>
+    <div class="float-left branding-color-box" style="background-color: #ffffff;">
+        #ffffff
+    </div>
+    <div class="float-left branding-color-box" style="background-color: #272727; color: white;">
+        #272727
+    </div>
+</div>
+
+<h3 id="font-stacks">Font Stacks</h3>
+<p class="branding-font" style="font-family: 'Helvetica Neue', Arial, sans-serif">Helvetica Neue, Arial, sans-serif</p>
+<p class="branding-font" style="font-family: Menlo, Monaco, 'Courier New', monospace;">Menlo, Monaco, Courier New, monospace</p>
+
+<hr>
+
+
+<h2 id="the-grid">The Grid</h2>
+<p>Keel uses a fluid, mobile-first grid system based on simple fractions&mdash;halves, thirds, and fourths. It supports nesting, and includes special classes for offsets, content choreography, and dynamic grids.</p>
+<h3 id="the-base-grid">The Base Grid</h3>
+<p>The <code>.container</code> class centers content on the page and restricts it to a maximum width. To create a grid, add a <code>&lt;div&gt;</code> with a <code>.row</code> class. You can create grids within a row by creating <code>&lt;div&gt;</code> elements with the <code>.grid-$size</code> class.</p>
+<div class="row">
+    <div class="grid-third"><div class="grid-highlight">.grid-third</div></div>
+    <div class="grid-two-thirds"><div class="grid-highlight">.grid-two-thirds</div></div>
+</div>
+
+<div class="row">
+    <div class="grid-fourth"><div class="grid-highlight">.grid-fourth</div></div>
+    <div class="grid-three-fourths"><div class="grid-highlight">.grid-three-fourths</div></div>
+</div>
+
+<div class="row">
+    <div class="grid-half"><div class="grid-highlight">.grid-half</div></div>
+    <div class="grid-half"><div class="grid-highlight">.grid-half</div></div>
+</div>
+
+<div class="row">
+    <div class="grid-full"><div class="grid-highlight">.grid-full</div></div>
+</div>
+
+<pre><code class="lang-markup">&lt;div class=&quot;container&quot;&gt;
+
+    &lt;p&gt;Keel uses a fluid, mobile-first grid system...&lt;/p&gt;
+
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;grid-third&quot;&gt;.grid-third&lt;/div&gt;
+        &lt;div class=&quot;grid-two-thirds&quot;&gt;.grid-two-thirds&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;grid-fourth&quot;&gt;.grid-fourth&lt;/div&gt;
+        &lt;div class=&quot;grid-three-fourths&quot;&gt;.grid-three-fourths&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;grid-half&quot;&gt;.grid-half&lt;/div&gt;
+        &lt;div class=&quot;grid-half&quot;&gt;.grid-half&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;grid-full&quot;&gt;.grid-full&lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;/div&gt;
+</code></pre>
+<h3 id="offsets">Offsets</h3>
+<p>Push grids to the right by adding an <code>.offset-$size</code> class. Center grids with the <code>.float-center</code> class.</p>
+<div class="row">
+    <div class="grid-three-fourths offset-fourth"><div class="grid-highlight">.grid-three-fourths .offset-fourth</div></div>
+</div>
+
+<div class="row">
+    <div class="grid-third"><div class="grid-highlight">.grid-third</div></div>
+    <div class="grid-third offset-third"><div class="grid-highlight">.grid-third .offset-third</div></div>
+</div>
+
+<div class="row">
+    <div class="grid-two-thirds float-center"><div class="grid-highlight">.grid-two-thirds .float-center</div></div>
+</div>
+
+<pre><code class="lang-markup">&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;grid-three-fourths offset-fourth&quot;&gt;.grid-three-fourths .offset-fourth&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;grid-third&quot;&gt;.grid-third&lt;/div&gt;
+    &lt;div class=&quot;grid-third offset-third&quot;&gt;.grid-third .offset-third&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;grid-two-thirds float-center&quot;&gt;.grid-two-thirds .float-center&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h3 id="grids-on-small-screens">Grids on Small Screens</h3>
+<p>The grid activates on medium-sized screens by default. You can toggle the grid on smaller screens by adding a simple class-<code>.row-start-xsmall</code> or <code>.row-start-small</code>-to the desired <code>.row</code> element.</p>
+<p>If you&#39;re <a href="setup.html#working-with-the-source-files">working with the source files</a>, you can also easily customize when the grid activates by default and adjust or add additional <code>.row-start-$size</code> classes.</p>
+<p><strong>Extra Small Screens</strong></p>
+<div class="row row-start-xsmall">
+    <div class="grid-fourth"><div class="grid-highlight">.grid-fourth</div></div>
+    <div class="grid-fourth"><div class="grid-highlight">.grid-fourth</div></div>
+    <div class="grid-fourth"><div class="grid-highlight">.grid-fourth</div></div>
+    <div class="grid-fourth"><div class="grid-highlight">.grid-fourth</div></div>
+</div>
+
+<p><strong>Small Screens</strong></p>
+<div class="row row-start-small">
+    <div class="grid-fourth"><div class="grid-highlight">.grid-fourth</div></div>
+    <div class="grid-fourth"><div class="grid-highlight">.grid-fourth</div></div>
+    <div class="grid-fourth"><div class="grid-highlight">.grid-fourth</div></div>
+    <div class="grid-fourth"><div class="grid-highlight">.grid-fourth</div></div>
+</div>
+
+<pre><code class="lang-markup">Extra Small Screens
+&lt;div class=&quot;row row-start-xsmall&quot;&gt;
+    &lt;div class=&quot;grid-fourth&quot;&gt;.grid-fourth&lt;/div&gt;
+    &lt;div class=&quot;grid-fourth&quot;&gt;.grid-fourth&lt;/div&gt;
+    &lt;div class=&quot;grid-fourth&quot;&gt;.grid-fourth&lt;/div&gt;
+    &lt;div class=&quot;grid-fourth&quot;&gt;.grid-fourth&lt;/div&gt;
+&lt;/div&gt;
+
+Small Screens
+&lt;div class=&quot;row row-start-small&quot;&gt;
+    &lt;div class=&quot;grid-fourth&quot;&gt;.grid-fourth&lt;/div&gt;
+    &lt;div class=&quot;grid-fourth&quot;&gt;.grid-fourth&lt;/div&gt;
+    &lt;div class=&quot;grid-fourth&quot;&gt;.grid-fourth&lt;/div&gt;
+    &lt;div class=&quot;grid-fourth&quot;&gt;.grid-fourth&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h3 id="content-choreography">Content Choreography</h3>
+<p>Flip the order of a grid on bigger screens by adding the <code>.grid-flip</code> class.</p>
+<div class="row">
+    <div class="grid-third grid-flip"><div class="grid-highlight">First in HTML</div></div>
+    <div class="grid-two-thirds"><div class="grid-highlight">Second in HTML</div></div>
+</div>
+
+<pre><code class="lang-markup">&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;grid-third grid-flip&quot;&gt;First in HTML&lt;/div&gt;
+    &lt;div class=&quot;grid-two-thirds&quot;&gt;Second in HTML&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h3 id="dynamic-grids">Dynamic Grids</h3>
+<p>Create grids that vary in size based on screen width using the <code>.grid-dynamic</code> class&mdash;great for creating images galleries! For content that may vary in height, you may want to use the <a href="https://github.com/cferdinandi/right-height/">Right Height add-on</a>.</p>
+<p>If you&#39;re <a href="setup.html#working-with-the-source-files">working with the source files</a>, you easily adjust the grid breakpoints and even create additional grids with different layout patterns.</p>
+<div class="row">
+    <div class="grid-dynamic"><p><img src="http://placehold.it/350x350" title="Picture an emu"></p></div>
+    <div class="grid-dynamic"><p><img src="http://placehold.it/350x350" title="Picture an emu"></p></div>
+    <div class="grid-dynamic"><p><img src="http://placehold.it/350x350" title="Picture an emu"></p></div>
+    <div class="grid-dynamic"><p><img src="http://placehold.it/350x350" title="Picture an emu"></p></div>
+    <div class="grid-dynamic"><p><img src="http://placehold.it/350x350" title="Picture an emu"></p></div>
+    <div class="grid-dynamic"><p><img src="http://placehold.it/350x350" title="Picture an emu"></p></div>
+    <div class="grid-dynamic"><p><img src="http://placehold.it/350x350" title="Picture an emu"></p></div>
+    <div class="grid-dynamic"><p><img src="http://placehold.it/350x350" title="Picture an emu"></p></div>
+    <div class="grid-dynamic"><p><img src="http://placehold.it/350x350" title="Picture an emu"></p></div>
+    <div class="grid-dynamic"><p><img src="http://placehold.it/350x350" title="Picture an emu"></p></div>
+    <div class="grid-dynamic"><p><img src="http://placehold.it/350x350" title="Picture an emu"></p></div>
+    <div class="grid-dynamic"><p><img src="http://placehold.it/350x350" title="Picture an emu"></p></div>
+</div>
+
+<pre><code class="lang-markup">&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;grid-dynamic&quot;&gt;&lt;img src=&quot;emu.jpg&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid-dynamic&quot;&gt;&lt;img src=&quot;emu.jpg&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid-dynamic&quot;&gt;&lt;img src=&quot;emu.jpg&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid-dynamic&quot;&gt;&lt;img src=&quot;emu.jpg&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid-dynamic&quot;&gt;&lt;img src=&quot;emu.jpg&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid-dynamic&quot;&gt;&lt;img src=&quot;emu.jpg&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid-dynamic&quot;&gt;&lt;img src=&quot;emu.jpg&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid-dynamic&quot;&gt;&lt;img src=&quot;emu.jpg&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid-dynamic&quot;&gt;&lt;img src=&quot;emu.jpg&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid-dynamic&quot;&gt;&lt;img src=&quot;emu.jpg&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid-dynamic&quot;&gt;&lt;img src=&quot;emu.jpg&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid-dynamic&quot;&gt;&lt;img src=&quot;emu.jpg&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<hr>
+
+
+<h2 id="typography">Typography</h2>
+<p>Keel uses relative sizing (ems and %, not pixels) for everything.</p>
+<p>The <code>body</code> has a base <code>font-size</code> of 100%, which is 16px on browsers with default font settings. All other sizes are in ems. Changing the <code>font-size</code> on the <code>body</code> element will adjust the typographical scale for the entire site.</p></p>
+<p><em>New to relative sizing? <a href="http://gomakethings.com/working-with-relative-sizing/">Learn more.</a></em></p>
+<h3 id="text-basics">Text Basics</h3>
+<p>Default text<br>
+<span class="text-muted">Muted text</span><br>
+<span class="text-small">Small text</span><br>
+<span class="text-large">Large text</span><br>
+<a href="#">Hyperlinks</a><br>
+<strong>Bold</strong> and <em>italics</em></p>
+<pre><code class="lang-markup">Default text
+&lt;span class=&quot;text-muted&quot;&gt;Muted text&lt;/span&gt;
+&lt;span class=&quot;text-small&quot;&gt;Small text&lt;/span&gt;
+&lt;span class=&quot;text-large&quot;&gt;Large text&lt;/span&gt;
+&lt;a href=&quot;#&quot;&gt;Hyperlinks&lt;/a&gt;
+&lt;strong&gt;Bold&lt;/strong&gt; and &lt;em&gt;italics&lt;/em&gt;
+</code></pre>
+<p><em>Because Keel uses relative sizing, you should always apply <code>.text-tall</code> and <code>.text-small</code> classes to a <code>&lt;span&gt;</code> element and not directly to a <code>&lt;p&gt;</code>. Otherwise, your spacing will get all messed up. The `.text-</em><code>classes can be found in</code>_overrides.scss` for better cascade inheritance.*</p>
+<hr>
+
+
+<h2 id="lists">Lists</h2>
+<p>Keel includes styling for ordered, unordered, unstyled, and definition lists.</p>
+<div class="row">
+    <div class="grid-third">
+        <strong>Ordered</strong>
+        <ol>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ol>
+    </div>
+    <div class="grid-third">
+        <strong>Unordered</strong>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+    </div>
+    <div class="grid-third">
+        <strong>Unstyled</strong>
+        <ul class="list-unstyled">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+    </div>
+</div>
+
+<div>
+    <strong>Inline</strong>
+    <ul class="list-inline">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+</div>
+
+<dl>
+    <dt>Definition List</dt>
+    <dd>Encloses a list of pairs of terms and descriptions. Common uses for this element are to implement a glossary or to display metadata (a list of key-value pairs).</dd>
+
+    <dt>Here&#39;s another term</dt>
+    <dd>And here&#39;s the definition that would go with it.</dd>
+</dl>
+
+<pre><code class="lang-markup">Ordered
+&lt;ol&gt;
+    &lt;li&gt;Item 1&lt;/li&gt;
+    &lt;li&gt;Item 2&lt;/li&gt;
+    &lt;li&gt;Item 3&lt;/li&gt;
+&lt;/ol&gt;
+
+Unordered
+&lt;ul&gt;
+    &lt;li&gt;Item 1&lt;/li&gt;
+    &lt;li&gt;Item 2&lt;/li&gt;
+    &lt;li&gt;Item 3&lt;/li&gt;
+&lt;/ul&gt;
+
+Unstyled
+&lt;ul class=&quot;list-unstyled&quot;&gt;
+    &lt;li&gt;Item 1&lt;/li&gt;
+    &lt;li&gt;Item 2&lt;/li&gt;
+    &lt;li&gt;Item 3&lt;/li&gt;
+&lt;/ul&gt;
+
+Inline
+&lt;ul class=&quot;list-inline&quot;&gt;
+    &lt;li&gt;Item 1&lt;/li&gt;
+    &lt;li&gt;Item 2&lt;/li&gt;
+    &lt;li&gt;Item 3&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;dl&gt;
+    &lt;dt&gt;Definition List&lt;/dt&gt;
+    &lt;dd&gt;Encloses a list of pairs of terms and descriptions. Common uses for this element are to implement a glossary or to display metadata (a list of key-value pairs).&lt;/dd&gt;
+
+    &lt;dt&gt;Here&#39;s another term&lt;/dt&gt;
+    &lt;dd&gt;And here&#39;s the definition that would go with it.&lt;/dd&gt;
+&lt;/dl&gt;
+</code></pre>
+<p><em>For semantic reasons, <code>.list-unstyled</code> and <code>.list-inline</code> should only be applied to unordered lists.</em></p>
+<hr>
+
+
+<h2 id="headings">Headings</h2>
+<p>Keel includes styling for <code>h1</code> through <code>h6</code> headings.</p>
+<h1 id="h1-heading-1">h1. Heading 1</h1>
+<h2>h2. Heading 2</h2>
+
+<h3 id="h3-heading-3">h3. Heading 3</h3>
+<h4 id="h4-heading-4">h4. Heading 4</h4>
+<h5 id="h5-heading-5">h5. Heading 5</h5>
+<h6 id="h6-heading-6">h6. Heading 6</h6>
+<pre><code class="lang-markup">&lt;h1&gt;h1. Heading 1&lt;/h1&gt;
+&lt;h2&gt;h2. Heading 2&lt;/h2&gt;
+&lt;h3&gt;h3. Heading 3&lt;/h3&gt;
+&lt;h4&gt;h4. Heading 4&lt;/h4&gt;
+&lt;h5&gt;h5. Heading 5&lt;/h5&gt;
+&lt;h6&gt;h6. Heading 6&lt;/h6&gt;
+</code></pre>
+<h3 id="semantic-heading-classes">Semantic Heading Classes</h3>
+<p>All heading values can also be applied as classes. For example, if a heading should be an <code>h1</code> element semantically, but you would like it to be styled as an <code>h4</code> element, you can apply <code>class=&quot;h4&quot;</code> to the <code>h1</code> element.</p>
+<h1 class="h4 text-left">This is an h1 heading that&#39;s styled as an h4 heading</h1>
+
+<pre><code class="lang-markup">&lt;h1 class=&quot;h4 text-left&quot;&gt;This is an h1 heading that&#39;s styled as an h4 heading&lt;/h1&gt;
+</code></pre>
+<hr>
+
+
+<h2 id="quotes-and-citations">Quotes and Citations</h2>
+<blockquote>
+<p>Someone once said something so important, it was deemed worthy of repeating here in the form of a blockquote. This is that blockquote.
+<cite>- Someone Important</cite></p>
+</blockquote>
+<p>You can also include superscripts<sup>1</sup> and subscripts<sub>xyz</sub>.</p>
+<pre><code class="lang-markup">&lt;blockquote&gt;
+    Someone once said something so important, it was deemed worthy of repeating here in the form of a blockquote. This is that blockquote.
+    &lt;cite&gt;- Someone Important&lt;/cite&gt;
+&lt;/blockquote&gt;
+
+You can also include superscripts&lt;sup&gt;1&lt;/sup&gt; and subscripts&lt;sub&gt;xyz&lt;/sub&gt;.
+</code></pre>
+<hr>
+
+
+<h2 id="code">Code</h2>
+<p>Inline code: <code>.js-example</code>.</p>
+<pre><code>/* Preformatted Text */
+.js-example {
+    color: #272727;
+    background: #ffffff;
+}
+</code></pre><pre><code class="lang-markup">&lt;p&gt;Inline code: &lt;code&gt;.js-example&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;
+    &lt;code&gt;
+        /* Preformatted Text */
+        .js-example {
+            color: #272727;
+            background: #ffffff;
+        }
+    &lt;/code&gt;
+&lt;/pre&gt;
+</code></pre>
+<p>You&#39;ll need to escape brackets contained in code by typing <code>&amp;lt;</code> for <code>&lt;</code> and <code>&amp;gt;</code> for <code>&gt;</code>. The syntax highlighting used in this documentation is provided by <a href="http://prismjs.com/">Prism</a> by Lea Verou.</p>
+<hr>
+
+
+<h2 id="lines">Lines</h2>
+<p>Add lines to your markup using the <code>&lt;hr&gt;</code> element.</p>
+<hr>
+
+
+<h2 id="buttons">Buttons</h2>
+<p>Button styles can be applied to anything with the <code>.btn</code> class applied. However, typically you&#39;ll want to apply these to only <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, and <code>&lt;input type=&quot;submit&quot;&gt;</code> elements for the best rendering.</p>
+<h3 id="basic-buttons">Basic Buttons</h3>
+<button class="btn">Button</button>
+<div class="bg-dark padding margin-bottom">
+    <button class="btn btn-ghost">Button Secondary</button>
+</div>
+<button class="btn btn-large">Button Large</button>
+
+<button class="btn btn-block">Button Block</button><button class="btn btn-secondary btn-block">Button Block</button>
+
+<pre><code class="lang-markup">&lt;button class=&quot;btn&quot;&gt;Button&lt;/button&gt;
+&lt;button class=&quot;btn btn-ghost&quot;&gt;Button Secondary&lt;/button&gt;
+&lt;button class=&quot;btn btn-large&quot;&gt;Button Large&lt;/button&gt;
+
+&lt;button class=&quot;btn btn-block&quot;&gt;Button Block&lt;/button&gt;
+&lt;button class=&quot;btn btn-secondary btn-block&quot;&gt;Button Block&lt;/button&gt;
+</code></pre>
+<h3 id="active-and-disabled-buttons">Active and Disabled Buttons</h3>
+<p>Use <code>.active</code> and <code>.disabled</code> classes to change the appearance of buttons&mdash;useful for creating apps.</p>
+<button class="btn active">Active</button><button class="btn disabled">Disabled</button>
+
+<pre><code class="lang-markup">&lt;button class=&quot;btn active&quot;&gt;Active&lt;/button&gt;
+&lt;button class=&quot;btn disabled&quot;&gt;Disabled&lt;/button&gt;
+</code></pre>
+<hr>
+
+
+<h2 id="tables">Tables</h2>
+<p>Keel includes simple, easy-to-read table styling.</p>
+<table>
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Super Hero</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Peter</td>
+            <td>Parker</td>
+            <td>Spiderman</td>
+        </tr>
+        <tr>
+            <td>Bruce</td>
+            <td>Wayne</td>
+            <td>Batman</td>
+        </tr>
+        <tr>
+            <td>Clark</td>
+            <td>Kent</td>
+            <td>Superman</td>
+        </tr>
+    </tbody>
+</table>
+
+<pre><code class="lang-markup">&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;First Name&lt;/th&gt;
+            &lt;th&gt;Last Name&lt;/th&gt;
+            &lt;th&gt;Super Hero&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Peter&lt;/td&gt;
+            &lt;td&gt;Parker&lt;/td&gt;
+            &lt;td&gt;Spiderman&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Bruce&lt;/td&gt;
+            &lt;td&gt;Wayne&lt;/td&gt;
+            &lt;td&gt;Batman&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Clark&lt;/td&gt;
+            &lt;td&gt;Kent&lt;/td&gt;
+            &lt;td&gt;Superman&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+</code></pre>
+<h3 id="condensed-table">Condensed Table</h3>
+<p>Add the <code>.table-condensed</code> class for more compact tables.</p>
+<table class="table-condensed">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Super Hero</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Peter</td>
+            <td>Parker</td>
+            <td>Spiderman</td>
+        </tr>
+        <tr>
+            <td>Bruce</td>
+            <td>Wayne</td>
+            <td>Batman</td>
+        </tr>
+        <tr>
+            <td>Clark</td>
+            <td>Kent</td>
+            <td>Superman</td>
+        </tr>
+    </tbody>
+</table>
+
+<pre><code class="lang-markup">&lt;table class=&quot;table-condensed&quot;&gt;
+    ...
+&lt;/table&gt;
+</code></pre>
+<h3 id="zebra-striping">Zebra Striping</h3>
+<p>Add zebra striping for easier readability with the <code>.table-striped</code> class.</p>
+<table class="table-striped">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Super Hero</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Peter</td>
+            <td>Parker</td>
+            <td>Spiderman</td>
+        </tr>
+        <tr>
+            <td>Bruce</td>
+            <td>Wayne</td>
+            <td>Batman</td>
+        </tr>
+        <tr>
+            <td>Clark</td>
+            <td>Kent</td>
+            <td>Superman</td>
+        </tr>
+    </tbody>
+</table>
+
+<pre><code class="lang-markup">&lt;table class=&quot;table-striped&quot;&gt;
+    ...
+&lt;/table&gt;
+</code></pre>
+<h3 id="responsive-table">Responsive Table</h3>
+<p>Add the <code>.table-responsive</code> class for tables that reformat on smaller viewports. Use the <code>[data-label]</code> data attribute to apply the label that displays on smaller viewports.</p>
+<table class="table-responsive">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Super Hero</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td data-label="First Name">Peter</td>
+            <td data-label="Last Name">Parker</td>
+            <td data-label="Super Hero">Spiderman</td>
+        </tr>
+        <tr>
+            <td data-label="First Name">Bruce</td>
+            <td data-label="Last Name">Wayne</td>
+            <td data-label="Super Hero">Batman</td>
+        </tr>
+        <tr>
+            <td data-label="First Name">Clark</td>
+            <td data-label="Last Name">Kent</td>
+            <td data-label="Super Hero">Superman</td>
+        </tr>
+    </tbody>
+</table>
+
+<pre><code class="lang-markup">&lt;table class=&quot;table-responsive&quot;&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;First Name&lt;/th&gt;
+            &lt;th&gt;Last Name&lt;/th&gt;
+            &lt;th&gt;Super Hero&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td data-label=&quot;First Name&quot;&gt;Peter&lt;/td&gt;
+            &lt;td data-label=&quot;Last Name&quot;&gt;Parker&lt;/td&gt;
+            &lt;td data-label=&quot;Super Hero&quot;&gt;Spiderman&lt;/td&gt;
+        &lt;/tr&gt;
+        ...
+    &lt;/tbody&gt;
+&lt;/table&gt;
+</code></pre>
+<h3 id="combining-classes">Combining Classes</h3>
+<p>Classes can be combined as needed.</p>
+<table class="table-condensed table-striped table-responsive">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Super Hero</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td data-label="First Name">Peter</td>
+            <td data-label="Last Name">Parker</td>
+            <td data-label="Super Hero">Spiderman</td>
+        </tr>
+        <tr>
+            <td data-label="First Name">Bruce</td>
+            <td data-label="Last Name">Wayne</td>
+            <td data-label="Super Hero">Batman</td>
+        </tr>
+        <tr>
+            <td data-label="First Name">Clark</td>
+            <td data-label="Last Name">Kent</td>
+            <td data-label="Super Hero">Superman</td>
+        </tr>
+    </tbody>
+</table>
+
+<pre><code class="lang-markup">&lt;table class=&quot;table-condensed table-striped table-responsive&quot;&gt;
+    ...
+&lt;/table&gt;
+</code></pre>
+<hr>
+
+
+<h2 id="forms">Forms</h2>
+<p>Labels, legends and inputs are styled as full width block elements (with the exception of checkboxes and radio buttons).</p>
+<h3 id="basic-forms">Basic Forms</h3>
+<form><label>Label</label> <input type="text"><label><input type="checkbox"> Option 1</label><label><input type="checkbox"> Option 2</label><label><input type="radio" name="radioset"> Option 1</label><label><input type="radio" name="radioset"> Option 2</label><select><option>Select 1</option><option>Select 2</option><option>Select 3</option></select><textarea></textarea></form>
+
+<pre><code class="lang-markup">&lt;form&gt;
+    &lt;label&gt;Label&lt;/label&gt;
+    &lt;input type=&quot;text&quot;&gt;
+    &lt;label&gt;
+        &lt;input type=&quot;checkbox&quot;&gt;
+        Option 1
+    &lt;/label&gt;
+    &lt;label&gt;
+        &lt;input type=&quot;checkbox&quot;&gt;
+        Option 2
+    &lt;/label&gt;
+    &lt;label&gt;
+        &lt;input type=&quot;radio&quot; name=&quot;radioset&quot;&gt;
+        Option 1
+    &lt;/label&gt;
+    &lt;label&gt;
+        &lt;input type=&quot;radio&quot; name=&quot;radioset&quot;&gt;
+        Option 2
+    &lt;/label&gt;
+    &lt;select&gt;
+        &lt;option&gt;Select 1&lt;/option&gt;
+        &lt;option&gt;Select 2&lt;/option&gt;
+        &lt;option&gt;Select 3&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;textarea&gt;&lt;/textarea&gt;
+&lt;/form&gt;
+</code></pre>
+<p><em>Wrap checkboxes and radio buttons inside a <code>&lt;label&gt;</code> to make them easier to click.</em></p>
+<h3 id="form-layouts">Form Layouts</h3>
+<p>Use the grid system to add structure to your forms.</p>
+<form>
+    <div class="row">
+        <div class="grid-fourth">
+                <label>Name</label>
+        </div>
+        <div class="grid-three-fourths">
+                <input type="text">
+        </div>
+    </div>
+    <div class="row">
+        <div class="grid-fourth">
+                <label>Message</label>
+        </div>
+        <div class="grid-three-fourths">
+                <textarea></textarea>
+        </div>
+    </div>
+    <div class="row">
+        <div class="grid-three-fourths offset-fourth">
+            <button class="btn btn-blue">Submit</button>
+        </div>
+    </div>
+</form>
+
+<pre><code class="lang-markup">&lt;form&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;grid-fourth&quot;&gt;
+                &lt;label&gt;Name&lt;/label&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;grid-three-fourths&quot;&gt;
+                &lt;input type=&quot;text&quot;&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;grid-fourth&quot;&gt;
+                &lt;label&gt;Message&lt;/label&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;grid-three-fourths&quot;&gt;
+                &lt;textarea&gt;&lt;/textarea&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;grid-three-fourths offset-fourth&quot;&gt;
+            &lt;button class=&quot;btn btn-blue&quot;&gt;Submit&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/form&gt;
+</code></pre>
+<h3 id="condensed-inline-inputs">Condensed &amp; Inline Inputs</h3>
+<p>For smaller forms, add the <code>.input-condensed</code> class to your input fields. For inline form elements, add the <code>.input-inline</code> class.</p>
+<form>
+    <input type="text" class="input-inline" placeholder=".input-inline">
+    <input type="text" class="input-condensed input-inline" placeholder=".input-condensed">
+</form>
+
+<pre><code class="lang-markup">&lt;form&gt;
+    &lt;input type=&quot;text&quot; class=&quot;input-inline&quot;&gt;
+    &lt;input type=&quot;text&quot; class=&quot;input-condensed input-inline&quot;&gt;
+&lt;/form&gt;
+</code></pre>
+<h3 id="search-forms">Search Forms</h3>
+<p>Apply special styling to search form elements using the <code>.input-search</code> and <code>.btn-search</code> classes. You&#39;ll also need to use the <code>.input-inline</code> class.</p>
+<form><label class="screen-reader" for="search">Search this site</label><input type="text" class="input-inline input-search no-margin-bottom" id="search" name="search" placeholder="Search this site..." value=""><button type="submit" class="btn-search" id="searchsubmit"><svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 32 32"><path d="M31.008 27.23l-7.58-6.446c-.784-.705-1.622-1.03-2.3-.998C22.92 17.69 24 14.97 24 12 24 5.37 18.627 0 12 0S0 5.37 0 12c0 6.626 5.374 12 12 12 2.973 0 5.692-1.082 7.788-2.87-.03.676.293 1.514.998 2.298l6.447 7.58c1.105 1.226 2.908 1.33 4.008.23s.997-2.903-.23-4.007zM12 20c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8z"/></svg><span class="icon-fallback-text">Search</span></button></form>
+
+<pre><code class="lang-markup">&lt;input type=&quot;text&quot; class=&quot;input-inline input-search no-margin-bottom&quot; id=&quot;search&quot; name=&quot;search&quot; placeholder=&quot;Search this site...&quot; value=&quot;&quot;&gt;
+&lt;button type=&quot;submit&quot; class=&quot;btn-search&quot; id=&quot;searchsubmit&quot;&gt;
+    &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; class=&quot;icon&quot; viewBox=&quot;0 0 32 32&quot;&gt;&lt;path d=&quot;M31.008 27.23l-7.58-6.446c-.784-.705-1.622-1.03-2.3-.998C22.92 17.69 24 14.97 24 12 24 5.37 18.627 0 12 0S0 5.37 0 12c0 6.626 5.374 12 12 12 2.973 0 5.692-1.082 7.788-2.87-.03.676.293 1.514.998 2.298l6.447 7.58c1.105 1.226 2.908 1.33 4.008.23s.997-2.903-.23-4.007zM12 20c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8z&quot;/&gt;&lt;/svg&gt;
+    &lt;span class=&quot;icon-fallback-text&quot;&gt;Search&lt;/span&gt;
+&lt;/button&gt;
+</code></pre>
+<hr>
+
+
+<h2 id="navigation">Navigation</h2>
+<p>Keel uses the <code>wp_nav_menu()</code> function to let users generate their own navigation menus.</p>
+<p>The header menu is <a href="https://github.com/cferdinandi/astro">powered by Astro</a>, and can be found in the <code>nav-main.php</code> template file. It uses the following markup structure:</p>
+<pre><code class="lang-markup">&lt;nav class=&quot;nav-wrap-navbar nav-collapse&quot;&gt;
+    &lt;a class=&quot;logo-navbar&quot; href=&quot;#&quot;&gt;My Brand&lt;/a&gt;
+    &lt;a class=&quot;nav-toggle-navbar&quot; data-nav-toggle=&quot;#nav-menu&quot; href=&quot;#&quot;&gt;Menu&lt;/a&gt;
+    &lt;div class=&quot;nav-menu-navbar&quot; id=&quot;nav-menu&quot;&gt;
+        &lt;ul class=&quot;nav-navbar&quot;&gt;
+            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/nav&gt;
+</code></pre>
+<h3 id="dropdown-menus">Dropdown Menus</h3>
+<p>Dropdown menus are <a href="https://github.com/cferdinandi/drop">powered by Drop</a>, and use the following markup structure:</p>
+<pre><code class="lang-markup">...
+    &lt;li class=&quot;menu-item-has-children&quot;&gt;
+        &lt;a href=&quot;#&quot;&gt;
+            Dropdown 1
+        &lt;/a&gt;
+        &lt;ul class=&quot;sub-menu&quot;&gt;
+            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Item 1&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Item 2&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Item 3&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+
+    &lt;li class=&quot;menu-item-has-children&quot;&gt;
+        &lt;a href=&quot;#&quot;&gt;
+            Dropdown 2
+        &lt;/a&gt;
+        &lt;ul class=&quot;sub-menu&quot;&gt;
+            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Item 1&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Item 2&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Item 3&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+...
+</code></pre>
+<hr>
+
+
+<h2 id="svgs">SVGs</h2>
+<p>Keel includes SVG detection that adds an <code>.svg</code> class to the <code>html</code> element when supported. <a href="setup.html#working-with-the-source-files">The build system</a> optimizes SVGs, and can also generate SVG sprites from individual SVG files.</p>
+<p>Use the <code>.icon</code> class hide SVGs on unsupported browsers, and the <code>.icon-fallback-text</code> class to display fallback text in it&#39;s place.</p>
+<h3 id="inline-svgs">Inline SVGs</h3>
+<p>Open the SVG file in your text editor of choice, and then literally copy and paste the content from the file into your markup.</p>
+<pre><code class="lang-markup">&lt;svg class=&quot;icon&quot;&gt;...&lt;/svg&gt;
+&lt;span class=&quot;icon-fallback-text&quot;&gt;Descriptive Text&lt;/span&gt;
+</code></pre>
+<h3 id="svg-sprites">SVG Sprites</h3>
+<p>Add the contents of your sprite to the markup in a hidden container directly after the opening <code>&lt;body&gt;</code> tag.</p>
+<pre><code class="lang-markup">&lt;div hidden&gt;
+    &lt;svg&gt;...&lt;/svg&gt;
+&lt;/div&gt;
+</code></pre>
+<p>To use an icon, simply reference its ID using the <code>&lt;use&gt;</code> element.</p>
+<pre><code class="lang-markup">&lt;svg class=&quot;icon&quot;&gt;
+    &lt;use xlink:href=&quot;#icon-logo&quot;&gt;&lt;/use&gt;
+&lt;/svg&gt;
+&lt;span class=&quot;icon-fallback-text&quot;&gt;My Awesome Website&lt;/span&gt;
+</code></pre>
+<h4 id="external-svg-sprites">External SVG sprites</h4>
+<p>Instead of embedding, you can link to the SVG as an external file. However, this method is not supported in Internet Explorer and requires you to use <a href="https://github.com/jonathantneal/svg4everybody">svg4everybody</a>, a JavaScript polyfill. I’ve also found that inlining the sprite results in faster peceived performance.</p>
+<p>While this will gain you some browser caching benefits, I’ve found that perceived load times are better using the inlined sprite approach, as the icons are rendered immediately.</p>
+<p><a href="http://gomakethings.com/using-svgs/">Learn more about using SVGs.</a></p>
+<hr>
+
+
+<h2 id="alignment-spacing-visibility">Alignment, Spacing &amp; Visibility</h2>
+<p>You can adjust text alignment, spacing, and visibility using a few simple CSS classes.</p>
+<h3 id="text-alignment">Text Alignment</h3>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Alignment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.text-left</code></td>
+<td>Left</td>
+</tr>
+<tr>
+<td><code>.text-center</code></td>
+<td>Centered</td>
+</tr>
+<tr>
+<td><code>.text-right</code></td>
+<td>Right</td>
+</tr>
+<tr>
+<td><code>.text-right-medium</code></td>
+<td>Right above 40em</td>
+</tr>
+</tbody>
+</table>
+<h3 id="floats">Floats</h3>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Float</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.float-left</code></td>
+<td>Left</td>
+</tr>
+<tr>
+<td><code>.float-center</code></td>
+<td>Centered</td>
+</tr>
+<tr>
+<td><code>.float-right</code></td>
+<td>Right</td>
+</tr>
+</tbody>
+</table>
+<p><em>Clear floats by wrapping floated content in a <code>&lt;div&gt;</code> with the <code>.clearfix</code> class.</em></p>
+<pre><code class="lang-markup">&lt;div class=&quot;clearfix&quot;&gt;
+    &lt;button class=&quot;float-right&quot;&gt;Floated to the Right&lt;/button&gt;
+    &lt;button&gt;Not floated&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+<h3 id="margins">Margins</h3>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Margin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.no-margin-top</code></td>
+<td>top: <code>0</code></td>
+</tr>
+<tr>
+<td><code>.no-margin-bottom</code></td>
+<td>bottom: <code>0</code></td>
+</tr>
+<tr>
+<td><code>.margin-top</code></td>
+<td>top: <code>1.5625em</code></td>
+</tr>
+<tr>
+<td><code>.margin-bottom</code></td>
+<td>bottom: <code>1.5625em</code></td>
+</tr>
+<tr>
+<td><code>.margin-bottom-small</code></td>
+<td>bottom: <code>0.5em</code></td>
+</tr>
+<tr>
+<td><code>.margin-bottom-large</code></td>
+<td>bottom: <code>2em</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="padding">Padding</h3>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>padding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.no-padding-top</code></td>
+<td>top: <code>0</code></td>
+</tr>
+<tr>
+<td><code>.no-padding-bottom</code></td>
+<td>bottom: <code>0</code></td>
+</tr>
+<tr>
+<td><code>.padding-top</code></td>
+<td>top: <code>1.5625em</code></td>
+</tr>
+<tr>
+<td><code>.padding-top-small</code></td>
+<td>top: <code>0.5em</code></td>
+</tr>
+<tr>
+<td><code>.padding-top-large</code></td>
+<td>top: <code>2em</code></td>
+</tr>
+<tr>
+<td><code>.padding-bottom</code></td>
+<td>bottom: <code>1.5625em</code></td>
+</tr>
+<tr>
+<td><code>.padding-bottom-small</code></td>
+<td>bottom: <code>0.5em</code></td>
+</tr>
+<tr>
+<td><code>.padding-bottom-large</code></td>
+<td>bottom: <code>2em</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="visibility">Visibility</h3>
+<p>Hide content using the <code>[hidden]</code> attribute.</p>
+<pre><code class="lang-markup">&lt;div hidden&gt;This is removed from the markup.&lt;/div&gt;
+</code></pre>
+<p>If you have text that you don&#39;t want displayed on screen, but that should still be in the markup for screen readers (for example, a search form label), simply apply the <code>.screen-reader</code> class.</p></p>
+<pre><code class="lang-markup">&lt;form&gt;
+    &lt;label class=&quot;screen-reader&quot;&gt;Search this site&lt;/label&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;Search this site...&quot;&gt;
+    &lt;input type=&quot;submit&quot;&gt;
+&lt;/form&gt;
+</code></pre>
+<p>For visually hidden content that should become visible on focus (such as a <a href="http://webaim.org/techniques/skipnav/">skip nav link</a> for sighted users navigating by keyboard), add the <code>.screen-reader-focusable</code> class.</p>
+<pre><code class="lang-markup">&lt;a class=&quot;screen-reader screen-reader-focusable&quot; href=&quot;#main&quot;&gt;Skip to content&lt;/a&gt;
+</code></pre>
+					</section><!-- /.container -->
+
+					<footer class="padding-top padding-bottom">
+
+							<hr>
+
+							<p class="text-small text-muted margin-bottom-small">Keel by <a href="http://gomakethings.com">Go Make Things</a>. The code is available under the <a href="https://github.com/cferdinandi/kraken/blob/master/LICENSE.md">MIT License</a>.</p>
+
+					</footer>
+				</main>
+			</div><!-- /.row -->
+		</div><!-- /.container -->
+
+		<!-- Javascript -->
+		<script src="assets/js/toc.js"></script>
+		<script src="assets/js/highlight-active-nav.js"></script>
+		<script src="assets/js/smooth-scroll.js"></script>
+		<script src="assets/js/prism.js"></script>
+		<script>
+			tableOfContents.init({
+				heading: 'In This Section',
+				headingClass: 'h3',
+				navClass: 'list-unstyled',
+				linkClass: 'js-smooth-scroll',
+				callback: function () {
+					var links = document.querySelectorAll( '.js-smooth-scroll' );
+					for (var i = 0, len = links.length; i < len; i++) {
+						links[i].setAttribute( 'data-scroll', true );
+					}
+					smoothScroll.init();
+				}
+			});
+			// highlightActiveNav.init({
+			// 	urlPrefix: '/kraken/'
+			// });
+		</script>
+
+	</body>
+</html>

@@ -1,104 +1,97 @@
 /*!
- * keel v5.4.0: A lightweight boilerplate for WordPress developers
- * (c) 2015 Chris Ferdinandi
+ * keel v6.0.0: A lightweight boilerplate for WordPress developers
+ * (c) 2016 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/keel
+ * Open Source Credits: https://github.com/ftlabs/fastclick, https://github.com/toddmotto/fluidvids, http://photoswipe.com, http://masonry.desandro.com, http://imagesloaded.desandro.com
  */
 
-;(function (window, document, undefined) {
+/**
+ * Run code after document is ready
+ * @param  {Function} fn The function to run
+ */
+var ready = function ( fn ) {
 
-	'use strict';
+	// Sanity check
+	if ( typeof (fn) !== 'function' ) return;
 
-	/**
-	 * Test for @font-face support
-	 * @return {Boolean} Returns true if supported
-	 */
-	var isFontFaceSupported = function () {
-
-		var doc = document,
-			head = doc.head || doc.getElementsByTagName( "head" )[ 0 ] || doc.documentElement,
-			style = doc.createElement( "style" ),
-			rule = "@font-face { font-family: 'webfont'; src: 'https://'; }",
-			supportFontFace = false,
-			blacklist = (function() {
-				var ua = win.navigator.userAgent.toLowerCase(),
-					wkvers = ua.match( /applewebkit\/([0-9]+)/gi ) && parseFloat( RegExp.$1 ),
-					webos = ua.match( /w(eb)?osbrowser/gi ),
-					wppre8 = ua.indexOf( "windows phone" ) > -1 && win.navigator.userAgent.match( /IEMobile\/([0-9])+/ ) && parseFloat( RegExp.$1 ) >= 9,
-					oldandroid = wkvers < 533 && ua.indexOf( "Android 2.1" ) > -1;
-
-				return webos || oldandroid || wppre8;
-			}()),
-			sheet;
-
-		style.type = "text/css";
-		head.insertBefore( style, head.firstChild );
-		sheet = style.sheet || style.styleSheet;
-
-		if ( !!sheet && !blacklist ) {
-			try {
-				sheet.insertRule( rule, 0 );
-				supportFontFace = sheet.cssRules[ 0 ].cssText && ( /webfont/i ).test( sheet.cssRules[ 0 ].cssText );
-				sheet.deleteRule( sheet.cssRules.length - 1 );
-			} catch( e ) { }
-		}
-
-		return supportFontFace;
-	};
-
-	/**
-	 * Test for pseudo selector support
-	 * @param  {String} selector Selector to test
-	 * @return {Boolean} Returns true if supported
-	 */
-	var selectorSupported = function (selector) {
-
-		var support,
-			sheet,
-			doc = document,
-			root = doc.documentElement,
-			head = root.getElementsByTagName('head')[0],
-
-			impl = doc.implementation || {
-				hasFeature: function() {
-					return false;
-				}
-			},
-
-		link = doc.createElement("style");
-		link.type = 'text/css';
-
-		(head || root).insertBefore(link, (head || root).firstChild);
-
-		sheet = link.sheet || link.styleSheet;
-
-		if (!(sheet && selector)) return false;
-
-		support = impl.hasFeature('CSS2', '') ?
-
-		function(selector) {
-			try {
-				sheet.insertRule(selector + '{ }', 0);
-				sheet.deleteRule(sheet.cssRules.length - 1);
-			} catch (e) {
-				return false;
-			}
-			return true;
-		} : function(selector) {
-			sheet.cssText = selector + ' { }';
-			return sheet.cssText.length !== 0 && !(/unknown/i).test(sheet.cssText) && sheet.cssText.indexOf(selector) === 0;
-		};
-
-		return support(selector);
-
-	};
-
-	// If @font-face and pseudo selectors are supported, add '.font-face' class to <html> element
-	if (isFontFaceSupported && selectorSupported(':before')) {
-		document.documentElement.className += (document.documentElement.className ? ' ' : '') + 'font-face';
+	// If document is already loaded, run method
+	if ( document.readyState === 'interactive' ) {
+		return fn();
 	}
 
-})(window, document);
+	// Otherwise, wait until document is loaded
+	document.onreadystatechange = function () {
+		if ( document.readyState === 'interactive' ) {
+			fn();
+		}
+	};
+
+};
+/*!
+loadCSS: load a CSS file asynchronously.
+[c]2015 @scottjehl, Filament Group, Inc.
+Licensed MIT
+*/
+(function(w){
+	"use strict";
+	/* exported loadCSS */
+	var loadCSS = function( href, before, media ){
+		// Arguments explained:
+		// `href` [REQUIRED] is the URL for your CSS file.
+		// `before` [OPTIONAL] is the element the script should use as a reference for injecting our stylesheet <link> before
+			// By default, loadCSS attempts to inject the link after the last stylesheet or script in the DOM. However, you might desire a more specific location in your document.
+		// `media` [OPTIONAL] is the media type or query of the stylesheet. By default it will be 'all'
+		var doc = w.document;
+		var ss = doc.createElement( "link" );
+		var ref;
+		if( before ){
+			ref = before;
+		}
+		else {
+			var refs = ( doc.body || doc.getElementsByTagName( "head" )[ 0 ] ).childNodes;
+			ref = refs[ refs.length - 1];
+		}
+
+		var sheets = doc.styleSheets;
+		ss.rel = "stylesheet";
+		ss.href = href;
+		// temporarily set media to something inapplicable to ensure it'll fetch without blocking render
+		ss.media = "only x";
+
+		// Inject link
+			// Note: the ternary preserves the existing behavior of "before" argument, but we could choose to change the argument to "after" in a later release and standardize on ref.nextSibling for all refs
+			// Note: `insertBefore` is used instead of `appendChild`, for safety re: http://www.paulirish.com/2011/surefire-dom-element-insertion/
+		ref.parentNode.insertBefore( ss, ( before ? ref : ref.nextSibling ) );
+		// A method (exposed on return object for external use) that mimics onload by polling until document.styleSheets until it includes the new sheet.
+		var onloadcssdefined = function( cb ){
+			var resolvedHref = ss.href;
+			var i = sheets.length;
+			while( i-- ){
+				if( sheets[ i ].href === resolvedHref ){
+					return cb();
+				}
+			}
+			setTimeout(function() {
+				onloadcssdefined( cb );
+			});
+		};
+
+		// once loaded, set link's media back to `all` so that the stylesheet applies once it loads
+		ss.onloadcssdefined = onloadcssdefined;
+		onloadcssdefined(function() {
+			ss.media = media || "all";
+		});
+		return ss;
+	};
+	// commonjs
+	if( typeof module !== "undefined" ){
+		module.exports = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ));
 ;(function (window, document, undefined) {
 
     'use strict';

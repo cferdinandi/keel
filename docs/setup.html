@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Keel Docs</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Keel: A lightweight boilerplate for WordPress theme developers">
+
+		<!-- Icons -->
+		<!-- <link rel="shortcut icon" type="image/ico" href="assets/img/icons/favicon.ico"> -->
+
+		<!-- Feature dection -->
+		<script src="dist/js/detects.js"></script>
+
+		<!-- stylesheets -->
+		<link rel="stylesheet" href="dist/css/main.css" type="text/css">
+		<link rel="stylesheet" href="assets/css/custom.css" type="text/css">
+	</head>
+
+	<body>
+
+		<!-- Old Browser Warning -->
+		<!--[if lt IE 9]>
+		    <section class="container">
+		        Did you know that your web browser is a bit old? Some of the content on this site might not work right as a result. <a href="http://whatbrowser.org">Upgrade your browser</a> for a faster, better, and safer web experience.
+		    </section>
+		<![endif]-->
+
+		<!-- Skip Nav Link -->
+		<nav>
+			<a class="screen-reader screen-reader-focusable" href="#main">Skip to content</a>
+		</nav>
+
+		<div class="container container-large">
+			<div class="row">
+
+					<header class="grid-fourth sticky-header padding-top ">
+						<p>
+							<strong>
+								<a href="index.html">
+									<span class="text-large">Harbor Docs</span>
+								</a>
+							</strong>
+						</p>
+						<nav class="nav">
+							<ul class="list-unstyled nav-primary" data-nav-highlight>
+								<li><a href="https://github.com/cferdinandi/keel/archive/master.zip">Download</a></li>
+								<li><a href="setup.html">Setup</a></li>
+								<li><a href="components.html">Components</a></li>
+								<li><a href="wp-features.html">WP-Specific Features</a></li>
+								<li><a href="odds-and-ends.html">Odds &amp; Ends</a></li>
+								<li><a href="support.html">Support</a></li>
+								<li><a href="https://github.com/cferdinandi/keel">GitHub</a></li>
+							</ul>
+
+							<div class="nav-section" data-toc></div>
+						</nav>
+					</header>
+
+				<main class="grid-three-fourths padding-top sticky-body" data-toc-content><h1 id="setup">Setup</h1>
+<h2 id="download">Download</h2>
+<p>There are three ways to use Keel on your project:</p>
+<ol>
+<li><a href="https://github.com/cferdinandi/keel/archive/master.zip">Download Keel</a> directly from GitHub.</li>
+<li>Clone Keel from GitHub: <code>git@github.com:cferdinandi/keel.git</code></li>
+<li>Install Keel using your favorite package manager:<ul>
+<li><a href="https://www.npmjs.org/">NPM</a>: <code>npm install cferdinandi/keel</code></li>
+<li><a href="http://bower.io/">Bower</a>: <code>bower install https://github.com/cferdinandi/keel.git</code></li>
+<li><a href="http://component.io/">Component</a>: <code>component install cferdinandi/keel</code></li>
+</ul>
+</li>
+</ol>
+<hr>
+
+
+<h2 id="file-structure">File Structure</h2>
+<p>Compiled and production-ready code can be found in the <code>dist</code> directory. The <code>src</code> directory contains development code. Compiled documentation is in the <code>docs</code> directory. Unit tests are located in the <code>test</code> directory.</p>
+<pre><code>keel
+|—— dist/
+|   |—— css/
+|   |   |—— main.css
+|   |   |—— main.min.{{version #}}.css
+|   |—— img/
+|   |   |—— # Your image files
+|   |—— js/
+|   |   |—— detects.js
+|   |   |—— detects.min.{{version #}}.js
+|   |   |—— loadJS.js
+|   |   |—— loadJS.min.{{version #}}.js
+|   |   |—— main.js
+|   |   |—— main.min.{{version #}}.js
+|   |   |—— photoswipe.js
+|   |   |—— photoswipe.min.{{version #}}.js
+|   |—— svg/
+|   |   |—— # Your SVGs
+|—— docs/
+|   |—— assets/
+|   |   |—— # Your documentation assets
+|   |—— dist/
+|   |   |—— # Your distribution files
+|   |—— index.html
+|   |—— # Your other documentation files
+|—— includes/
+|   |—— keel-options/
+|   |   |—— keel-post-options.php
+|   |   |—— keel-theme-support.php
+|   |—— keel-page-hero/
+|   |   |—— keel-page-hero-render.php
+|   |   |—— keel-page-hero.js
+|   |   |—— keel-page-hero.php
+|   |—— keel-photoswipe/
+|   |   |—— assets/
+|   |   |   |—— default-skin.png
+|   |   |   |—— default-skin.svg
+|   |   |   |—— masonry.min.js
+|   |   |   |—— preloader.gif
+|   |   |—— keel-photoswipe-options.php
+|   |   |—— keel-photoswipe.php
+|   |—— keel-shortcodes/
+|   |   |—— keel-button-shortcode.php
+|   |   |—— keel-svg-shortcode.php
+|   |—— keel-custom-logo.php
+|   |—— keel-set-page-width.php
+|—— src/
+|   |—— docs/
+|   |   |—— _templates
+|   |   |   |—— _header.html
+|   |   |   |—— _footer.html
+|   |   |   |—— # Your template files
+|   |   |—— assets
+|   |   |   |—— # Your documentation-specific assets
+|   |   |—— index.md
+|   |   |—— # Your documentation files
+|   |—— img/
+|   |   |—— # Your images
+|   |—— js/
+|   |   |—— detects/
+|   |   |   |—— _ready.js
+|   |   |   |—— loadCSS.js
+|   |   |   |—— svg.js
+|   |   |   |—— # Your feature detection scripts
+|   |   |—— main/
+|   |   |   |—— _focus-polyfill.js
+|   |   |   |—— _imagesLoaded.js
+|   |   |   |—— astro.js
+|   |   |   |—— drop.js
+|   |   |   |—— fastclick.js
+|   |   |   |—— fluidvids.js
+|   |   |   |—— sticky-footer.js
+|   |   |   |—— zzz_inits.js
+|   |   |   |—— # Your JavaScript plugins
+|   |   |—— photoswipe/
+|   |   |   |—— _imagesLoaded.js
+|   |   |   |—— masonry.js
+|   |   |   |—— photoswipe-ui-default.js
+|   |   |   |—— photoswipe.js
+|   |   |   |—— zzz_init.js
+|   |   |—— loadJS.js
+|   |—— sass/
+|   |   |—— components/
+|   |   |   |—— _astro-navbar.scss
+|   |   |   |—— _buttons.scss
+|   |   |   |—— _code.scss
+|   |   |   |—— _drop.scss
+|   |   |   |—— _forms.scss
+|   |   |   |—— _grid.scss
+|   |   |   |—— _normalize.scss
+|   |   |   |—— _overrides.scss
+|   |   |   |—— _photoswipe-default-skin.scss
+|   |   |   |—— _photoswipe.scss
+|   |   |   |—— _print.scss
+|   |   |   |—— _svg.scss
+|   |   |   |—— _tables.scss
+|   |   |   |—— _typography.scss
+|   |   |   |—— _wordpress-forms.scss
+|   |   |   |—— _wordpress-images.scss
+|   |   |—— _config.scss
+|   |   |—— _mixins.scss
+|   |   |—— main.scss
+|   |—— static/
+|   |   |—— # Static files and folders
+|   |—— style.css
+|—— test/
+|   |—— coverage/
+|   |   |—— # various files
+|   |—— results/
+|   |   |—— unit-tests.html
+|   |—— spec/
+|   |   |—— spec-myplugin.js
+|   |   |—— # Your Jasmine JS unit tests
+|—— .travis.yml
+|—— gulpfile.js
+|—— 404.php
+|—— archive.php
+|—— author.php
+|—— comments.php
+|—— content-none.php
+|—— content-page.php
+|—— content-search.php
+|—— content.php
+|—— footer.php
+|—— functions.php
+|—— gulpfile.js
+|—— header.php
+|—— index.php
+|—— LICENSE.md
+|—— nav-main.php
+|—— nav-page.php
+|—— nav-secondary.php
+|—— package.json
+|—— page.php
+|—— README.md
+|—— screenshot.png
+|—— search.php
+|—— searchform.php
+|—— single.php
+|—— style.css
+</code></pre><hr>
+
+
+<h2 id="utility-methods">Utility Methods</h2>
+<p>Keel includes a handful of utility methods in the <code>functions.php</code> file that make WordPress development easier.</p>
+<ul>
+<li><code>keel_developer_options()</code> - Easily toggle functionality on or off.</li>
+<li><code>keel_load_theme_files()</code> - Registers your theme styles and scripts and loads them in the markup.</li>
+<li><code>keel_load_inline_header()</code> - Load inline content in the <code>&lt;head&gt;</code>.</li>
+<li><code>keel_load_inline_footer()</code> - Load inlinen content in the footer.</li>
+<li><code>keel_wpsearch()</code> - Creates a shortcode for the searchform.</li>
+<li><code>keel_post_password_form()</code> - Replaces the default password-protected post messaging with custom language.</li>
+<li><code>keel_pretty_wp_title()</code> - Makes the <code>wp_title()</code> function more useful.</li>
+<li><code>keel_excerpt_length()</code> - Adjust default length of <code>the_excerpt()</code> content.</li>
+<li><code>keel_excerpt_more()</code> - Adjust default &quot;read more&quot; text for <code>the_excerpt()</code>.</li>
+<li><code>$content_width</code> - Sets a large maximum content width to avoid weird pixelation.</li>
+<li><code>keel_register_menus()</code> - Registers navigation menus for use with <code>wp_nav_menu()</code> function.</li>
+<li><code>add_theme_support( &#39;post-thumbnails&#39; )</code> - Adds support for featured post images.</li>
+<li><code>keel_remove_wpautop()</code> - Optionally disables automatic addition of paragraphs and break tags to your content. Off by default.</li>
+<li><code>keel_get_all_posts()</code> - Optionally remove pagination from The Loop and get all matching posts. Off by default.</li>
+<li><code>keel_comment_layout()</code> - A custom comment callback for <code>wp_list_comments()</code> used in <code>comments.php</code>.</li>
+<li><code>keel_comment_form()</code> - A custom implementation of <code>comment_form()</code>.</li>
+<li><code>wp_enqueue_script( &#39;comment-reply&#39; )</code> - Adds script for threaded comments if enabled.</li>
+<li><code>keel_dequeue_devicepx()</code> - Deregisters Jetpack&#39;s devicepx.js script.</li>
+<li><code>add_filter( &#39;jetpack_implode_frontend_css&#39;, &#39;__return_false&#39; )</code> - Patch fix to prevent overzealous Jetpack CSS injection (temporary).</li>
+<li><code>keel_remove_empty_p</code> - Remove empty <code>&lt;p&gt;</code> tags added by <code>wpautop()</code>.</li>
+<li><code>$allowedposttags[&#39;svg&#39;][*]</code> - Allow SVGs in the content editor.</li>
+<li><code>keel_allow_svg_mime_type</code> - Allow SVGs to be uploaded to the Media Library.</li>
+<li><code>keel_update_image_default_link_type</code> - Unlink images by default.</li>
+<li><code>keel_just_comments_count()</code> - Gets the number of comments for a post (without trackbacks or pings).</li>
+<li><code>keel_trackbacks_count()</code> - Gets the number of trackbacks for a post.</li>
+<li><code>keel_pings_count()</code> - Gets the number of pings for a post.</li>
+<li><code>keel_is_paginated()</code> - Check if more than one page of content exists.</li>
+<li><code>keel_is_last_post()</code> - Check if a post is the last one in a set.</li>
+<li><code>keel_print_a()</code> - Print a pre formatted array to the browser (useful for debugging).</li>
+<li><code>keel_get_page_id_from_path()</code> - Pass in a path and get back the page ID.</li>
+</ul>
+<hr>
+
+
+<h2 id="working-with-the-source-files">Working with the Source Files</h2>
+<p>Working with the development code in the <code>src</code> directory allows you to take advantage of the powerful features included in Keel&#39;s <a href="http://gulpjs.com">Gulp.js</a> build system.</p>
+<h3 id="dependencies">Dependencies</h3>
+<p>Make sure these are installed first.</p>
+<ul>
+<li><a href="http://nodejs.org/">Node.js</a></li>
+<li><a href="http://gulpjs.com/">Gulp</a></a> <code>sudo npm install -g gulp</code></li>
+</ul>
+<h3 id="quick-start">Quick Start</h3>
+<ul>
+<li>In bash/terminal/command line, <code>cd</code> into the <code>keel</code> directory.</li>
+<li>Run <code>npm install</code> to install the required files.</li>
+<li>When it&#39;s done installing, run one of the task runners to get going:<ul>
+<li><code>gulp</code> manually compiles files.</li>
+<li><code>gulp watch</code> automatically compiles files and applies changes using <a href=""><a href="http://livereload.com/">LiveReload</a>.</li>
+<li><code>gulp test</code> compiles files and runs unit tests.</li>
+</ul>
+</li>
+</ul>
+<h3 id="working-with-sass">Working with Sass</h3>
+<p>Keel&#39;s Sass files are located in <code>src</code> &gt; <code>sass</code>. Keel&#39;s build system generates minified and unminified CSS files. It also includes <a href="https://github.com/postcss/autoprefixer">autoprefixer</a>, which adds vendor prefixes for you if required by the last two versions of a browser (you can configure browser support in <code>gulpfile.js</code>).</p>
+<h4 id="-_config-scss-"><code>_config.scss</code></h4>
+<p>The <code>_config.scss</code> file contains variables for all of the colors, font stacks, breakpoints, and sizing used in Keel. It also contains settings for the grid.</p>
+<pre><code class="lang-scss">// Colors
+$color-primary: #0088cc;
+$color-black: #272727;
+$color-white: #ffffff;
+
+$color-info: #0088cc; // Blue
+$color-success: #377f31; // Green
+$color-danger: #880e14; // Red
+$color-warning: #dba909; // Yellow
+$color-code: #dd1144;
+
+$color-gray-dark: #808080;
+$color-gray-light: #e5e5e5;
+
+$color-twitter: #41b7d8;
+$color-facebook: #3b5997;
+$color-google: #d64937;
+$color-linkedin: #0073b2;
+$color-pinterest: #cb2027;
+$color-github: #3a3838;
+$color-vk: #5e82a8;
+$color-xing: #175e60;
+$color-tumblr: #35465c;
+$color-reddit: #ff5700;
+$color-instagram: #125688;
+$color-flickr: #f91881;
+
+
+// Font Stacks
+$font-primary: &quot;Helvetica Neue&quot;, Arial, sans-serif;
+$font-secondary: Georgia, Times, serif;
+$font-monospace: Menlo, Monaco, &quot;Courier New&quot;, monospace;
+
+
+// Breakpoints
+$bp-xsmall: 20em;
+$bp-small: 30em;
+$bp-medium: 40em;
+$bp-large: 60em;
+$bp-xlarge: 80em;
+
+
+// Sizing
+$font-size: 100%;
+$spacing: 1.5625em;
+$container-width: 88%;
+$container-max-width: $bp-medium;
+$container-large-max-width: $bp-xlarge;
+
+
+// Grid
+$grid-margins: 1.4%;
+$grid-sizes: (
+    // Grid width options
+    // Add/remove grid&#39;s as needed
+    // $name: $width
+    // $name - {string} class suffix
+    // $width - {string} width of the grid
+    fourth: 25%,
+    third: 33.33333333333%,
+    half: 50%,
+    two-thirds: 66.666666666667%,
+    three-fourths: 75%,
+    full: 100%
+);
+$grid-breakpoints: (
+    // Breakpoints at which to activate grid
+    // Add/remove breakpoints as needed
+    // ($breakpoint, $prefix-class, $include-offsets)
+    // $breakpoint - {string|variable} the breakpoint
+    // $prefix-class - {string|optional} class to be used with `.row` to activate grid
+    // $include-offsets - {boolean} if true, include offset classes at this breakpoint
+    ($bp-xsmall, &quot;.row-start-xsmall&quot;, false),
+    ($bp-large, null, true),
+);
+$grid-dynamic: (
+    // Create grid classes that vary in size at different breakpoints
+    // Add/remove classes, breakpoints, and sizes as needed
+    // ($class, $breakpoint, $width)
+    // $class - {string} the grid class
+    // $breakpoint - {string|variable} the breakpoint
+    // $width - {string|variable} width of the grid at the breakpoint
+
+    (&quot;.grid-dynamic&quot;, $bp-xsmall, map-get($grid-sizes, half))
+    (&quot;.grid-dynamic&quot;, $bp-medium, map-get($grid-sizes, third))
+    // (&quot;.grid-dynamic&quot;, $bp-xlarge, map-get($grid-sizes, fourth))
+);
+</code></pre>
+<h4 id="-_mixins-scss-"><code>_mixins.scss</code></h4>
+<p>The <code>_mixins.scss</code> file contains just a handful of mixins and functions to speed up development.</p>
+<ul>
+<li><code>font-face</code> adds the <code>@font-face</code> property.</li>
+<li><code>strip-unit</code> removes units (px, em, etc.) from numbers.</li>
+<li><code>calc-em</code> converts pixels to ems.</li>
+</ul>
+<p><code>font-face</code> was forked from <a href="http://bourbon.io/">Bourbon</a>, the world&#39;s best Sass library.</p>
+<h4 id="components">Components</h4>
+<p>The <code>components</code> folder contains all of the Keel components: the grid, button and form styling, and so on. The <code>main.scss</code> file imports <code>_config.scss</code>, <code>_mixins.scss</code>, and the components for processing into a CSS file.</p>
+<h3 id="working-with-svg">Working with SVG</h3>
+<p>SVG files placed in the <code>src</code> &gt; <code>svg</code> directory will be optimized and compiled into the <code>dist</code> &gt; <code>svg</code> directory. SVG files placed in a subdirectory of <code>src</code> &gt; <code>svg</code> will be compiled into a single SVG sprite named after the subdirectory.</p>
+<p>For example, SVGs placed in <code>svg</code> &gt; <code>portfolio</code> would compile into <code>portfolio.svg</code> in the <code>dist</code> &gt; <code>svg</code> directory.</p>
+<h3 id="working-with-images">Working with Images</h3>
+<p>Image files placed in the <code>src</code> &gt; <code>img</code> directory will be copied as-is into the <code>dist</code> &gt; <code>img</code> directory. While you can add image optimization processes to Gulp, I find that tools like <a href="https://imageoptim.com/">ImageOptim</a> and <a href="http://b64.io/">b64.io</a> do a better job.</p>
+<h3 id="working-with-javascript">Working with JavaScript</h3>
+<p>Keel&#39;s JavaScript files are located in the <code>src</code> &gt; <code>js</code> directory.</p>
+<p>Files placed directly in the <code>js</code> folder will compile directly to <code>dist</code> &gt; <code>js</code> as both minified and unminified files. Files placed in subdirectories will also be concatenated into a single file.</p>
+<p>For example, <code>detects</code> &gt; <code>flexbox.js</code> and <code>detects</code> &gt; <code>svg.js</code> would compile into <code>detects.js</code> in the <code>dist</code> &gt; <code>js</code> directory.</p>
+<h3 id="working-with-static-files">Working with Static Files</h3>
+<p>Files and folders placed in the <code>src</code> &gt; <code>static</code> directory will be copied as-is into the <code>dist</code> directory.</p>
+<h4 id="unit-testing">Unit Testing</h4>
+<p>If you&#39;ve written <a href="http://jasmine.github.io/">Jasmine unit tests</a> for any of your scripts, place them in the <code>test</code> &gt; <code>spec</code> directory and they will automatically run on compile.</p>
+<p>Results are displayed in both the terminal window and <code>test</code> &gt; <code>results</code>. You can see how much coverage each unit test provides in the <code>test</code> &gt; <code>coverage</code> directory.</p>
+<h3 id="continous-integration">Continous Integration</h3>
+<p>Keel includes a configuration file for <a href="http://docs.travis-ci.com/user/getting-started/">Travis CI</a>, a continuous integration service for GitHub.</p>
+<p>If you sign-up and activate it for your repository, Travis CI will run your build and execute any processes to make sure everything is working as expected. This is particularly useful when working with a team or managing open source projects with multiple contributors.</p>
+<p>The <code>.travis.yml</code> file is pre-configured for Keel&#39;s build system. Even if you add files or update the Gulp tasks, you shouldn&#39;t need to change anything for it to work.</p>
+<h3 id="gui-source-compilers">GUI Source Compilers</h3>
+<p>If you would like the benefits of working with the source files, but aren&#39;t comfortable using terminal and command line code, there are a few GUIs that can help.</p>
+<p><a href="https://incident57.com/codekit/">CodeKit</a> and <a href="http://hammerformac.com/">Hammer</a> are two powerful Mac-only products that I used for some time. On Windows, I hear <a href="http://alphapixels.com/prepros/">Prepos</a> is both beautiful and delightful to use.</p></p>
+<p>These tools can&#39;t replicate all of the features of the Gulp.js build system, but they come close.</p>
+<hr>
+
+
+<h2 id="working-with-css">Working with CSS</h2>
+<p>If you&#39;re more comfortable working in CSS, you can modify the <code>main.css</code> stylesheet in the <code>dist</code> &gt; <code>css</code> directory.</p>
+<h3 id="adjusting-settings">Adjusting Settings</h3>
+<dl>
+    <dt>Page Width</dt>
+    <dd>The <code>.container</code> class sets the width for page content. Adjust the <code>max-width</code> property to set the maximum width of the page.</dd>
+
+    <dt>Font Stack</dt>
+    <dd>The <code>body</code> element sets the typeface for the entire set. By default, the font stack is Helvetica Neue, Arial, and sans-serif. The two exceptions are <code>pre</code> and <code>code</code> elements, which use a monospace stack. Adjust as desired.</dd>
+
+    <dt>Typographic Scale</dt>
+    <dd>Keel uses a <a href="http://lamb.cc/typograph/">fluid typographic scale</a>. You can scale the size of all site elements proportionately by adjusting the <code>font-size</code> property on the body element, which is set to 100% by default (and 125% on screens above 80em).</dd>
+
+    <dt>Colors (used throughout)</dt>
+    <dd>Primary: <code style="color: #ffffff; background-color: #0088cc;">#0088cc</code><br>
+    Black: <code style="color: #ffffff; background-color: #272727;">#272727</code><br>
+    White: <code style="color: #272727; background-color: #ffffff;">#ffffff</code><br>
+    Dark Gray: <code style="color: #ffffff; background-color: #808080;">#808080</code><br>
+    Light Gray: <code style="color: #272727; background-color:#e5e5e5 ;">#e5e5e5</code></dd>
+
+    <dt>Breakpoints (used throughout)</dt>
+    <dd>Extra Small: 20em<br>
+    Small: 30em<br>
+    Medium: 40em<br>
+    Large: 60em<br>
+    Extra Large: 80em</dd>
+</dl>					</section><!-- /.container -->
+
+					<footer class="padding-top padding-bottom">
+
+							<hr>
+
+							<p class="text-small text-muted margin-bottom-small">Keel by <a href="http://gomakethings.com">Go Make Things</a>. The code is available under the <a href="https://github.com/cferdinandi/kraken/blob/master/LICENSE.md">MIT License</a>.</p>
+
+					</footer>
+				</main>
+			</div><!-- /.row -->
+		</div><!-- /.container -->
+
+		<!-- Javascript -->
+		<script src="assets/js/toc.js"></script>
+		<script src="assets/js/highlight-active-nav.js"></script>
+		<script src="assets/js/smooth-scroll.js"></script>
+		<script src="assets/js/prism.js"></script>
+		<script>
+			tableOfContents.init({
+				heading: 'In This Section',
+				headingClass: 'h3',
+				navClass: 'list-unstyled',
+				linkClass: 'js-smooth-scroll',
+				callback: function () {
+					var links = document.querySelectorAll( '.js-smooth-scroll' );
+					for (var i = 0, len = links.length; i < len; i++) {
+						links[i].setAttribute( 'data-scroll', true );
+					}
+					smoothScroll.init();
+				}
+			});
+			// highlightActiveNav.init({
+			// 	urlPrefix: '/kraken/'
+			// });
+		</script>
+
+	</body>
+</html>
