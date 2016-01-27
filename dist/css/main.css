@@ -1,5 +1,5 @@
 /*!
- * keel v6.0.0: A lightweight boilerplate for WordPress developers
+ * keel v6.0.1: A lightweight boilerplate for WordPress developers
  * (c) 2016 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/keel
@@ -1571,15 +1571,7 @@ td {
   }
 }
 
-@media (max-width: 40em) {
-  /* line 22, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_drop.scss */
-  .js-astro .nav-navbar .menu-item-has-children > a, .js-astro .nav-navbar .menu-item-has-children > .link-block-styled {
-    cursor: not-allowed;
-    pointer-events: none;
-  }
-}
-
-/* line 28, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_drop.scss */
+/* line 21, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_drop.scss */
 .nav-navbar .menu-item-has-children:focus > a:after, .nav-navbar .menu-item-has-children:focus > .link-block-styled:after,
 .nav-navbar .menu-item-has-children:hover > a:after,
 .nav-navbar .menu-item-has-children:hover > .link-block-styled:after,
@@ -1589,7 +1581,7 @@ td {
 }
 
 @media (max-width: 40em) {
-  /* line 34, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_drop.scss */
+  /* line 27, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_drop.scss */
   .js-astro .nav-navbar .menu-item-has-children:focus > a:after, .js-astro .nav-navbar .menu-item-has-children:focus > .link-block-styled:after, .js-astro
   .nav-navbar .menu-item-has-children:hover > a:after, .js-astro
   .nav-navbar .menu-item-has-children:hover > .link-block-styled:after, .js-astro
@@ -1602,7 +1594,7 @@ td {
 /**
  * Dropdown content
  */
-/* line 46, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_drop.scss */
+/* line 39, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_drop.scss */
 .sub-menu {
   background-color: #ffffff;
   border: 0;
@@ -1627,14 +1619,14 @@ td {
 	 */
 }
 
-/* line 66, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_drop.scss */
+/* line 59, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_drop.scss */
 .sub-menu ul,
 .sub-menu ol {
   list-style: none;
   margin-left: 0;
 }
 
-/* line 72, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_drop.scss */
+/* line 65, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_drop.scss */
 .sub-menu a, .sub-menu .link-block-styled {
   color: #0088cc;
   display: block;
@@ -1642,7 +1634,7 @@ td {
   padding-right: 0.5em;
 }
 
-/* line 78, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_drop.scss */
+/* line 71, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_drop.scss */
 .sub-menu a:focus, .sub-menu .link-block-styled:focus, .sub-menu a:hover, .sub-menu .link-block-styled:hover, .sub-menu .link-block:hover .link-block-styled, .link-block:hover .sub-menu .link-block-styled {
   background-color: #0088cc;
   color: #ffffff;
@@ -1650,7 +1642,7 @@ td {
 }
 
 @media (max-width: 60em) {
-  /* line 87, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_drop.scss */
+  /* line 80, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_drop.scss */
   .js-astro.js-drop .sub-menu a:hover, .js-astro.js-drop .sub-menu .link-block-styled:hover, .js-astro.js-drop .sub-menu .link-block:hover .link-block-styled, .link-block:hover .js-astro.js-drop .sub-menu .link-block-styled {
     background-color: transparent;
     color: #005580;
@@ -1658,7 +1650,7 @@ td {
   }
 }
 
-/* line 102, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_drop.scss */
+/* line 95, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_drop.scss */
 .menu-item-has-children:focus .sub-menu,
 .menu-item-has-children:hover .sub-menu,
 .menu-item-has-children.active .sub-menu {
@@ -1672,7 +1664,7 @@ td {
   width: auto;
 }
 
-/* line 114, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_drop.scss */
+/* line 107, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_drop.scss */
 .js-drop .menu-item-has-children:focus .sub-menu, .js-drop
 .menu-item-has-children:hover .sub-menu, .js-drop
 .menu-item-has-children.active .sub-menu {
@@ -1680,7 +1672,7 @@ td {
 }
 
 @media (max-width: 40em) {
-  /* line 118, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_drop.scss */
+  /* line 111, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_drop.scss */
   .js-astro.js-drop .menu-item-has-children:focus .sub-menu, .js-astro.js-drop
   .menu-item-has-children:hover .sub-menu, .js-astro.js-drop
   .menu-item-has-children.active .sub-menu {
@@ -1689,7 +1681,7 @@ td {
 }
 
 @media (max-width: 40em) {
-  /* line 129, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_drop.scss */
+  /* line 122, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_drop.scss */
   .js-astro .sub-menu,
   .js-astro .menu-item-has-children.active .sub-menu {
     background-color: transparent;
