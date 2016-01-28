@@ -1,5 +1,5 @@
 /*!
- * keel v6.0.1: A lightweight boilerplate for WordPress developers
+ * keel v6.0.2: A lightweight boilerplate for WordPress developers
  * (c) 2016 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/keel
