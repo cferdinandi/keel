@@ -1,5 +1,5 @@
 /*!
- * keel v6.0.1: A lightweight boilerplate for WordPress developers
+ * keel v6.0.2: A lightweight boilerplate for WordPress developers
  * (c) 2016 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/keel
@@ -2577,10 +2577,17 @@ function makeArray( obj ) {
 
 });
 astro.init();
-drop.init({
-	selector: '.menu-item-has-children',
-});
 stickyFooter.init();
+
+ready(function () {
+	var dropdown = document.querySelectorAll( '.menu-item-has-children > a' );
+	for (var i = 0, len = dropdown.length; i < len; i++) {
+		dropdown[i].className += ' needsclick';
+	}
+	drop.init({
+		selector: '.menu-item-has-children'
+	});
+});
 
 fluidvids.init({
 	selector: ['iframe', 'object'],
