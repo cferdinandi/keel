@@ -63,49 +63,56 @@
 <hr>
 
 
-<h2 id="what-s-included">What&#39;s included</h2>
+<h2 id="what-s-included-">What&#39;s included?</h2>
+<p>Designed to be lightweight and style agnostic, Keel includes just the essentials.</p>
+<h3 id="essential-components">Essential Components</h3>
+<p>Lightweight, style-agnostic components to kick-start your next project.</p>
 <ul>
-<li><a href="http://cferdinandi.github.io/kraken/">Kraken</a> is now used for a basic styling template that includes a responsive grid, forms, tables, and buttons.</li>
-<li>Accessible, mobile-friendly navigation and dropdown patterns are baked-in, powered by <a href="https://github.com/cferdinandi/astro">Astro</a> and <a href="https://github.com/cferdinandi/drop">Drop</a>.</li>
-<li>Responsive video and Google Map support via <a href="https://github.com/toddmotto/fluidvids">FluidVids.js</a>.</li>
-<li>Faster mobile tap performance thanks to <a href="https://github.com/ftlabs/fastclick">FastClick</a>.</li>
-<li><a href="https://github.com/filamentgroup/loadJS">LoadJS</a> and <a href="https://github.com/filamentgroup/loadCSS">loadCSS</a> for asynchronous loading of non-critical files for better performance.</li>
-<li>A ton of WordPress-specific features that can be turned on or off with a single line of code (see below).</li>
+<li>Normalize.css</li>
+<li>A responsive, mobile-first grid</li>
+<li>A well-designed, fluid typographic scale</li>
+<li>CSS buttons</li>
+<li>Form components</li>
+<li>Simple table styling, with pure CSS responsive tables</li>
+<li>Common WordPress template files</li>
+<li>A small set of custom utility methods that make development easier</li>
+<li>Fully internationalized and translation-ready</li>
 </ul>
-<p>And the whole thing is <a href="http://gomakethings.com/ditching-jquery/">powered by native JavaScript</a>&mdash;no jQuery dependencies for anything.</p>
-<hr>
-
-
-<h2 id="wordpress-specific-features">WordPress-specific features</h2>
+<h3 id="wordpress-specific-features">WordPress-Specific Features</h3>
 <p>To help accelerate theme development, Keel also includes some WordPress-specific features that you can toggle on or off with a single line of code.</p>
 <ul>
-<li>Beautiful mosaic image galleries.</li>
-<li>A GUI for creating image-driven hero headers.</li>
-<li>The ability to upload a custom logo.</li>
-<li>Shortcodes to create button links and embed inline SVGs.</li>
-<li>Custom page width and layout settings for greater design flexibility.</li>
-<li>An option to disable comments site-wide.</li>
-<li>A GUI for adding a message or call-to-action after every blog post.</li>
-<li>A “Theme Support” page in the Dashboard for your clients.</li>
+<li>Beautiful mosaic image galleries</li>
+<li>A GUI for creating image-driven hero headers</li>
+<li>The ability to upload a custom logo</li>
+<li>Shortcodes to create button links and embed inline SVGs</li>
+<li>Custom page width and layout settings for greater design flexibility</li>
+<li>An option to disable comments site-wide</li>
+<li>A GUI for adding a message or call-to-action after every blog post</li>
+<li>A &quot;Theme Support&quot; page in the Dashboard for your clients</li>
 </ul>
-<hr>
-
-
-<h2 id="ugly-on-purpose">Ugly on purpose</h2>
-<p>True to the original vision, Keel is a bit ugly on purpose. It</p>
-<p>isn’t supposed to be a finished product. It’s a starting point that you can adapt to any project you’re working on. Add components. Remove components. Tweak the colors and font stack. Make Keel your own.</p>
-<hr>
-
-
-<h2 id="built-for-mobile-built-for-performance-">Built for mobile. Built for performance.</h2>
-<p>Mobile-first. jQuery-free. Progressively-enhanced. Powered by <a href="http://www.slideshare.net/stubbornella/object-oriented-css">Object-Oriented CSS</a>.</p>
-<p>Keel was built to be fast and lightweight, and provide a kickass mobile experience.</p>
-<hr>
-
-
-<h2 id="built-for-developers">Built for developers</h2>
-<p>Under the hood, Keel is powered by <a href="http://gulpjs.com/">Gulp.js</a>, a build system that minifies and concatenates your <a href="http://sass-lang.com/">Sass</a> and JavaScript, auto-prefixes your CSS, <a href="http://jasmine.github.io/">runs unit tests</a> on your scripts, optimizes your SVGs, and creates SVG sprites.</p>
+<h3 id="developer-tools">Developer Tools</h3>
+<p>Keel is powered by <a href="http://gulpjs.com/">Gulp.js</a>, a build system that minifies and concatenates your <a href="http://sass-lang.com/">Sass</a> and JavaScript, auto-prefixes your CSS, runs <a href="http://jasmine.github.io/">unit tests</a> on your scripts, optimizes your SVGs, and creates SVG sprites.</p>
 <p>It also includes a style guide generator to help you quickly bring your team or clients up-to-speed.</p>
+<hr>
+
+
+<h2 id="the-keel-approach">The Keel Approach</h2>
+<p>Keel is a lightweight boilerplate for front-end web developers. It&#39;s built to be flexible and modular, with performance and accessibility in mind.</p>
+<h3 id="ugly-on-purpose">Ugly on purpose</h3>
+<p>Out-of-the-box, Keel is a bit ugly. That&#39;s intentional.</p>
+<p>Keel isn&#39;t supposed to be a finished product. It&#39;s a starting point that you can adapt to any project you&#39;re working on. Add components. Remove components. Tweak the colors and font stack. Make Keel your own.</p>
+<h3 id="mobile-first">Mobile-First</h3>
+<p>Keel is built mobile-first. The base structure is a fully-fluid, single-column layout. It uses <code>@media (min-width: whatever)</code> to add a grid-based layout to bigger screens.</p>
+<p>Think of it as progressive enhancement for the layout.</p>
+<p>Keel also includes feature detection for things like SVG support. Just like the layout, those are served to browsers that support them, while fallback text is supplied to older and less capable browsers.</p>
+<h3 id="object-oriented-css">Object Oriented CSS</h3>
+<p>Keel takes an <a href="http://www.slideshare.net/stubbornella/object-oriented-css">OOCSS approach</a> to web development.</p>
+<p>Throughout the stylesheet, you&#39;ll see base styles and modifying styles. For example, <code>.btn</code> sets the default button styles and behavior, while <code>.btn-secondary</code> changes the color and <code>.btn-large</code> changes the size. A big button with secondary colors would look like this:</p>
+<button class="btn btn-secondary btn-large">A Big Button</button>
+
+<pre><code class="lang-markup">&lt;button class=&quot;btn btn-secondary btn-large&quot;&gt;A Big Button&lt;/button&gt;
+</code></pre>
+<p>Classes can be mixed, matched and reused throughout a project.</p>
 <hr>
 
 
