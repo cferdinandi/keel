@@ -12,7 +12,7 @@
 		width: calc-em(8px);
 
 		.js-astro & {
-			@media (max-width: $bp-medium) {
+			@media (max-width: $bp-large) {
 				content: "";
 			}
 		}
@@ -23,7 +23,7 @@
 	&.active > a:after {
 		content: "\2013";
 
-		@media (max-width: $bp-medium) {
+		@media (max-width: $bp-large) {
 			.js-astro & {
 				content: "";
 			}
@@ -109,7 +109,7 @@
 		}
 
 		.js-astro.js-drop & {
-			@media (max-width: $bp-medium) {
+			@media (max-width: $bp-large) {
 				margin-top: 0;
 			}
 		}
@@ -118,7 +118,7 @@
 	/**
 	 * Switch up styling on JS-supported small viewports
 	 */
-	@media (max-width: $bp-medium) {
+	@media (max-width: $bp-large) {
 		.js-astro &,
 		// .js-astro .dropdown-basic.active &,
 		.js-astro .menu-item-has-children.active & {
