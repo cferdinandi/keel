@@ -1,5 +1,5 @@
 /*!
- * keel v6.0.3: A lightweight boilerplate for WordPress developers
+ * keel v6.1.0: A lightweight boilerplate for WordPress developers
  * (c) 2016 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/keel
@@ -1605,7 +1605,7 @@ td {
   float: left;
   height: 1px;
   margin: -1px;
-  min-width: 10em;
+  min-width: 12em;
   overflow: hidden;
   padding: 0;
   position: absolute;
