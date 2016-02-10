@@ -157,6 +157,7 @@ keel
 |—— screenshot.png
 |—— search.php
 |—— searchform.php
+|—— sidebar.php
 |—— single.php
 |—— style.css
 ```

@@ -113,6 +113,7 @@ var banner = {
 		' * Author URI: <%= package.author.url %>\n' +
 		' * License: <%= package.license %>\n' +
 		' * Open Source Credits: <%= package.openSource.credits %>\n' +
+		' * Text Domain: keel\n' +
 		' */'
 };
 
