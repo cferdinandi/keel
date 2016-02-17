@@ -150,7 +150,7 @@
 	 * @return string       New read more string
 	 */
 	function keel_excerpt_more( $more ) {
-		return '... <a href="'. get_permalink( get_the_ID() ) . '">' . __('Read More', 'keel') . '</a>';
+		return '...';
 	}
 	add_filter( 'excerpt_more', 'keel_excerpt_more' );
 

@@ -10,6 +10,8 @@ get_header(); ?>
 
 <?php if (have_posts()) : ?>
 
+	<h1 class="screen-reader"><?php _e( 'Blog Articles', 'keel' ); ?></h1>
+
 	<?php
 		// Start the loop
 		while (have_posts()) : the_post();
