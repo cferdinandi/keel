@@ -88,3 +88,10 @@ From the Dashboard, visit `Posts` > `Post Options`, and add your content. Click 
 ## Theme Support
 
 Provide your theme users with in-theme support information. This adds a page under `Appearance` > `Theme Support` in the Dashboard. Add your content in the `keel-theme-support.php` template under `Includes` > `keel-options.php`.
+
+<hr>
+
+
+## Helper Methods
+
+There are a numerous helper functions in the `functions.php` file. There are too many to list and document here, but they’re all documented using the PHPDoc format.
