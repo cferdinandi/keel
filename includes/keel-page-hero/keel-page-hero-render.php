@@ -92,7 +92,7 @@
 									<?php if ( $page_header !== 'on' ) : ?>
 										<h1><?php the_title(); ?></h1>
 									<?php endif; ?>
-									<?php echo do_shortcode( $hero['content'] ); ?>
+									<?php echo do_shortcode( wpautop( $hero['content'] ) ); ?>
 								</div>
 								<div class="grid-half grid-flip margin-bottom">
 									<?php echo $image; ?>

@@ -5,7 +5,23 @@
 	 */
 
 
-	// Create a metabox
+	/**
+	 * Create the metabox default values
+	 */
+	function keel_page_hero_metabox_defaults() {
+		return array(
+			'content' => '',
+			'content_markdown' => '',
+			'image' => '',
+			'overlay' => 'off',
+			'min_height' => '',
+		);
+	}
+
+
+	/**
+	 * Create a metabox
+	 */
 	function keel_page_hero_box() {
 
 		// Check that feature is activated
@@ -19,13 +35,17 @@
 
 
 
-	// Add textarea to the metabox
+	/**
+	 * Add fields to the metabox
+	 */
 	function keel_page_hero_textarea() {
 
 		global $post;
 
 		// Get hero content
-		$hero = get_post_meta( $post->ID, 'keel_page_hero', true );
+		$saved = get_post_meta( $post->ID, 'keel_page_hero', true );
+		$defaults = keel_page_hero_metabox_defaults();
+		$hero = wp_parse_args( $saved, $defaults );
 
 		?>
 
@@ -35,7 +55,7 @@
 
 			<fieldset>
 				<?php wp_editor(
-					( array_key_exists( 'content', (array) $hero ) ? stripslashes( $hero['content'] ) : '' ),
+					stripslashes( keel_get_jetpack_markdown( $hero, 'content' ) ),
 					'keel_page_hero_content',
 					array(
 						'wpautop' => false,
@@ -50,7 +70,7 @@
 
 			<fieldset>
 				<label for="keel_page_hero_image_upload"><?php printf( __( '[Optional] Select an image or video using the Media Uploader. Alternatively, paste the URL for a video hosted on YouTube, Vimeo, Viddler, Instagram, TED, %sand more%s. Example: %s', 'keel' ), '<a target="_blank" href="http://www.oembed.com/#section7.1">', '</a>', '<code>http://youtube.com/watch/?v=12345abc</code>' ); ?></label>
-				<input type="text" class="large-text" name="keel_page_hero_image" id="keel_page_hero_image" value="<?php echo ( array_key_exists( 'image', (array) $hero ) ? stripslashes( esc_attr( $hero['image'] ) ) : '' ); ?>"><br>
+				<input type="text" class="large-text" name="keel_page_hero_image" id="keel_page_hero_image" value="<?php echo stripslashes( $hero['image'] ); ?>"><br>
 				<button type="button" class="button" id="keel_page_hero_image_upload_btn" data-keel-page-hero="#keel_page_hero_image"><?php _e( 'Select an Image or Video', 'keel' )?></button>
 			</fieldset>
 
@@ -59,7 +79,7 @@
 			<p>To add a background image to your hero banner, set a <em>Featured Image</em>.</p>
 
 			<fieldset>
-				<input type="checkbox" id="keel_page_hero_overlay" name="keel_page_hero_overlay" value="on" <?php checked( 'on',  ( array_key_exists( 'overlay', (array) $hero ) ? $hero['overlay'] : '' ) ); ?>>
+				<input type="checkbox" id="keel_page_hero_overlay" name="keel_page_hero_overlay" value="on" <?php checked( 'on',  $hero['overlay'] ); ?>>
 				<label for="keel_page_hero_overlay"><?php _e( 'Add a semi-transparent overlay to the background image to make the text easier to read', 'keel' ); ?></label>
 			</fieldset>
 
@@ -67,7 +87,7 @@
 
 			<fieldset>
 				<label for="keel_page_hero_image_upload"><?php printf( __( '[Optional] Make sure the hero never gets too small by providing a minimum height. Example: %s', 'keel' ), '<code>300px</code>' ); ?></label>
-				<input type="text" class="large-text" name="keel_page_hero_min_height" id="keel_page_hero_min_height" value="<?php echo ( array_key_exists( 'min_height', (array) $hero ) ? stripslashes( esc_attr( $hero['min_height'] ) ) : '' ); ?>">
+				<input type="text" class="large-text" name="keel_page_hero_min_height" id="keel_page_hero_min_height" value="<?php echo stripslashes( $hero['min_height'] ); ?>">
 			</fieldset>
 
 		<?php
@@ -79,7 +99,11 @@
 
 
 
-	// Save textarea data
+	/**
+	 * Save field data
+	 * @param  number $post_id The post ID
+	 * @param  Array $post     The post data
+	 */
 	function keel_save_page_hero_textarea( $post_id, $post ) {
 
 		// Verify data came from edit screen
@@ -96,7 +120,8 @@
 		$hero = array();
 
 		if ( isset( $_POST['keel_page_hero_content'] ) ) {
-			$hero['content'] = wp_filter_post_kses( $_POST['keel_page_hero_content'] );
+			$hero['content'] = keel_process_jetpack_markdown( wp_filter_post_kses( $_POST['keel_page_hero_content'] ) );
+			$hero['content_markdown'] = wp_filter_post_kses( $_POST['keel_page_hero_content'] );
 		}
 
 		if ( isset( $_POST['keel_page_hero_image'] ) ) {
@@ -142,6 +167,10 @@
 					add_metadata( 'post', $post_id, 'keel_page_hero_content', $hero['content'] );
 				}
 
+				if ( array_key_exists( 'content_markdown', $hero ) ) {
+					add_metadata( 'post', $post_id, 'keel_page_hero_content_markdown', $hero['content'] );
+				}
+
 				if ( array_key_exists( 'image', $hero ) ) {
 					add_metadata( 'post', $post_id, 'keel_page_hero_image', $hero['image'] );
 				}
@@ -174,6 +203,7 @@
 		$revision = get_post( $revision_id );
 		$hero = get_post_meta( $post_id, 'keel_page_hero', true );
 		$hero_content = get_metadata( 'post', $revision->ID, 'keel_page_hero_content', true );
+		$hero_content_markdown = get_metadata( 'post', $revision->ID, 'keel_page_hero_content_markdown', true );
 		$hero_image = get_metadata( 'post', $revision->ID, 'keel_page_hero_image', true );
 		$hero_color = get_metadata( 'post', $revision->ID, 'keel_page_hero_color', true );
 		$hero_overlay = get_metadata( 'post', $revision->ID, 'keel_page_hero_overlay', true );
@@ -182,6 +212,9 @@
 		// Update content
 		if ( !empty( $hero_content ) ) {
 			$hero['content'] = $hero_content;
+		}
+		if ( !empty( $hero_content_markdown ) ) {
+			$hero['content_markdown'] = $hero_content_markdown;
 		}
 		if ( !empty( $hero_image ) ) {
 			$hero['image'] = $hero_image;
@@ -205,6 +238,7 @@
 	// Get the data to display the revisions page
 	function keel_get_revisions_field_page_hero_textarea( $fields ) {
 		$fields['keel_page_hero_content'] = 'Page Hero Content';
+		$fields['keel_page_hero_content_markdown'] = 'Page Hero Markdown Content';
 		$fields['keel_page_hero_image'] = 'Page Hero Image or Video';
 		$fields['keel_page_hero_color'] = 'Page Hero Background and Text Color';
 		$fields['keel_page_hero_overlay'] = 'Page Hero Background Overlay';

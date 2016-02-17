@@ -12,8 +12,8 @@
 }
 
 
-// Hack for WP form button
-#submit {
+// Hack for WP form buttons
+input[type="submit"] {
 	@extend .btn;
 	@extend .input-inline;
 }

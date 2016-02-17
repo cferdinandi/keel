@@ -1,5 +1,5 @@
 /*!
- * keel v6.2.0: A lightweight boilerplate for WordPress developers
+ * keel v6.3.0: A lightweight boilerplate for WordPress developers
  * (c) 2016 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/keel
@@ -693,7 +693,7 @@ pre code {
  * Primary buttons
  */
 /* line 10, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_buttons.scss */
-.btn, #submit {
+.btn, input[type="submit"] {
   background-color: #0088cc;
   border: 0.125em solid #0088cc;
   border-radius: 1px;
@@ -709,13 +709,13 @@ pre code {
 }
 
 /* line 24, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_buttons.scss */
-.btn:hover, #submit:hover,
+.btn:hover, input[type="submit"]:hover,
 a .btn:hover, .link-block-styled .btn:hover,
-a #submit:hover, .link-block-styled #submit:hover, .btn:focus, #submit:focus,
+a input[type="submit"]:hover, .link-block-styled input[type="submit"]:hover, .btn:focus, input[type="submit"]:focus,
 a .btn:focus, .link-block-styled .btn:focus,
-a #submit:focus, .link-block-styled #submit:focus, .btn:active, #submit:active,
+a input[type="submit"]:focus, .link-block-styled input[type="submit"]:focus, .btn:active, input[type="submit"]:active,
 a .btn:active, .link-block-styled .btn:active,
-a #submit:active, .link-block-styled #submit:active, .btn.active, .active#submit {
+a input[type="submit"]:active, .link-block-styled input[type="submit"]:active, .btn.active, input.active[type="submit"] {
   background-color: #005580;
   border-color: #005580;
   color: #ffffff;
@@ -727,28 +727,28 @@ a #submit:active, .link-block-styled #submit:active, .btn.active, .active#submit
  * Ghosted buttons
  */
 /* line 63, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_buttons.scss */
-.btn-ghost, .bg-dark .btn, .bg-dark #submit {
+.btn-ghost, .bg-dark .btn, .bg-dark input[type="submit"] {
   background-color: transparent;
   border-color: #ffffff;
 }
 
 /* line 67, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_buttons.scss */
-.btn-ghost:hover, .bg-dark .btn:hover, .bg-dark #submit:hover,
+.btn-ghost:hover, .bg-dark .btn:hover, .bg-dark input[type="submit"]:hover,
 a .btn-ghost:hover, .link-block-styled .btn-ghost:hover,
 a .bg-dark .btn:hover, .bg-dark
 a .btn:hover, .link-block-styled .bg-dark .btn:hover, .bg-dark .link-block-styled .btn:hover,
-a .bg-dark #submit:hover, .bg-dark
-a #submit:hover, .link-block-styled .bg-dark #submit:hover, .bg-dark .link-block-styled #submit:hover, .btn-ghost:focus, .bg-dark .btn:focus, .bg-dark #submit:focus,
+a .bg-dark input[type="submit"]:hover, .bg-dark
+a input[type="submit"]:hover, .link-block-styled .bg-dark input[type="submit"]:hover, .bg-dark .link-block-styled input[type="submit"]:hover, .btn-ghost:focus, .bg-dark .btn:focus, .bg-dark input[type="submit"]:focus,
 a .btn-ghost:focus, .link-block-styled .btn-ghost:focus,
 a .bg-dark .btn:focus, .bg-dark
 a .btn:focus, .link-block-styled .bg-dark .btn:focus, .bg-dark .link-block-styled .btn:focus,
-a .bg-dark #submit:focus, .bg-dark
-a #submit:focus, .link-block-styled .bg-dark #submit:focus, .bg-dark .link-block-styled #submit:focus, .btn-ghost:active, .bg-dark .btn:active, .bg-dark #submit:active,
+a .bg-dark input[type="submit"]:focus, .bg-dark
+a input[type="submit"]:focus, .link-block-styled .bg-dark input[type="submit"]:focus, .bg-dark .link-block-styled input[type="submit"]:focus, .btn-ghost:active, .bg-dark .btn:active, .bg-dark input[type="submit"]:active,
 a .btn-ghost:active, .link-block-styled .btn-ghost:active,
 a .bg-dark .btn:active, .bg-dark
 a .btn:active, .link-block-styled .bg-dark .btn:active, .bg-dark .link-block-styled .btn:active,
-a .bg-dark #submit:active, .bg-dark
-a #submit:active, .link-block-styled .bg-dark #submit:active, .bg-dark .link-block-styled #submit:active, .btn-ghost.active, .bg-dark .active.btn, .bg-dark .active#submit {
+a .bg-dark input[type="submit"]:active, .bg-dark
+a input[type="submit"]:active, .link-block-styled .bg-dark input[type="submit"]:active, .bg-dark .link-block-styled input[type="submit"]:active, .btn-ghost.active, .bg-dark .active.btn, .bg-dark input.active[type="submit"] {
   background-color: #ffffff;
   border-color: #ffffff;
   color: #272727;
@@ -758,9 +758,9 @@ a #submit:active, .link-block-styled .bg-dark #submit:active, .bg-dark .link-blo
  * Active state
  */
 /* line 84, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_buttons.scss */
-.btn:active, #submit:active,
+.btn:active, input[type="submit"]:active,
 .btn.active,
-.active#submit {
+input.active[type="submit"] {
   box-shadow: inset 0 0.15625em 0.25em rgba(0, 0, 0, 0.15), 0 1px 0.15625em rgba(0, 0, 0, 0.05);
   outline: 0;
 }
@@ -769,9 +769,9 @@ a #submit:active, .link-block-styled .bg-dark #submit:active, .bg-dark .link-blo
  * Disabled state
  */
 /* line 94, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_buttons.scss */
-.btn.disabled, .disabled#submit,
+.btn.disabled, input.disabled[type="submit"],
 .btn[disabled],
-[disabled]#submit {
+input[disabled][type="submit"] {
   box-shadow: none;
   cursor: not-allowed;
   opacity: 0.5;
@@ -807,7 +807,7 @@ input[type="button"].btn-block {
  * General styles
  */
 /* line 131, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_buttons.scss */
-.btn, #submit,
+.btn, input[type="submit"],
 button,
 html input[type="button"],
 input[type="reset"],
@@ -826,9 +826,9 @@ input[type="submit"] {
  * Remove right margin on last element and inputs
  */
 /* line 152, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_buttons.scss */
-.btn:last-child, #submit:last-child,
+.btn:last-child, input[type="submit"]:last-child,
 input.btn,
-input#submit {
+input[type="submit"] {
   margin-right: 0;
 }
 
@@ -985,7 +985,7 @@ select:focus {
  * Inline inputs
  */
 /* line 133, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_forms.scss */
-.input-inline, #submit {
+.input-inline, input[type="submit"] {
   display: inline-block;
   vertical-align: middle;
   width: auto;
@@ -2607,7 +2607,7 @@ a.pswp__share--download:hover, .pswp__share--download.link-block-styled:hover, .
 }
 
 /* line 38, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
-.bg-dark .btn, .bg-dark #submit {
+.bg-dark .btn, .bg-dark input[type="submit"] {
   color: #ffffff;
   text-decoration: none;
 }
