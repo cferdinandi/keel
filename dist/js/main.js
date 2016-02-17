@@ -1,5 +1,5 @@
 /*!
- * keel v6.3.0: A lightweight boilerplate for WordPress developers
+ * keel v6.4.0: A lightweight boilerplate for WordPress developers
  * (c) 2016 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/keel
@@ -2590,8 +2590,8 @@ ready(function () {
 });
 
 fluidvids.init({
-	selector: ['iframe', 'object'],
-	players: ['www.youtube.com', 'player.vimeo.com', 'www.slideshare.net', 'www.google.com/maps']
+    selector: ['iframe', 'object'],
+    players: ['www.youtube.com', 'player.vimeo.com', 'www.slideshare.net', 'www.google.com/maps', 'maps.google.com']
 });
 
 ready(function () {
