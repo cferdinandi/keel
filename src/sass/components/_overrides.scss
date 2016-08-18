@@ -5,68 +5,6 @@
 
 
 /**
- * Backgrounds
- */
-
-.bg-muted {
-	background-color: lighten( $color-gray-light, 5% );
-}
-
-.bg-dark {
-	background-color: $color-black;
-	color: $color-white;
-
-	a {
-		color: $color-gray-light;
-		text-decoration: underline;
-
-		&.link-block {
-			text-decoration: none;
-		}
-
-		&.link-block-styled {
-			text-decoration: underline;
-		}
-
-		&:active,
-		&:focus,
-		&:hover {
-			color: $color-white;
-		}
-	}
-
-	.btn {
-		@extend .btn-ghost;
-		color: $color-white;
-		text-decoration: none;
-	}
-}
-
-.bg-hero {
-	background-position: center;
-	background-size: cover;
-	width: 100%;
-}
-
-
-/**
- * Borders
- */
-
-.border {
-	border: calc-em(1px) solid $color-gray-light;
-}
-
-
-/**
- * Text shadow
- */
-.text-shadow {
-	text-shadow: 1px 1px 1px $color-black;
-}
-
-
-/**
  * Text sizes
  */
 
@@ -109,17 +47,9 @@
 	text-align: left;
 }
 
-@media (min-width: $bp-large) {
-	.text-center-large {
-		text-align: center;
-	}
-
-	.text-right-large {
+@media (min-width: $bp-medium) {
+	.text-right-medium {
 		text-align: right;
-	}
-
-	.text-left-large {
-		text-align: left;
 	}
 }
 
@@ -184,10 +114,6 @@
 	padding-bottom: 0;
 }
 
-.padding {
-	padding: $spacing;
-}
-
 .padding-top {
 	padding-top: $spacing;
 }
@@ -200,10 +126,6 @@
 	padding-top: calc-em(32px);
 }
 
-.padding-top-xlarge {
-	padding-top: 4em;
-}
-
 .padding-bottom {
 	padding-bottom: $spacing;
 }
@@ -214,10 +136,6 @@
 
 .padding-bottom-large {
 	padding-bottom: calc-em(32px);
-}
-
-.padding-bottom-xlarge {
-	padding-bottom: 4em;
 }
 
 

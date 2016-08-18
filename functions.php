@@ -444,28 +444,6 @@
 
 
 	/**
-	 * Allow new content types in posts
-	 */
-	$allowedposttags['svg']['xmlns'] = true;
-	$allowedposttags['svg']['class'] = true;
-	$allowedposttags['svg']['id'] = true;
-	$allowedposttags['svg']['viewbox'] = true;
-	$allowedposttags['path']['d'] = true;
-
-
-
-	/**
-	 * Allow SVGs in the Media Uploader
-	 */
-	function keel_allow_svg_mime_type( $mimes ) {
-		$mimes['svg'] = 'image/svg+xml';
-		return $mimes;
-	}
-	add_filter( 'upload_mimes', 'keel_allow_svg_mime_type' );
-
-
-
-	/**
 	 * Unlink images by default
 	 */
 	function keel_update_image_default_link_type() {

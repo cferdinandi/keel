@@ -89,9 +89,9 @@ textarea {
 	overflow: auto;
 }
 
-input[type="image"],
-input[type="checkbox"],
-input[type="radio"] {
+[type="image"],
+[type="checkbox"],
+[type="radio"] {
 	cursor: pointer;
 	display: inline-block;
 	height: auto;
@@ -105,8 +105,8 @@ input[type="radio"] {
  * `font-size` values of the `input`, it causes the cursor style of the
  * decrement button to change from `default` to `text`.
  */
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
 	height: auto;
 }
 
@@ -118,12 +118,45 @@ textarea:focus {
 	outline: thin dotted \9;
 }
 
-input[type="file"]:focus,
-input[type="checkbox"]:focus,
+[type="file"]:focus,
+[type="checkbox"]:focus,
 select:focus {
 	outline: thin dotted;
 	outline: calc-em(5px) auto -webkit-focus-ring-color;
 	outline-offset: calc-em(-2px);
+}
+
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+	border-style: none;
+	padding: 0;
+}
+
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+	outline: 1px dotted ButtonText;
+}
+
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+::-webkit-file-upload-button {
+	-webkit-appearance: button; /* 1 */
+	font: inherit; /* 2 */
 }
 
 
@@ -147,26 +180,26 @@ select:focus {
 
 
 /**
- * Underlined inputs
- */
-.input-underline {
-	border-top: 0;
-	border-left: 0;
-	border-right: 0;
-}
-
-
-/**
  * Search
  */
+
+
+ /**
+  * 1. Correct the odd appearance in Chrome and Safari.
+  * 2. Correct the outline style in Safari.
+  */
+[type="search"] {
+	-webkit-appearance: textfield; /* 1 */
+	outline-offset: -2px; /* 2 */
+}
 
 /**
  * Remove inner padding and search cancel button in Safari and Chrome on OS X.
  * Safari (but not Chrome) clips the cancel button when the search input has
  * padding (and `textfield` appearance).
  */
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration {
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
 	-webkit-appearance: none;
 }
 
@@ -177,13 +210,9 @@ input[type="search"]::-webkit-search-decoration {
 .input-search {
 	width: 85%;
 	padding-left: calc-em(15px);
-	padding-right: calc-em(70px);
+	padding-right: calc-em(40px);
 	border-radius: calc-em(21px);
 	transition: width 300ms ease-in;
-
-	.svg & {
-		padding-right: calc-em(40px);
-	}
 
 	@media (min-width: $bp-medium) {
 		width: 65%;
@@ -199,12 +228,8 @@ input[type="search"]::-webkit-search-decoration {
 	color: $color-gray-dark;
 	border: none;
 	background: none;
-	margin-left: calc-em(-70px);
+	margin-left: calc-em(-40px);
 	margin-bottom: 0;
-
-	.svg & {
-		margin-left: calc-em(-40px);
-	}
 
 	.icon {
 		fill: $color-gray-dark;

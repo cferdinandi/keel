@@ -39,8 +39,10 @@
 				</section>
 			<![endif]-->
 
-			<!-- Skip link for better accessibility -->
-			<a class="screen-reader screen-reader-focusable" href="#main">Skip to main content</a>
+			<?php
+				// Get a11y navigation enhancements
+				get_template_part( 'nav', 'a11y' );
+			?>
 
 			<?php
 				// Get site navigation

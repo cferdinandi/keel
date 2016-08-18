@@ -8,7 +8,7 @@
 
 ?>
 
-<nav class="nav-wrap-navbar nav-collapse <?php if ( !keel_has_hero() ) { echo 'margin-bottom'; } ?>">
+<nav class="nav-wrap-navbar nav-collapse <?php if ( !keel_has_hero() ) { echo 'margin-bottom'; } ?>  no-js-drop">
 	<div class="container container-large">
 		<a class="logo-navbar" href="<?php echo site_url(); ?>/">
 			<?php
@@ -25,12 +25,13 @@
 				<?php endif; ?>
 			<?php endif; ?>
 		</a>
-		<?php if ( has_nav_menu( 'primary' ) ) : ?>
+		<?php if ( has_nav_menu( 'primary' ) || wp_get_nav_menu_object( 'Primary' ) ) : ?>
 			<a class="nav-toggle-navbar" data-nav-toggle="#nav-menu" href="#">Menu</a>
 			<div class="nav-menu-navbar" id="nav-menu">
 				<?php
 					wp_nav_menu(
 						array(
+							'menu'           => 'Primary',
 							'theme_location' => 'primary',
 							'container'      => false,
 							'menu_class'     => 'nav-navbar',

@@ -9,7 +9,7 @@
  */
 .btn {
 	background-color: $color-primary;
-	border: calc-em(2px) solid $color-primary;
+	border: calc-em(1px) solid $color-primary;
 	border-radius: calc-em(1px);
 	color: $color-white;
 	display: inline-block;
@@ -19,7 +19,6 @@
 	margin-right: calc-em(5px);
 	margin-bottom: calc-em(5px);
 	padding: calc-em(8px) calc-em(11px);
-	text-decoration: none;
 
 	&:hover,
 	a &:hover,
@@ -32,37 +31,16 @@
 		border-color: darken( $color-primary, 15% );
 		color: $color-white;
 		text-decoration: none;
-		text-shadow: none;
 	}
 }
 
 
-// /**
-//  * Secondary buttons
-//  */
-// .btn-secondary {
-// 	background-color: $color-gray-dark;
-// 	border-color: $color-gray-dark;
-
-// 	&:hover,
-// 	a &:hover,
-// 	&:focus,
-// 	a &:focus,
-// 	&:active,
-// 	a &:active,
-// 	&.active {
-// 		background-color: darken( $color-gray-dark, 15% );
-// 		border-color: darken( $color-gray-dark, 15% );
-// 	}
-// }
-
-
 /**
- * Ghosted buttons
+ * Secondary buttons
  */
-.btn-ghost {
-	background-color: transparent;
-	border-color: $color-white;
+.btn-secondary {
+	background-color: $color-gray-dark;
+	border-color: $color-gray-dark;
 
 	&:hover,
 	a &:hover,
@@ -71,9 +49,8 @@
 	&:active,
 	a &:active,
 	&.active {
-		background-color: $color-white;
-		border-color: $color-white;
-		color: $color-black;
+		background-color: darken( $color-gray-dark, 15% );
+		border-color: darken( $color-gray-dark, 15% );
 	}
 }
 
