@@ -1,5 +1,5 @@
 /*!
- * keel v6.4.2: A lightweight boilerplate for WordPress developers
+ * keel v7.0.0: A lightweight boilerplate for WordPress developers
  * (c) 2016 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/keel
@@ -96,7 +96,7 @@ body {
 
 /**
  * Correct `block` display not defined for any HTML5 element in IE 8/9.
- * Correct `block` display not defined for `details` or `summary` in IE 10/11
+ * Correct `block` display not defined for `details` in IE 10/11
  * and Firefox.
  * Correct `block` display not defined for `main` in IE 11.
  */
@@ -113,31 +113,43 @@ hgroup,
 main,
 menu,
 nav,
-section,
-summary {
+section {
   display: block;
 }
 
-/**
- * 1. Correct `inline-block` display not defined in IE 8/9.
- * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+/*
+ * Add the correct display in all browsers.
  */
-/* line 91, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_normalize.scss */
+/* line 89, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_normalize.scss */
+summary {
+  display: list-item;
+}
+
+/**
+ * Correct `inline-block` display not defined in IE 8/9.
+ */
+/* line 96, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_normalize.scss */
 audio,
 canvas,
 progress,
 video {
   display: inline-block;
   /* 1 */
+}
+
+/**
+ * Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+/* line 106, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_normalize.scss */
+progress {
   vertical-align: baseline;
-  /* 2 */
 }
 
 /**
  * Prevent modern browsers from displaying `audio` without controls.
  * Remove excess height in iOS 5 devices.
  */
-/* line 103, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_normalize.scss */
+/* line 114, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_normalize.scss */
 audio:not([controls]) {
   display: none;
   height: 0;
@@ -146,7 +158,7 @@ audio:not([controls]) {
 /**
  * Prevent img and video elements from spilling outside of the page on smaller screens.
  */
-/* line 111, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_normalize.scss */
+/* line 122, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_normalize.scss */
 img,
 video {
   max-width: 100%;
@@ -157,7 +169,7 @@ video {
  * Prevent iframe, object, and embed elements from spilling outside of the page on smaller screens.
  * height: auto causes iframes to smush, so it's omitted here.
  */
-/* line 121, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_normalize.scss */
+/* line 132, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_normalize.scss */
 iframe,
 object,
 embed {
@@ -171,7 +183,7 @@ embed {
  * 1. Remove border when inside `a` element in IE 8/9/10.
  * 2. Prevents IE from making scaled images look like crap
  */
-/* line 138, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_normalize.scss */
+/* line 149, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_normalize.scss */
 img {
   border: 0;
   /* 1 */
@@ -182,7 +194,7 @@ img {
 /**
  * Correct overflow not hidden in IE 9/10/11.
  */
-/* line 146, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_normalize.scss */
+/* line 157, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_normalize.scss */
 svg:not(:root) {
   overflow: hidden;
 }
@@ -190,9 +202,18 @@ svg:not(:root) {
 /**
  * Address inconsistent margin.
  */
-/* line 153, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_normalize.scss */
+/* line 164, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_normalize.scss */
 figure {
   margin: 0;
+}
+
+/**
+ * @workaround Remove focus from <main> element when using tabindex="-1" hack for skipnav link
+ * @link https://code.google.com/p/chromium/issues/detail?id=37721
+ */
+/* line 172, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_normalize.scss */
+.tabindex:focus {
+  outline: none;
 }
 
 /**
@@ -362,39 +383,38 @@ p {
 
 /**
  * Hyperlink styling
+ * 1. Remove the gray background on active links in IE 10.
+ * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
  */
-/* line 27, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
+/* line 29, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
 a, .link-block-styled {
   background-color: transparent;
+  /* 1 */
   color: #0088cc;
   text-decoration: none;
   word-wrap: break-word;
+  -webkit-text-decoration-skip: objects;
+  /* 2 */
   /**
 	 * Improve readability when focused and also mouse hovered in all browsers.
 	 */
 }
 
-/* line 36, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
+/* line 39, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
 a:active, .link-block-styled:active, a:hover, .link-block-styled:hover, .link-block:hover .link-block-styled {
   outline: 0;
 }
 
-/* line 41, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
-a:hover, .link-block-styled:hover, .link-block:hover .link-block-styled, a:focus, .link-block-styled:focus, a:active, .link-block-styled:active {
+/* line 44, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
+a:active, .link-block-styled:active, a:focus, .link-block-styled:focus, a:hover, .link-block-styled:hover, .link-block:hover .link-block-styled {
   color: #005580;
   text-decoration: underline;
-}
-
-/* line 48, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
-a img, .link-block-styled img {
-  border: none;
-  background: none;
 }
 
 /**
  * Creates block-level links
  */
-/* line 59, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
+/* line 57, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
 a.link-block, .link-block.link-block-styled {
   color: #272727;
   display: block;
@@ -404,14 +424,14 @@ a.link-block, .link-block.link-block-styled {
 /**
  * List styling
  */
-/* line 78, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
+/* line 76, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
 ul,
 ol {
   margin: 0 0 1.5625em 2em;
   padding: 0;
 }
 
-/* line 84, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
+/* line 82, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
 ul ul,
 ul ol,
 ol ol,
@@ -419,19 +439,19 @@ ol ul {
   margin-bottom: 0;
 }
 
-/* line 91, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
+/* line 89, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
 dl,
 dd {
   margin: 0;
   padding: 0;
 }
 
-/* line 97, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
+/* line 95, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
 dd {
   margin-bottom: 1.5625em;
 }
 
-/* line 101, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
+/* line 99, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
 dt {
   font-weight: bold;
 }
@@ -440,7 +460,7 @@ dt {
  * Removes list styling.
  * For semantic reasons, should only be used on unordered lists.
  */
-/* line 109, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
+/* line 107, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
 .list-unstyled {
   margin-left: 0;
   list-style: none;
@@ -449,7 +469,7 @@ dt {
 /**
  * Display lists on a single line.
  */
-/* line 118, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
+/* line 116, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
 .list-inline {
   list-style: none;
   margin-left: -0.5em;
@@ -457,41 +477,27 @@ dt {
   padding: 0;
 }
 
-/* line 124, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
+/* line 123, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
 .list-inline > li {
   display: inline;
   margin-left: 0.5em;
   margin-right: 0.5em;
 }
 
-/* line 131, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
-.list-inline-responsive > li {
-  display: block;
-  margin-bottom: 0.25em;
-}
-
-@media (min-width: 40em) {
-  /* line 131, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
-  .list-inline-responsive > li {
-    display: inline;
-    margin-bottom: 0;
-  }
-}
-
 /**
  * Heading styling for h1 through h6 elements.
  * Heading class lets you use one heading type for semantics, but style it as another heading type.
  */
-/* line 147, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
+/* line 135, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
 h1, h2, h3, h4, h5, h6 {
-  font-weight: bold;
+  font-weight: normal;
   line-height: 1.2;
   margin: 0 0 1em;
   padding: 1em 0 0;
   word-wrap: break-word;
 }
 
-/* line 155, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
+/* line 143, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
 h1,
 .h1 {
   font-size: 1.5em;
@@ -499,32 +505,32 @@ h1,
 }
 
 @media (min-width: 40em) {
-  /* line 155, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
+  /* line 143, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
   h1,
   .h1 {
     font-size: 1.75em;
   }
 }
 
-/* line 165, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
+/* line 153, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
 h2,
 .h2 {
   font-size: 1.3125em;
 }
 
-/* line 170, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
+/* line 158, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
 h3,
 .h3 {
   font-size: 1.1875em;
 }
 
-/* line 175, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
+/* line 163, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
 h4, h5, h6,
 .h4, .h5, .h6 {
   font-size: 1em;
 }
 
-/* line 180, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
+/* line 168, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
 h4,
 .h4 {
   text-transform: uppercase;
@@ -533,38 +539,52 @@ h4,
 /**
  * Lines, Quotes and Emphasis
  */
-/* line 190, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
+/* line 178, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
 hr {
-  margin: 2em auto;
   border: 0;
   border-top: 1px solid #e5e5e5;
   border-bottom: 0 solid #ffffff;
-}
-
-/* line 197, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
-b,
-strong {
-  font-weight: bold;
-}
-
-/* line 202, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
-i,
-em {
-  font-style: italic;
+  box-sizing: content-box;
+  margin: 2em auto;
+  overflow: visible;
 }
 
 /**
- * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
  */
-/* line 210, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
+/* line 190, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
+b,
+strong {
+  font-weight: inherit;
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+/* line 198, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Remove the bottom border in Firefox 39-.
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+/* line 207, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
 abbr[title] {
-  border-bottom: 1px dotted;
+  border-bottom: none;
+  /* 1 */
+  text-decoration: underline;
+  /* 2 */
+  text-decoration: underline dotted;
+  /* 2 */
 }
 
 /**
  * Address styling not present in Safari and Chrome.
  */
-/* line 217, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
+/* line 216, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
 dfn {
   font-style: italic;
 }
@@ -572,9 +592,10 @@ dfn {
 /**
  * Address styling not present in IE 8/9.
  */
-/* line 224, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
+/* line 223, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_typography.scss */
 mark {
   background: #ff0;
+  color: #000000;
 }
 
 /**
@@ -659,9 +680,10 @@ code {
   background-color: #f7f7f7;
   color: #dd1144;
   padding: 0.25em;
+  word-wrap: break-word;
 }
 
-/* line 21, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_code.scss */
+/* line 22, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_code.scss */
 pre {
   background-color: #f4f4f4;
   display: block;
@@ -676,7 +698,7 @@ pre {
   word-break: break-all;
 }
 
-/* line 32, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_code.scss */
+/* line 33, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_code.scss */
 pre code {
   background-color: transparent;
   border: 0;
@@ -695,7 +717,7 @@ pre code {
 /* line 10, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_buttons.scss */
 .btn, input[type="submit"] {
   background-color: #0088cc;
-  border: 0.125em solid #0088cc;
+  border: 1px solid #0088cc;
   border-radius: 1px;
   color: #ffffff;
   display: inline-block;
@@ -705,10 +727,9 @@ pre code {
   margin-right: 0.3125em;
   margin-bottom: 0.3125em;
   padding: 0.5em 0.6875em;
-  text-decoration: none;
 }
 
-/* line 24, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_buttons.scss */
+/* line 23, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_buttons.scss */
 .btn:hover, input[type="submit"]:hover,
 a .btn:hover, .link-block-styled .btn:hover,
 a input[type="submit"]:hover, .link-block-styled input[type="submit"]:hover, .btn:focus, input[type="submit"]:focus,
@@ -720,44 +741,30 @@ a input[type="submit"]:active, .link-block-styled input[type="submit"]:active, .
   border-color: #005580;
   color: #ffffff;
   text-decoration: none;
-  text-shadow: none;
 }
 
 /**
- * Ghosted buttons
+ * Secondary buttons
  */
-/* line 63, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_buttons.scss */
-.btn-ghost, .bg-dark .btn, .bg-dark input[type="submit"] {
-  background-color: transparent;
-  border-color: #ffffff;
+/* line 41, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_buttons.scss */
+.btn-secondary {
+  background-color: #808080;
+  border-color: #808080;
 }
 
-/* line 67, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_buttons.scss */
-.btn-ghost:hover, .bg-dark .btn:hover, .bg-dark input[type="submit"]:hover,
-a .btn-ghost:hover, .link-block-styled .btn-ghost:hover,
-a .bg-dark .btn:hover, .bg-dark
-a .btn:hover, .link-block-styled .bg-dark .btn:hover, .bg-dark .link-block-styled .btn:hover,
-a .bg-dark input[type="submit"]:hover, .bg-dark
-a input[type="submit"]:hover, .link-block-styled .bg-dark input[type="submit"]:hover, .bg-dark .link-block-styled input[type="submit"]:hover, .btn-ghost:focus, .bg-dark .btn:focus, .bg-dark input[type="submit"]:focus,
-a .btn-ghost:focus, .link-block-styled .btn-ghost:focus,
-a .bg-dark .btn:focus, .bg-dark
-a .btn:focus, .link-block-styled .bg-dark .btn:focus, .bg-dark .link-block-styled .btn:focus,
-a .bg-dark input[type="submit"]:focus, .bg-dark
-a input[type="submit"]:focus, .link-block-styled .bg-dark input[type="submit"]:focus, .bg-dark .link-block-styled input[type="submit"]:focus, .btn-ghost:active, .bg-dark .btn:active, .bg-dark input[type="submit"]:active,
-a .btn-ghost:active, .link-block-styled .btn-ghost:active,
-a .bg-dark .btn:active, .bg-dark
-a .btn:active, .link-block-styled .bg-dark .btn:active, .bg-dark .link-block-styled .btn:active,
-a .bg-dark input[type="submit"]:active, .bg-dark
-a input[type="submit"]:active, .link-block-styled .bg-dark input[type="submit"]:active, .bg-dark .link-block-styled input[type="submit"]:active, .btn-ghost.active, .bg-dark .active.btn, .bg-dark input.active[type="submit"] {
-  background-color: #ffffff;
-  border-color: #ffffff;
-  color: #272727;
+/* line 45, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_buttons.scss */
+.btn-secondary:hover,
+a .btn-secondary:hover, .link-block-styled .btn-secondary:hover, .btn-secondary:focus,
+a .btn-secondary:focus, .link-block-styled .btn-secondary:focus, .btn-secondary:active,
+a .btn-secondary:active, .link-block-styled .btn-secondary:active, .btn-secondary.active {
+  background-color: #5a5a5a;
+  border-color: #5a5a5a;
 }
 
 /**
  * Active state
  */
-/* line 84, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_buttons.scss */
+/* line 61, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_buttons.scss */
 .btn:active, input[type="submit"]:active,
 .btn.active,
 input.active[type="submit"] {
@@ -768,7 +775,7 @@ input.active[type="submit"] {
 /**
  * Disabled state
  */
-/* line 94, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_buttons.scss */
+/* line 71, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_buttons.scss */
 .btn.disabled, input.disabled[type="submit"],
 .btn[disabled],
 input[disabled][type="submit"] {
@@ -781,7 +788,7 @@ input[disabled][type="submit"] {
 /**
  * Button size
  */
-/* line 106, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_buttons.scss */
+/* line 83, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_buttons.scss */
 .btn-large {
   font-size: 1em;
   line-height: normal;
@@ -791,7 +798,7 @@ input[disabled][type="submit"] {
 /**
  * Block-level buttons
  */
-/* line 116, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_buttons.scss */
+/* line 93, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_buttons.scss */
 .btn-block,
 input[type="submit"].btn-block,
 input[type="reset"].btn-block,
@@ -806,7 +813,7 @@ input[type="button"].btn-block {
 /**
  * General styles
  */
-/* line 131, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_buttons.scss */
+/* line 108, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_buttons.scss */
 .btn, input[type="submit"],
 button,
 html input[type="button"],
@@ -825,7 +832,7 @@ input[type="submit"] {
 /**
  * Remove right margin on last element and inputs
  */
-/* line 152, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_buttons.scss */
+/* line 129, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_buttons.scss */
 .btn:last-child, input[type="submit"]:last-child,
 input.btn,
 input[type="submit"] {
@@ -941,9 +948,9 @@ textarea {
 }
 
 /* line 92, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_forms.scss */
-input[type="image"],
-input[type="checkbox"],
-input[type="radio"] {
+[type="image"],
+[type="checkbox"],
+[type="radio"] {
   cursor: pointer;
   display: inline-block;
   height: auto;
@@ -958,8 +965,8 @@ input[type="radio"] {
  * decrement button to change from `default` to `text`.
  */
 /* line 108, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_forms.scss */
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
 
@@ -973,8 +980,8 @@ textarea:focus {
 }
 
 /* line 121, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_forms.scss */
-input[type="file"]:focus,
-input[type="checkbox"]:focus,
+[type="file"]:focus,
+[type="checkbox"]:focus,
 select:focus {
   outline: thin dotted;
   outline: 0.3125em auto -webkit-focus-ring-color;
@@ -982,9 +989,44 @@ select:focus {
 }
 
 /**
- * Inline inputs
+ * Remove the inner border and padding in Firefox.
  */
 /* line 133, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_forms.scss */
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+/* line 145, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_forms.scss */
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+/* line 157, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_forms.scss */
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+}
+
+/**
+ * Inline inputs
+ */
+/* line 166, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_forms.scss */
 .input-inline, input[type="submit"] {
   display: inline-block;
   vertical-align: middle;
@@ -994,56 +1036,53 @@ select:focus {
 /**
  * Condensed inputs
  */
-/* line 143, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_forms.scss */
+/* line 176, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_forms.scss */
 .input-condensed {
   padding: 1px 0.3125em;
   font-size: 0.9375em;
 }
 
 /**
- * Underlined inputs
- */
-/* line 152, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_forms.scss */
-.input-underline {
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
-}
-
-/**
  * Search
  */
+/**
+  * 1. Correct the odd appearance in Chrome and Safari.
+  * 2. Correct the outline style in Safari.
+  */
+/* line 191, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_forms.scss */
+[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */
+}
+
 /**
  * Remove inner padding and search cancel button in Safari and Chrome on OS X.
  * Safari (but not Chrome) clips the cancel button when the search input has
  * padding (and `textfield` appearance).
  */
-/* line 168, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_forms.scss */
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration {
+/* line 201, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_forms.scss */
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
 /**
  * Create rounded search bar
  */
-/* line 177, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_forms.scss */
+/* line 210, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_forms.scss */
 .input-search {
   width: 85%;
   padding-left: 0.9375em;
-  padding-right: 4.375em;
+  padding-right: 2.5em;
   border-radius: 1.3125em;
   -webkit-transition: width 300ms ease-in;
           transition: width 300ms ease-in;
 }
 
-/* line 184, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_forms.scss */
-.svg .input-search {
-  padding-right: 2.5em;
-}
-
 @media (min-width: 40em) {
-  /* line 177, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_forms.scss */
+  /* line 210, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_forms.scss */
   .input-search {
     width: 65%;
   }
@@ -1052,32 +1091,27 @@ input[type="search"]::-webkit-search-decoration {
 /**
  * Special styling for search icon as button
  */
-/* line 197, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_forms.scss */
+/* line 226, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_forms.scss */
 .btn-search {
   display: inline;
   color: #808080;
   border: none;
   background: none;
-  margin-left: -4.375em;
+  margin-left: -2.5em;
   margin-bottom: 0;
 }
 
-/* line 205, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_forms.scss */
-.svg .btn-search {
-  margin-left: -2.5em;
-}
-
-/* line 209, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_forms.scss */
+/* line 234, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_forms.scss */
 .btn-search .icon {
   fill: #808080;
 }
 
-/* line 213, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_forms.scss */
+/* line 238, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_forms.scss */
 .btn-search:hover {
   color: #5a5a5a;
 }
 
-/* line 216, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_forms.scss */
+/* line 241, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_forms.scss */
 .btn-search:hover .icon {
   fill: #5a5a5a;
 }
@@ -1116,82 +1150,6 @@ input[type="search"]::-webkit-search-decoration {
 .svg .icon {
   height: 1em;
   width: 1em;
-}
-
-/**
- * Icon sizes
- */
-/* line 29, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_svg.scss */
-.svg .icon-large {
-  height: 1.5em;
-  width: 1.5em;
-}
-
-/**
- * Colors
- */
-/* line 39, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_svg.scss */
-.icon-facebook {
-  fill: #3b5997;
-}
-
-/* line 40, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_svg.scss */
-.icon-twitter {
-  fill: #41b7d8;
-}
-
-/* line 41, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_svg.scss */
-.icon-youtube,
-.icon-google {
-  fill: #d64937;
-}
-
-/* line 43, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_svg.scss */
-.icon-instagram {
-  fill: #125688;
-}
-
-/* line 44, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_svg.scss */
-.icon-pinterest {
-  fill: #cb2027;
-}
-
-/* line 45, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_svg.scss */
-.icon-flickr {
-  fill: #f91881;
-}
-
-/* line 49, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_svg.scss */
-.bg-dark .icon-link {
-  fill: #ffffff;
-}
-
-/* line 53, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_svg.scss */
-a:hover .icon-link, .link-block-styled:hover .icon-link, .link-block:hover .link-block-styled .icon-link {
-  fill: #005580;
-}
-
-/* line 56, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_svg.scss */
-.bg-dark a:hover .icon-link, .bg-dark .link-block-styled:hover .icon-link, .bg-dark .link-block:hover .link-block-styled .icon-link, .link-block:hover .bg-dark .link-block-styled .icon-link {
-  fill: #e5e5e5;
-}
-
-/* line 62, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_svg.scss */
-a.link-icon, .link-icon.link-block-styled {
-  text-decoration: none;
-}
-
-/* line 65, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_svg.scss */
-.bg-dark a.link-icon, .bg-dark .link-icon.link-block-styled,
-.bg-dark a.link-icon:active,
-.bg-dark .link-icon.link-block-styled:active,
-.bg-dark a.link-icon:focus,
-.bg-dark .link-icon.link-block-styled:focus,
-.bg-dark a.link-icon:hover,
-.bg-dark .link-icon.link-block-styled:hover,
-.bg-dark .link-block:hover .link-icon.link-block-styled, .link-block:hover
-.bg-dark .link-icon.link-block-styled {
-  text-decoration: none;
 }
 
 /**
@@ -1645,8 +1603,11 @@ td {
   /* line 80, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_drop.scss */
   .js-astro.js-drop .sub-menu a:hover, .js-astro.js-drop .sub-menu .link-block-styled:hover, .js-astro.js-drop .sub-menu .link-block:hover .link-block-styled, .link-block:hover .js-astro.js-drop .sub-menu .link-block-styled {
     background-color: transparent;
-    color: #005580;
     text-decoration: underline;
+  }
+  /* line 86, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_drop.scss */
+  .js-astro.js-drop .sub-menu a, .js-astro.js-drop .sub-menu .link-block-styled {
+    color: #ffffff;
   }
 }
 
@@ -2572,85 +2533,21 @@ a.pswp__share--download:hover, .pswp__share--download.link-block-styled:hover, .
  * Nudge and tweak alignment, spacing, and visibility.
  */
 /**
- * Backgrounds
- */
-/* line 11, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
-.bg-muted {
-  background-color: #f2f2f2;
-}
-
-/* line 15, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
-.bg-dark {
-  background-color: #272727;
-  color: #ffffff;
-}
-
-/* line 19, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
-.bg-dark a, .bg-dark .link-block-styled {
-  color: #e5e5e5;
-  text-decoration: underline;
-}
-
-/* line 23, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
-.bg-dark a.link-block, .bg-dark .link-block.link-block-styled {
-  text-decoration: none;
-}
-
-/* line 27, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
-.bg-dark a.link-block-styled, .bg-dark .link-block-styled {
-  text-decoration: underline;
-}
-
-/* line 31, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
-.bg-dark a:active, .bg-dark .link-block-styled:active, .bg-dark a:focus, .bg-dark .link-block-styled:focus, .bg-dark a:hover, .bg-dark .link-block-styled:hover, .bg-dark .link-block:hover .link-block-styled, .link-block:hover .bg-dark .link-block-styled {
-  color: #ffffff;
-}
-
-/* line 38, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
-.bg-dark .btn, .bg-dark input[type="submit"] {
-  color: #ffffff;
-  text-decoration: none;
-}
-
-/* line 45, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
-.bg-hero {
-  background-position: center;
-  background-size: cover;
-  width: 100%;
-}
-
-/**
- * Borders
- */
-/* line 56, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
-.border {
-  border: 1px solid #e5e5e5;
-}
-
-/**
- * Text shadow
- */
-/* line 64, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
-.text-shadow {
-  text-shadow: 1px 1px 1px #272727;
-}
-
-/**
  * Text sizes
  */
-/* line 73, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
+/* line 11, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
 .text-small {
   font-size: 0.9375em;
 }
 
-/* line 77, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
+/* line 15, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
 .text-large {
   font-size: 1.1875em;
   line-height: 1.4;
 }
 
 @media (min-width: 40em) {
-  /* line 77, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
+  /* line 15, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
   .text-large {
     font-size: 1.3125em;
   }
@@ -2659,7 +2556,7 @@ a.pswp__share--download:hover, .pswp__share--download.link-block-styled:hover, .
 /**
  * Text colors
  */
-/* line 91, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
+/* line 29, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
 .text-muted {
   color: #808080;
 }
@@ -2667,52 +2564,44 @@ a.pswp__share--download:hover, .pswp__share--download.link-block-styled:hover, .
 /**
  * Text alignment
  */
-/* line 100, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
+/* line 38, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
 .text-center {
   text-align: center;
 }
 
-/* line 104, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
+/* line 42, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
 .text-right {
   text-align: right;
 }
 
-/* line 108, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
+/* line 46, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
 .text-left {
   text-align: left;
 }
 
-@media (min-width: 60em) {
-  /* line 113, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
-  .text-center-large {
-    text-align: center;
-  }
-  /* line 117, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
-  .text-right-large {
+@media (min-width: 40em) {
+  /* line 51, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
+  .text-right-medium {
     text-align: right;
-  }
-  /* line 121, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
-  .text-left-large {
-    text-align: left;
   }
 }
 
 /**
  * Floats
  */
-/* line 131, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
+/* line 61, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
 .float-left {
   float: left;
 }
 
-/* line 135, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
+/* line 65, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
 .float-center {
   float: none;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* line 141, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
+/* line 71, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
 .float-right {
   float: right;
 }
@@ -2720,32 +2609,32 @@ a.pswp__share--download:hover, .pswp__share--download.link-block-styled:hover, .
 /**
  * Margins
  */
-/* line 150, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
+/* line 80, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
 .no-margin-top {
   margin-top: 0;
 }
 
-/* line 154, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
+/* line 84, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
 .no-margin-bottom {
   margin-bottom: 0;
 }
 
-/* line 158, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
+/* line 88, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
 .margin-top {
   margin-top: 1.5625em;
 }
 
-/* line 162, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
+/* line 92, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
 .margin-bottom {
   margin-bottom: 1.5625em;
 }
 
-/* line 166, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
+/* line 96, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
 .margin-bottom-small {
   margin-bottom: 0.5em;
 }
 
-/* line 170, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
+/* line 100, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
 .margin-bottom-large {
   margin-bottom: 2em;
 }
@@ -2753,59 +2642,44 @@ a.pswp__share--download:hover, .pswp__share--download.link-block-styled:hover, .
 /**
  * Padding
  */
-/* line 179, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
+/* line 109, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
 .no-padding-top {
   padding-top: 0;
 }
 
-/* line 183, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
+/* line 113, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
 .no-padding-bottom {
   padding-bottom: 0;
 }
 
-/* line 187, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
-.padding {
-  padding: 1.5625em;
-}
-
-/* line 191, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
+/* line 117, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
 .padding-top {
   padding-top: 1.5625em;
 }
 
-/* line 195, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
+/* line 121, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
 .padding-top-small {
   padding-top: 0.5em;
 }
 
-/* line 199, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
+/* line 125, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
 .padding-top-large {
   padding-top: 2em;
 }
 
-/* line 203, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
-.padding-top-xlarge {
-  padding-top: 4em;
-}
-
-/* line 207, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
+/* line 129, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
 .padding-bottom {
   padding-bottom: 1.5625em;
 }
 
-/* line 211, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
+/* line 133, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
 .padding-bottom-small {
   padding-bottom: 0.5em;
 }
 
-/* line 215, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
+/* line 137, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
 .padding-bottom-large {
   padding-bottom: 2em;
-}
-
-/* line 219, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
-.padding-bottom-xlarge {
-  padding-bottom: 4em;
 }
 
 /**
@@ -2816,7 +2690,7 @@ a.pswp__share--download:hover, .pswp__share--download.link-block-styled:hover, .
  * @link https://github.com/h5bp/html5-boilerplate/blob/master/dist/css/main.css
  * @link http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
  */
-/* line 233, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
+/* line 151, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
 .screen-reader, .svg .icon-fallback-text {
   border: 0;
   clip: rect(0 0 0 0);
@@ -2833,7 +2707,7 @@ a.pswp__share--download:hover, .pswp__share--download.link-block-styled:hover, .
  * @link https://github.com/h5bp/html5-boilerplate/blob/master/dist/css/main.css
  * @link https://www.drupal.org/node/897638
  */
-/* line 249, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
+/* line 167, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
 .screen-reader-focusable:active,
 .screen-reader-focusable:focus {
   clip: auto;
@@ -2849,7 +2723,7 @@ a.pswp__share--download:hover, .pswp__share--download.link-block-styled:hover, .
  * @affected IE 8/9/10
  * @link http://juicystudio.com/article/screen-readers-display-none.php
  */
-/* line 264, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
+/* line 182, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
 [hidden], template, .tarpit, .pswp__caption small {
   display: none;
   visibility: hidden;
@@ -2860,7 +2734,7 @@ a.pswp__share--download:hover, .pswp__share--download.link-block-styled:hover, .
  * The space content is one way to avoid an Opera bug when the `contenteditable` attribute is included anywhere else in the document.
  * @link https://github.com/h5bp/html5-boilerplate/blob/master/dist/css/main.css
  */
-/* line 276, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
+/* line 194, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
 .clearfix:before, .container:before,
 .row:before,
 .clearfix:after,
@@ -2870,7 +2744,7 @@ a.pswp__share--download:hover, .pswp__share--download.link-block-styled:hover, .
   content: " ";
 }
 
-/* line 282, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
+/* line 200, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
 .clearfix:after, .container:after,
 .row:after {
   clear: both;
