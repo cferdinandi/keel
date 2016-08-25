@@ -46,7 +46,7 @@
 	float: left;
 	height: 1px;
 	margin: -1px;
-	min-width: 12em;
+	min-width: 100%;
 	overflow: hidden;
 	padding: 0;
 	position: absolute;
@@ -56,6 +56,10 @@
 	width: 1px;
 	z-index: 1000;
 
+	@media (min-width: $bp-large) {
+		min-width: 12em;
+	}
+
 	ul,
 	ol {
 		list-style: none;
@@ -63,28 +67,16 @@
 	}
 
 	a {
-		color: $color-primary;
 		display: block;
 		padding-left: calc-em(8px);
 		padding-right: calc-em(8px);
 
-		&:focus,
-		&:hover {
-			background-color: $color-primary;
-			color: $color-white;
-			text-decoration: none;
-		}
-
-
-		@media (max-width: $bp-large) {
-			.js-astro.js-drop &:hover {
-				background-color: transparent;
-				// color: darken( $color-primary, 15% );
-				text-decoration: underline;
-			}
-
-			.js-astro.js-drop & {
+		@media (min-width: $bp-large) {
+			.js-drop &:focus,
+			.js-drop &:hover {
+				background-color: $color-primary;
 				color: $color-white;
+				text-decoration: none;
 			}
 		}
 	}
