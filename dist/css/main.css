@@ -1,5 +1,5 @@
 /*!
- * keel v7.1.1: A lightweight boilerplate for WordPress developers
+ * keel v7.1.2: A lightweight boilerplate for WordPress developers
  * (c) 2016 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/keel
@@ -2699,6 +2699,7 @@ a.pswp__share--download:hover, .pswp__share--download.link-block-styled:hover, .
   overflow: hidden;
   padding: 0;
   position: absolute;
+  white-space: nowrap;
   width: 1px;
 }
 
@@ -2707,7 +2708,7 @@ a.pswp__share--download:hover, .pswp__share--download.link-block-styled:hover, .
  * @link https://github.com/h5bp/html5-boilerplate/blob/master/dist/css/main.css
  * @link https://www.drupal.org/node/897638
  */
-/* line 167, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
+/* line 168, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
 .screen-reader-focusable:active,
 .screen-reader-focusable:focus {
   clip: auto;
@@ -2715,6 +2716,7 @@ a.pswp__share--download:hover, .pswp__share--download.link-block-styled:hover, .
   margin: 0;
   overflow: visible;
   position: static;
+  white-space: normal;
   width: auto;
 }
 
@@ -2723,7 +2725,7 @@ a.pswp__share--download:hover, .pswp__share--download.link-block-styled:hover, .
  * @affected IE 8/9/10
  * @link http://juicystudio.com/article/screen-readers-display-none.php
  */
-/* line 182, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
+/* line 184, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
 [hidden], template, .tarpit, .pswp__caption small {
   display: none;
   visibility: hidden;
@@ -2734,7 +2736,7 @@ a.pswp__share--download:hover, .pswp__share--download.link-block-styled:hover, .
  * The space content is one way to avoid an Opera bug when the `contenteditable` attribute is included anywhere else in the document.
  * @link https://github.com/h5bp/html5-boilerplate/blob/master/dist/css/main.css
  */
-/* line 194, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
+/* line 196, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
 .clearfix:before, .container:before,
 .row:before,
 .clearfix:after,
@@ -2744,7 +2746,7 @@ a.pswp__share--download:hover, .pswp__share--download.link-block-styled:hover, .
   content: " ";
 }
 
-/* line 200, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
+/* line 202, /Users/cferdinandi/Sites/wordpress/wp-content/themes/keel/src/sass/components/_overrides.scss */
 .clearfix:after, .container:after,
 .row:after {
   clear: both;
