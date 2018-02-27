@@ -1,6 +1,8 @@
-# Keel [![Build Status](https://travis-ci.org/cferdinandi/keel.svg)](https://travis-ci.org/cferdinandi/keel)
+# [DEPRECATED] Keel [![Build Status](https://travis-ci.org/cferdinandi/keel.svg)](https://travis-ci.org/cferdinandi/keel)
 
-A lightweight boilerplate for WordPress theme developers. [View the demo and get started](http://keel.gomakethings.com)
+A lightweight boilerplate for WordPress theme developers.
+
+*__Note:__ This project is no longer maintained.*
 
 
 
